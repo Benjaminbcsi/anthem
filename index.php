@@ -16,7 +16,6 @@ session_start();
 </head>
   <body>
     <div class="container-fluid">
-  ...
     </div>
   </body>
 </html>
