@@ -1,5 +1,5 @@
 body{
-  background-image: linear-gradient(to bottom, #3b3e43, #65666a, #919295, #c0c0c1, #f0f0f0);
+  background: linear-gradient(to right, #919295,#f0f0f0);
 }
 .parallelogram {
 -webkit-box-sizing: content-box;

@@ -1,9 +1,9 @@
 <?php
 session_start();
+require_once __DIR__ . "./model/_model.php";
 ?>
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,33 +17,79 @@ session_start();
     <link href="css/perso.css" rel="stylesheet">
     <title>Anthem Builder</title>
 </head>
-  <img src="./image/commando/true/missile_explo.png" alt="">
-  <body>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark col-lg-6 parallelogram">
-    <!-- Brand -->
-    <a class="navbar-brand" style="transform:skewX(-20deg);" href="#">Anthem Builder</a>
-    <!-- Links -->
-      <ul style="transform:skewX(-20deg);" class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Liste Build</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Créer Build</a>
-        </li>
-        <!-- Dropdown -->
+<body style="background-image:url('./image/background.png')">
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark col-lg-6 parallelogram">
+  <!-- Brand -->
+  <?Php if (isset($_SESSION['id']) && $_SESSION['id'] != "") { ?>
+    <a class="navbar-brand" style="transform:skewX(-20deg);"  href="index.php">Bienvenue : <?php echo ucfirst($_SESSION['pseudo']) ?></a>
+  <?php } else { ?>
+    <a class="navbar-brand" style="transform:skewX(-20deg);" href="index.php">Anthem Builder</a>
+  <?php } ?>
+
+  <!-- Links -->
+    <ul style="transform:skewX(-20deg);" class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Liste Build</a>
+      </li>
+      <?Php if (isset($_SESSION['id']) && $_SESSION['id'] != "") { ?>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Créer Build</a>
+      </li>
+      <!-- Dropdown -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
             Compte
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Modifier</a>
+            <a class="dropdown-item" href="profil.php">Modifier Profil</a>
             <a class="dropdown-item" href="#">Mes Builds</a>
-            <a class="dropdown-item" href="#">Déconnexion</a>
           </div>
         </li>
-      </ul>
-    </nav>
-    <div class="container-fluid">
+        <li class="nav-item">
+          <a class="nav-link" href="logout.php">Déconnexion</a>
+        </li>
+      <?Php } else { ?>
+        <li class="nav-item">
+          <a class="nav-link" href="subscribe.php">Inscription</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login.php">Connexion</a>
+        </li>
+      <?Php } ?>
+    </ul>
+
+  </nav>
+  <div class="container-fluid" >
+    <div class="row" style="padding:2%;">
+      <div class="col-lg-12">
+      </div>
     </div>
-  </body>
+    <div class="row" style="text-align:center;">
+      <div class="col-lg-3">
+        <a href="builder.php?javelin=colosse"><h3 style="color:white;">Colosse</h3></a>
+      </div>
+      <div class="col-lg-3">
+        <a href="builder.php?javelin=commando"><h3 style="color:white;">Commando</h3></a>
+      </div>
+      <div class="col-lg-3">
+        <a href="builder.php?javelin=intercepteur"><h3 style="color:white;">Intercepteur</h3></a>
+      </div>
+      <div class="col-lg-3">
+        <a href="builder.php?javelin=tempete"><h3 style="color:white;">Tempete</h3></a>
+      </div>
+      <div class="col-lg-3">
+            <a href="builder.php?javelin=colosse"><img src="./image/colosse/colosse.png" class="col-lg-12" alt=""></a>
+      </div>
+      <div class="col-lg-3">
+          <a href="builder.php?javelin=commando"><img src="./image/commando/commando.png" class="col-lg-12" alt=""></a>
+      </div>
+      <div class="col-lg-3">
+          <a href="builder.php?javelin=intercepteur"><img src="./image/intercepteur/intercepteur.png" class="col-lg-12" alt=""></a>
+      </div>
+      <div class="col-lg-3">
+          <a href="builder.php?javelin=tempete"><img src="./image/tempete/tempete.png" class="col-lg-12" alt=""></a>
+      </div>
+    </div>
+  </div>
+</body>
 </html>
