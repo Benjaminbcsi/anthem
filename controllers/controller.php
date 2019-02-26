@@ -1,0 +1,9 @@
+<?php
+session_start();
+require_once("../model/db_init.php");
+require_once("../fonctions/fonctions.php");
+require_once("./_form_control.php");
+require_once("../fonctions/fonctions_images.php");
+header('location:../index.php');
+exit;
+?>

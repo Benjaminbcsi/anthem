@@ -1,0 +1,36 @@
+[Fri,21-Jul-2017 09:20:23] En ligne : 8 From : C:\xampp\htdocs\projet2\index.php Erreur:Erreur pendant l'inscription, veuillez prendre contact !
+[Fri,21-Jul-2017 09:40:52] En ligne : 13 From : C:\xampp\htdocs\projet2\model\db_init.php Erreur de connexion1049:Unknown database 'projet2'
+[Fri,21-Jul-2017 09:47:22] En ligne : 13 From : C:\xampp\htdocs\projet2\model\db_init.php Erreur de connexion1049:Unknown database 'projet2'
+[Fri,21-Jul-2017 09:47:32] En ligne : 13 From : C:\xampp\htdocs\projet2\model\db_init.php Erreur de connexion1049:Unknown database 'projet2'
+[Fri,21-Jul-2017 09:47:42] En ligne : 13 From : C:\xampp\htdocs\projet2\model\db_init.php Erreur de connexion1049:Unknown database 'projet2'
+[Fri,21-Jul-2017 09:49:21] En ligne : 33 From : C:\xampp\htdocs\projet2\model\db_post.php 1
+[Fri,21-Jul-2017 10:07:04] En ligne : 33 From : C:\xampp\htdocs\projet2\model\db_post.php 1
+[Fri,21-Jul-2017 10:07:22] En ligne : 33 From : C:\xampp\htdocs\projet2\model\db_post.php 1
+[Fri,21-Jul-2017 10:07:27] En ligne : 33 From : C:\xampp\htdocs\projet2\model\db_post.php 1
+[Fri,21-Jul-2017 10:09:29] En ligne : 8 From : C:\xampp\htdocs\projet2\index.php Erreur:Demande d'amis en cour
+[Fri,21-Jul-2017 10:14:07] En ligne : 8 From : C:\xampp\htdocs\projet2\index.php Erreur:Villes Inconnus
+[Fri,21-Jul-2017 10:36:01] En ligne : 8 From : C:\xampp\htdocs\projet2\index.php Erreur:Erreur pendant la création de l'équipe
+[Fri,21-Jul-2017 10:43:47] En ligne : 8 From : C:\xampp\htdocs\projet2\index.php Erreur:Erreur pendant la création de l'équipe
+[Fri,21-Jul-2017 10:51:26] En ligne : 33 From : C:\xampp\htdocs\projet2\model\db_post.php 1
+[Fri,21-Jul-2017 11:48:21] En ligne : 8 From : C:\xampp\htdocs\projet2\index.php Erreur:Erreur de demande d'amis
+[Fri,21-Jul-2017 11:48:48] En ligne : 8 From : C:\xampp\htdocs\projet2\index.php Erreur:Erreur de demande d'amis
+[Fri,21-Jul-2017 12:04:23] En ligne : 8 From : C:\xampp\htdocs\projet2\index.php Erreur:Erreur de demande d'amis
+[Fri,21-Jul-2017 14:27:44] En ligne : 8 From : C:\xampp\htdocs\projet2\index.php Erreur:Photo obligatoire
+[Fri,21-Jul-2017 14:34:56] En ligne : 8 From : C:\xampp\htdocs\projet2\index.php Erreur:Erreur pendant la création de l'équipe
+[Fri,21-Jul-2017 14:35:00] En ligne : 33 From : C:\xampp\htdocs\projet2\model\db_post.php 1
+[Fri,21-Jul-2017 14:35:02] En ligne : 33 From : C:\xampp\htdocs\projet2\model\db_post.php 1
+[Fri,21-Jul-2017 14:35:59] En ligne : 33 From : C:\xampp\htdocs\projet2\model\db_post.php 1
+[Fri,21-Jul-2017 14:49:26] En ligne : 36 From : C:\xampp\htdocs\projet2\model\db_equipeutilisateur.php Probleme avec 
+[Fri,21-Jul-2017 14:53:28] En ligne : 36 From : C:\xampp\htdocs\projet2\model\db_equipeutilisateur.php Probleme avec 
+[Fri,21-Jul-2017 15:01:00] En ligne : 8 From : C:\xampp\htdocs\projet2\index.php Erreur:Erreur de demande d'amis
+[Fri,21-Jul-2017 15:02:23] En ligne : 8 From : C:\xampp\htdocs\projet2\index.php Erreur:Erreur de demande d'amis
+[Fri,21-Jul-2017 15:04:15] En ligne : 8 From : C:\xampp\htdocs\projet2\index.php Erreur:Erreur de demande d'amis
+[Fri,21-Jul-2017 15:32:26] En ligne : 13 From : C:\xampp\htdocs\projet2\model\db_init.php Erreur de connexion1049:Unknown database 'projet2'
+[Fri,21-Jul-2017 15:32:36] En ligne : 13 From : C:\xampp\htdocs\projet2\model\db_init.php Erreur de connexion1049:Unknown database 'projet2'
+[Fri,21-Jul-2017 15:34:36] En ligne : 13 From : C:\xampp\htdocs\projet2\model\db_init.php Erreur de connexion1049:Unknown database 'projet2'
+[Fri,21-Jul-2017 15:34:46] En ligne : 13 From : C:\xampp\htdocs\projet2\model\db_init.php Erreur de connexion1049:Unknown database 'projet2'
+[Fri,21-Jul-2017 15:36:46] En ligne : 13 From : C:\xampp\htdocs\projet2\model\db_init.php Erreur de connexion1049:Unknown database 'projet2'
+[Fri,21-Jul-2017 15:36:56] En ligne : 13 From : C:\xampp\htdocs\projet2\model\db_init.php Erreur de connexion1049:Unknown database 'projet2'
+[Fri,21-Jul-2017 15:42:44] En ligne : 13 From : C:\xampp\htdocs\projet2\model\db_init.php Erreur de connexion1049:Unknown database 'projet2'
+[Fri,21-Jul-2017 15:48:34] En ligne : 13 From : C:\xampp\htdocs\projet2\model\db_init.php Erreur de connexion1049:Unknown database 'projet2'
+[Fri,21-Jul-2017 15:52:09] En ligne : 13 From : C:\xampp\htdocs\projet2\model\db_init.php Erreur de connexion1044:Access denied for user 'findmy'@'localhost' to database 'projet2'

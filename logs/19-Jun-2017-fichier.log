@@ -1,0 +1,98 @@
+[Mon,19-Jun-2017 18:54:31] En ligne : 7 From : C:\xampp\htdocs\projet2\index.php Erreur:Password Obligatoire
+[Mon,19-Jun-2017 19:01:36] En ligne : 7 From : C:\xampp\htdocs\projet2\index.php Erreur:Login Obligatoire
+[Mon,19-Jun-2017 19:02:06] En ligne : 7 From : C:\xampp\htdocs\projet2\index.php Erreur:Password Obligatoire
+[Mon,19-Jun-2017 19:29:32] En ligne : 7 From : C:\xampp\htdocs\projet2\index.php Erreur:Login Obligatoire
+[Mon,19-Jun-2017 19:47:53] En ligne : 7 From : C:\xampp\htdocs\projet2\index.php Erreur:Vous n'avez pas 18ans
+[Mon,19-Jun-2017 19:48:09] En ligne : 7 From : C:\xampp\htdocs\projet2\index.php Erreur:Vous n'avez pas 18ans
+[Mon,19-Jun-2017 19:48:59] En ligne : 7 From : C:\xampp\htdocs\projet2\index.php Erreur:Vous n'avez pas 18ans
+[Mon,19-Jun-2017 19:49:09] En ligne : 7 From : C:\xampp\htdocs\projet2\index.php Erreur:Vous n'avez pas 18ans
+[Mon,19-Jun-2017 19:50:36] En ligne : 7 From : C:\xampp\htdocs\projet2\index.php Erreur:Vous n'avez pas 18ans
+[Mon,19-Jun-2017 19:50:49] En ligne : 7 From : C:\xampp\htdocs\projet2\index.php Erreur:Vous n'avez pas 18ans
+[Mon,19-Jun-2017 19:55:12] En ligne : 59 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Probleme avec 
+[Mon,19-Jun-2017 19:55:24] En ligne : 59 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Probleme avec 
+[Mon,19-Jun-2017 19:58:13] En ligne : 7 From : C:\xampp\htdocs\projet2\index.php Erreur:Compte existant
+[Mon,19-Jun-2017 20:19:57] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from ville where 1=1 order by id asc:Unknown column 'id' in 'order clause'
+[Mon,19-Jun-2017 20:19:57] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from ville where 1=1 order by id asc:Unknown column 'id' in 'order clause'
+[Mon,19-Jun-2017 20:20:15] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from ville where 1=1 order by id asc:Unknown column 'id' in 'order clause'
+[Mon,19-Jun-2017 20:20:19] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from ville where 1=1 order by id asc:Unknown column 'id' in 'order clause'
+[Mon,19-Jun-2017 20:20:45] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from ville where 1=1 order by id asc:Unknown column 'id' in 'order clause'
+[Mon,19-Jun-2017 20:20:49] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from ville where 1=1 order by id asc:Unknown column 'id' in 'order clause'
+[Mon,19-Jun-2017 20:23:08] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from ville where dreux order by id asc:Unknown column 'dreux' in 'where clause'
+[Mon,19-Jun-2017 20:24:58] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Probleme avec 
+[Mon,19-Jun-2017 20:26:07] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Probleme avec 
+[Mon,19-Jun-2017 20:29:42] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Probleme avec 
+[Mon,19-Jun-2017 20:30:24] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Probleme avec 
+[Mon,19-Jun-2017 20:31:03] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Probleme avec 
+[Mon,19-Jun-2017 20:31:28] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Probleme avec 
+[Mon,19-Jun-2017 20:31:30] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Probleme avec 
+[Mon,19-Jun-2017 20:32:19] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Probleme avec 
+[Mon,19-Jun-2017 20:32:37] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Probleme avec 
+[Mon,19-Jun-2017 20:33:38] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Probleme avec 
+[Mon,19-Jun-2017 20:34:00] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Probleme avec 
+[Mon,19-Jun-2017 20:34:10] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Probleme avec 
+[Mon,19-Jun-2017 20:35:53] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Probleme avec 
+[Mon,19-Jun-2017 20:36:36] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête ::Unknown column 'id' in 'order clause'
+[Mon,19-Jun-2017 20:37:14] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête ::Unknown column 'id' in 'order clause'
+[Mon,19-Jun-2017 20:38:28] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête ::Unknown column 'id' in 'order clause'
+[Mon,19-Jun-2017 20:39:42] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête ::Unknown column 'id' in 'order clause'
+[Mon,19-Jun-2017 20:40:06] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête ::Unknown column 'id' in 'order clause'
+[Mon,19-Jun-2017 20:58:03] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête ::Unknown column 'id' in 'order clause'
+[Mon,19-Jun-2017 20:59:09] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête ::Unknown column 'id' in 'order clause'
+[Mon,19-Jun-2017 21:00:25] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête ::Unknown column 'id' in 'order clause'
+[Mon,19-Jun-2017 21:02:08] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête ::Unknown column 'id' in 'order clause'
+[Mon,19-Jun-2017 21:04:55] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête ::You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '=? order by id asc' at line 1
+[Mon,19-Jun-2017 21:05:12] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête ::You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '=? order by id asc' at line 1
+[Mon,19-Jun-2017 21:05:25] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête ::You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '=? order by id asc' at line 1
+[Mon,19-Jun-2017 21:08:38] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Probleme avec 
+[Mon,19-Jun-2017 21:11:00] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from auteur where ville_nom_reel=dreux order by id asc:Table 'projet2.auteur' doesn't exist
+[Mon,19-Jun-2017 21:11:33] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from auteur where ville_nom_reel=dreux order by id asc:Table 'projet2.auteur' doesn't exist
+[Mon,19-Jun-2017 21:11:45] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from auteur where ville_nom_reel=dreux order by id asc:Table 'projet2.auteur' doesn't exist
+[Mon,19-Jun-2017 21:12:52] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from auteur where ville_nom_reel=Dreux order by id asc:Table 'projet2.auteur' doesn't exist
+[Mon,19-Jun-2017 21:15:22] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from auteur where ville_nom_reel=Dreux order by id asc:Table 'projet2.auteur' doesn't exist
+[Mon,19-Jun-2017 21:17:39] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from auteur where ville_nom_reel=Chartres order by id asc:Table 'projet2.auteur' doesn't exist
+[Mon,19-Jun-2017 21:19:18] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from auteur where ville_nom_reel=Chartres order by id asc:Table 'projet2.auteur' doesn't exist
+[Mon,19-Jun-2017 21:21:54] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from auteur where ville_nom_reel=Chartres order by id asc:Table 'projet2.auteur' doesn't exist
+[Mon,19-Jun-2017 21:23:56] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from auteur where ville_nom_reel=Chartres order by id asc:Table 'projet2.auteur' doesn't exist
+[Mon,19-Jun-2017 21:30:14] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from auteur where Chartres order by id asc:Table 'projet2.auteur' doesn't exist
+[Mon,19-Jun-2017 21:32:04] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from auteur where Chartres order by id asc:Table 'projet2.auteur' doesn't exist
+[Mon,19-Jun-2017 21:33:15] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from auteur where Chartres order by id asc:Table 'projet2.auteur' doesn't exist
+[Mon,19-Jun-2017 21:33:50] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from auteur where Chartres order by id asc:Table 'projet2.auteur' doesn't exist
+[Mon,19-Jun-2017 21:35:00] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from auteur where Chartres order by id asc:Table 'projet2.auteur' doesn't exist
+[Mon,19-Jun-2017 21:35:00] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from auteur where Chartres order by id asc:Table 'projet2.auteur' doesn't exist
+[Mon,19-Jun-2017 21:37:04] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from auteur where ville_nom_reel=Chartres order by id asc:Table 'projet2.auteur' doesn't exist
+[Mon,19-Jun-2017 21:37:04] En ligne : 7 From : C:\xampp\htdocs\projet2\index.php Erreur:Ville Inconnu
+[Mon,19-Jun-2017 21:37:55] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from auteur where ville_nom_reel=Chartres order by id asc:Table 'projet2.auteur' doesn't exist
+[Mon,19-Jun-2017 21:37:55] En ligne : 7 From : C:\xampp\htdocs\projet2\index.php Erreur:Ville Inconnu
+[Mon,19-Jun-2017 21:38:20] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from auteur where ville_nom_reel=Chartres order by id asc:Table 'projet2.auteur' doesn't exist
+[Mon,19-Jun-2017 21:39:54] En ligne : 80 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Probleme avec 
+[Mon,19-Jun-2017 21:40:24] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Probleme avec 
+[Mon,19-Jun-2017 21:41:32] En ligne : 73 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Probleme avec 
+[Mon,19-Jun-2017 21:44:20] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from ville where  order by :You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'order by' at line 1
+[Mon,19-Jun-2017 21:44:51] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from ville where ville_nom_reel=\'Chartres\' order by id asc:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '\'Chartres\' order by id asc' at line 1
+[Mon,19-Jun-2017 21:45:33] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from ville where ville_nom_reel=\'Chartres\' order by id asc:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '\'Chartres\' order by id asc' at line 1
+[Mon,19-Jun-2017 21:46:02] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from ville where ville_nom_reel=\'Chartres\' order by id asc:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '\'Chartres\' order by id asc' at line 1
+[Mon,19-Jun-2017 21:46:02] En ligne : 7 From : C:\xampp\htdocs\projet2\index.php Erreur:Ville Inconnu
+[Mon,19-Jun-2017 21:46:18] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from ville where ville_nom_reel=\'Chartres\' order by id asc:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '\'Chartres\' order by id asc' at line 1
+[Mon,19-Jun-2017 21:46:18] En ligne : 7 From : C:\xampp\htdocs\projet2\index.php Erreur:Ville Inconnu
+[Mon,19-Jun-2017 21:52:19] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from ville where ville_nom_reel=\'Chartres\' order by id asc:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '\'Chartres\' order by id asc' at line 1
+[Mon,19-Jun-2017 21:52:20] En ligne : 7 From : C:\xampp\htdocs\projet2\index.php Erreur:Ville Inconnu
+[Mon,19-Jun-2017 21:53:33] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from ville where ville_nom_reel=\'Chartres\' order by id asc:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '\'Chartres\' order by id asc' at line 1
+[Mon,19-Jun-2017 21:55:24] En ligne : 75 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from utilisateur where ville_nom_reel='Chartres' order by id asc:Unknown column 'ville_nom_reel' in 'where clause'
+[Mon,19-Jun-2017 21:55:33] En ligne : 75 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from utilisateur where ville_nom_reel='Chartres' order by id asc:Unknown column 'ville_nom_reel' in 'where clause'
+[Mon,19-Jun-2017 21:55:33] En ligne : 7 From : C:\xampp\htdocs\projet2\index.php Erreur:Ville Inconnu
+[Mon,19-Jun-2017 21:59:38] En ligne : 75 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Erreur sur la requête :select * from ville where ville_nom_reel='Chartres' order by id asc:Unknown column 'id' in 'order clause'
+[Mon,19-Jun-2017 21:59:38] En ligne : 7 From : C:\xampp\htdocs\projet2\index.php Erreur:Ville Inconnu
+[Mon,19-Jun-2017 22:04:06] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Probleme avec 
+[Mon,19-Jun-2017 22:04:06] En ligne : 7 From : C:\xampp\htdocs\projet2\index.php Erreur:Villes Inconnus
+[Mon,19-Jun-2017 22:07:46] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Probleme avec 
+[Mon,19-Jun-2017 22:07:46] En ligne : 7 From : C:\xampp\htdocs\projet2\index.php Erreur:Villes Inconnus
+[Mon,19-Jun-2017 22:11:15] En ligne : 80 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Probleme avec 
+[Mon,19-Jun-2017 22:11:15] En ligne : 7 From : C:\xampp\htdocs\projet2\index.php Erreur:Villes Inconnus
+[Mon,19-Jun-2017 22:12:08] En ligne : 80 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Probleme avec 
+[Mon,19-Jun-2017 22:12:08] En ligne : 7 From : C:\xampp\htdocs\projet2\index.php Erreur:Villes Inconnus
+[Mon,19-Jun-2017 22:14:17] En ligne : 80 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Probleme avec 
+[Mon,19-Jun-2017 22:14:17] En ligne : 7 From : C:\xampp\htdocs\projet2\index.php Erreur:Villes Inconnus
+[Mon,19-Jun-2017 22:16:55] En ligne : 80 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Probleme avec 
+[Mon,19-Jun-2017 22:16:55] En ligne : 7 From : C:\xampp\htdocs\projet2\index.php Erreur:Villes Inconnus
+[Mon,19-Jun-2017 22:17:33] En ligne : 79 From : C:\xampp\htdocs\projet2\model\db_utilisateur.php Probleme avec 
+[Mon,19-Jun-2017 22:17:33] En ligne : 7 From : C:\xampp\htdocs\projet2\index.php Erreur:Villes Inconnus

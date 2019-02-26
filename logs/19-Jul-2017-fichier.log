@@ -1,0 +1,14 @@
+[Wed,19-Jul-2017 08:55:19] En ligne : 33 From : C:\xampp\htdocs\projet2\model\db_post.php 1
+[Wed,19-Jul-2017 08:55:29] En ligne : 33 From : C:\xampp\htdocs\projet2\model\db_post.php 1
+[Wed,19-Jul-2017 08:56:32] En ligne : 8 From : C:\xampp\htdocs\projet2\index.php Erreur:Demande d'amis en cour
+[Wed,19-Jul-2017 08:56:35] En ligne : 8 From : C:\xampp\htdocs\projet2\index.php Erreur:Demande d'amis en cour
+[Wed,19-Jul-2017 08:56:35] En ligne : 8 From : C:\xampp\htdocs\projet2\index.php Erreur:Demande d'amis en cour
+[Wed,19-Jul-2017 08:56:36] En ligne : 8 From : C:\xampp\htdocs\projet2\index.php Erreur:Demande d'amis en cour
+[Wed,19-Jul-2017 08:56:36] En ligne : 8 From : C:\xampp\htdocs\projet2\index.php Erreur:Demande d'amis en cour
+[Wed,19-Jul-2017 08:56:38] En ligne : 33 From : C:\xampp\htdocs\projet2\model\db_post.php 1
+[Wed,19-Jul-2017 08:56:42] En ligne : 33 From : C:\xampp\htdocs\projet2\model\db_post.php 1
+[Wed,19-Jul-2017 09:06:30] En ligne : 8 From : C:\xampp\htdocs\projet2\index.php Erreur:Demande d'amis en cour
+[Wed,19-Jul-2017 09:26:09] En ligne : 8 From : C:\xampp\htdocs\projet2\index.php Erreur:Demande d'amis en cour
+[Wed,19-Jul-2017 09:41:58] En ligne : 33 From : C:\xampp\htdocs\projet2\model\db_post.php 1
+[Wed,19-Jul-2017 09:42:21] En ligne : 33 From : C:\xampp\htdocs\projet2\model\db_post.php 1
+[Wed,19-Jul-2017 09:58:21] En ligne : 14 From : C:\xampp\htdocs\projet2\model\db_equipe.php Erreur sur la requête :select *,equipe.pseudo as pseudoequip,equipe.descriptif as descequipe,equipe.pseudo,media.chemin,utilisateur.pseudo as chefequipe from equipe,media,utilisateur where equipe.id=? and media.id_equipe = equipe.id and equipe.id_chef=utilisateur.id:You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '? and media.id_equipe = equipe.id and equipe.id_chef=utilisateur.id' at line 1
