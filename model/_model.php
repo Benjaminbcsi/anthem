@@ -1,30 +1,18 @@
 <?php
-require_once __DIR__.'/db_init.php';
-require_once __DIR__."/db_utilisateur.php";
-require_once __DIR__."/db_rang.php";
-require_once __DIR__."/db_media.php";
-require_once __DIR__."/db_equipe.php";
-require_once __DIR__."/db_amis.php";
-require_once __DIR__."/db_jeu.php";
-require_once __DIR__."/db_genre.php";
-require_once __DIR__."/db_post.php";
-require_once __DIR__."/db_commentaire.php";
-require_once __DIR__."/db_equipeutilisateur.php";
-require_once __DIR__."/db_message.php";
-require_once __DIR__."/db_jeuutil.php";
-require_once __DIR__."/_classe_utilisateur_equipe.php";
-require_once __DIR__."/_classe_utilisateur.php";
-require_once __DIR__."/_classe_equipe.php";
-require_once __DIR__."/_classe_rang.php";
-require_once __DIR__."/_classe_type.php";
-require_once __DIR__."/_classe_media.php";
-require_once __DIR__."/_classe_amis.php";
-require_once __DIR__."/_classe_jeu.php";
-require_once __DIR__."/_classe_post.php";
-require_once __DIR__."/_classe_commentaire.php";
-require_once __DIR__."/_classe_equipeutil.php";
-require_once __DIR__."/_classe_message.php";
-require_once __DIR__."/_classe_utiljeu.php";
+require_once __DIR__."/db_init.php";
+
+//CLASSE
+
+require_once __DIR__."/_classe_users.php";
+require_once __DIR__."/_classe_game.php";
+require_once __DIR__."/_classe_gameuser.php";
+require_once __DIR__."/_classe_card_game_joueur.php";
+
+//DB
+require_once __DIR__."/db_users.php";
+require_once __DIR__."/db_game.php";
+require_once __DIR__."/db_gameusers.php";
+require_once __DIR__."/db_card_game_joueur.php";
 
 
 ?>

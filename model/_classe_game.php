@@ -1,12 +1,12 @@
 <?php
 
-class EquipeUtil extends Utilisateur{
+class Game {
 	//PROPRIETES
 	private $id;
-	private $id_utilisateur;
-	private $id_equipe;
+	private $nom;
+	private $nb_joueur;
 	private $etat;
-	private $pseudo;
+	private $id_joueur_victorieux;
 
 	//METHODES
 	public function __construct(array $tabData){
@@ -22,22 +22,22 @@ class EquipeUtil extends Utilisateur{
 	}
 	// METHODES SETERS ET GETERS
 	public function setId($var){
-		$this->type=$var;
+		$this->id=$var;
 	}
 	public function getId(){
-		return $this->type;
+		return $this->id;
 	}
-	public function setId_utilisateur($var){
-		$this->id_utilisateur=$var;
+	public function setNom($var){
+		$this->nom=$var;
 	}
-	public function getId_utilisateur(){
-		return $this->id_utilisateur;
+	public function getNom(){
+		return $this->nom;
 	}
-	public function setId_equipe($var){
-		$this->id_equipe=$var;
+	public function setNb_joueur($var){
+		$this->nb_joueur=$var;
 	}
-	public function getId_equipe(){
-		return $this->id_equipe;
+	public function getNb_joueur(){
+		return $this->nb_joueur;
 	}
 	public function setEtat($var){
 		$this->etat=$var;
@@ -45,7 +45,12 @@ class EquipeUtil extends Utilisateur{
 	public function getEtat(){
 		return $this->etat;
 	}
-
+	public function setId_joueur_victorieux($var){
+		$this->id_joueur_victorieux=$var;
+	}
+	public function getId_joueur_victorieux(){
+		return $this->id_joueur_victorieux;
+	}
 
 }
 ?>

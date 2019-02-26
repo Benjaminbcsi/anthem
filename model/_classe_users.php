@@ -1,10 +1,10 @@
 <?php
 
-class UtilJeu{
+class Users {
 	//PROPRIETES
 	private $id;
-	private $id_utilisateur;
-	private $id_jeu;
+	private $pseudo;
+	private $mdp;
 
 	//METHODES
 	public function __construct(array $tabData){
@@ -25,17 +25,17 @@ class UtilJeu{
 	public function getId(){
 		return $this->id;
 	}
-	public function setId_utilisateur($var){
-		$this->id_utilisateur=$var;
+	public function setPseudo($var){
+		$this->pseudo=$var;
 	}
-	public function getId_utilisateur(){
-		return $this->id_utilisateur;
+	public function getPseudo(){
+		return $this->pseudo;
 	}
-	public function setId_jeu($var){
-		$this->id_jeu=$var;
+	public function setMdp($var){
+		$this->mdp=$var;
 	}
-	public function getId_jeu(){
-		return $this->id_jeu;
+	public function getMdp(){
+		return $this->mdp;
 	}
 
 }
