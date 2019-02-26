@@ -15,3 +15,18 @@ background: #1abc9c;
 -webkit-transform:    skewX(20deg);
 transform:    skewX(20deg);
 }
+
+.parallelogrambuilder {
+-webkit-box-sizing: content-box;
+-moz-box-sizing: content-box;
+box-sizing: content-box;
+margin-left: -10px;
+border: none;
+font: normal 100%/normal Arial, Helvetica, sans-serif;
+color: rgba(0,0,0,1);
+-o-text-overflow: clip;
+text-overflow: clip;
+background: #1abc9c;
+-webkit-transform:    skewX(20deg);
+transform:    skewX(20deg);
+}

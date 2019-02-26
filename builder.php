@@ -69,42 +69,53 @@ require_once __DIR__ . "./model/_model.php";
     </ul>
   </nav>
   <div class="container-fluid" >
-    <div class="row" style="padding:4%;">
+    <div class="row" style="padding:3%;">
       <div class="col-lg-12">
       </div>
     </div>
     <div class="row">
       <div class="col-lg-5" ></div>
       <div class="col-lg-1" ></div>
-      <div class="col-lg-1" ><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
-      <div class="col-lg-3" ></div>
+      <div class="col-lg-1 " id="explosionsee" ><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
+      <div class="col-lg-1 armes parallelogrambuilder" id="explosion" >COUCOU</div>
+      <div class="col-lg-2" ></div>
       <div class="col-lg-2" ></div>
     </div>
     <div class="row" >
-      <div class="col-lg-5" ></div>
-      <div class="col-lg-1" ><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
+      <div class="col-lg-3" ></div>
+      <div class="col-lg-2 armes parallelogrambuilder" id="composant" >COUCOU</div>
+      <div class="col-lg-1" id="composantsee" ><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
       <div class="col-lg-1" ></div>
       <div class="col-lg-3" ></div>
       <div class="col-lg-2" ></div>
     </div>
-    <div class="row" style="padding:4%;">
-      <div class="col-lg-5" ></div>
-      <div class="col-lg-1" ><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
+    <div class="row" style="padding:3%;">
+      <div class="col-lg-3" ></div>
+      <div class="col-lg-2 armes parallelogrambuilder" id="concentration" >COUCOU2</div>
+      <div class="col-lg-1" id="concentrationsee" ><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
       <div class="col-lg-1" ></div>
       <div class="col-lg-3" ></div>
       <div class="col-lg-2" ></div>
     </div>
     <div class="row" style="padding:1%;">
-      <div class="col-lg-5" ></div>
-      <div class="col-lg-1" ><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
-      <div class="col-lg-1" ><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
       <div class="col-lg-3" ></div>
+      <div class="col-lg-2 armes parallelogrambuilder" id="armes"><p style="transform:skewX(-20deg);">COUCOU<p></div>
+      <div class="col-lg-1" id="armesee"><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
+      <div class="col-lg-1" id="soutientsee" ><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
+      <div class="col-lg-1 armes" id="soutient" >COUCOU</div>
+      <div class="col-lg-2" ></div>
       <div class="col-lg-2" ></div>
     </div>
   </div>
 </body>
 </html>
 <style>
+.armes{
+ visibility: hidden;
+}
+.armesover{
+ visibility: visible;
+}
 .circle {
   background: #ff9933;
   opacity: 0.8;
@@ -130,4 +141,69 @@ require_once __DIR__ . "./model/_model.php";
   border-radius: 100%;
   border:1px solid black;
 }
+
+.parallelogrambuilder {
+-webkit-box-sizing: content-box;
+-moz-box-sizing: content-box;
+box-sizing: content-box;
+border: none;
+margin-left: -30px;
+font: normal 100%/normal Arial, Helvetica, sans-serif;
+color: rgba(0,0,0,1);
+-o-text-overflow: clip;
+text-overflow: clip;
+background: grey;
+opacity: 0.8;
+color:orange;
+-webkit-transform:    skewX(20deg);
+transform:    skewX(20deg);
+}
 </style>
+<script>
+
+$("#armesee").mouseover(function(){
+  $('#armes').removeClass('armes')
+  $('#armes').addClass('armesover')
+});
+$("#armesee").mouseout(function(){
+  $('#armes').removeClass('armesover')
+  $('#armes').addClass('armes')
+});
+
+
+$("#soutientsee").mouseover(function(){
+  $('#soutient').removeClass('armes')
+  $('#soutient').addClass('armesover')
+});
+$("#soutientsee").mouseout(function(){
+  $('#soutient').removeClass('armesover')
+  $('#soutient').addClass('armes')
+});
+
+$("#concentrationsee").mouseover(function(){
+  $('#concentration').removeClass('armes')
+  $('#concentration').addClass('armesover')
+});
+$("#concentrationsee").mouseout(function(){
+  $('#concentration').removeClass('armesover')
+  $('#concentration').addClass('armes')
+});
+
+$("#composantsee").mouseover(function(){
+  $('#composant').removeClass('armes')
+  $('#composant').addClass('armesover')
+});
+$("#composantsee").mouseout(function(){
+  $('#composant').removeClass('armesover')
+  $('#composant').addClass('armes')
+});
+
+$("#explosionsee").mouseover(function(){
+  $('#explosion').removeClass('armes')
+  $('#explosion').addClass('armesover')
+});
+$("#explosionsee").mouseout(function(){
+  $('#explosion').removeClass('armesover')
+  $('#explosion').addClass('armes')
+});
+</script>
