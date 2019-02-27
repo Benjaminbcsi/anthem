@@ -60,40 +60,40 @@ require_once __DIR__ . "./model/_model.php";
     </ul>
   </nav>
   <div class="container-fluid" >
-    <div class="row" style="padding:3%;">
+    <div class="row" style="padding:2%;">
       <div class="col-lg-12">
       </div>
     </div>
-    <div class="row">
+    <div class="row" style="padding:2%;">
       <div class="col-lg-5" ></div>
       <div class="col-lg-1" ></div>
       <div class="col-lg-1 " id="explosionsee" ><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
-      <div class="col-lg-1 armes parallelogrambuilder" id="explosion" style="transform:skewX(-20deg);" >COUCOU</div>
+      <div class="col-lg-2 armes parallelogrambuilder" id="explosion" ><p style="transform:skewX(-20deg);">COUCOU<p></div>
       <div class="col-lg-2" ></div>
-      <div class="col-lg-2" ></div>
+      <div class="col-lg-1" ></div>
     </div>
-    <div class="row" >
+    <div class="row" style="padding:3%;" >
       <div class="col-lg-3" ></div>
-      <div class="col-lg-2 armes parallelogrambuilder" id="composant" style="transform:skewX(-20deg);" >COUCOU</div>
+      <div class="col-lg-2 armes parallelogrambuilder" style="margin-left:-3%" id="composant" ><p style="transform:skewX(-20deg);">COUCOU<p></div>
       <div class="col-lg-1" id="composantsee" ><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
+      <div class="col-lg-1" id="soutientsee" ><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
+      <div class="col-lg-2 armes parallelogrambuilder" id="soutient" ><p style="transform:skewX(-20deg);">COUCOU<p></div>
       <div class="col-lg-1" ></div>
-      <div class="col-lg-3" ></div>
-      <div class="col-lg-2" ></div>
     </div>
-    <div class="row" style="padding:3%;">
-      <div class="col-lg-3" ></div>
-      <div class="col-lg-2 armes parallelogrambuilder" id="concentration" style="transform:skewX(-20deg);" >COUCOU2</div>
-      <div class="col-lg-1" id="concentrationsee" ><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
+    <div class="row" style="padding:2%;">
+      <div style="margin-left:4%" class="col-lg-2"></div>
+      <div class="col-lg-2 armes parallelogrambuilder" id="concentration" ><p style="transform:skewX(-20deg);">COUCOU<p></div>
+      <div class="col-lg-2" id="concentrationsee" ><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
       <div class="col-lg-1" ></div>
-      <div class="col-lg-3" ></div>
+      <div class="col-lg-1" ></div>
       <div class="col-lg-2" ></div>
     </div>
     <div class="row" style="padding:1%;">
       <div class="col-lg-3" ></div>
       <div class="col-lg-2 armes parallelogrambuilder" id="armes"><p style="transform:skewX(-20deg);">COUCOU<p></div>
       <div class="col-lg-1" id="armesee"><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
-      <div class="col-lg-1" id="soutientsee" ><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
-      <div class="col-lg-1 armes" id="soutient" style="transform:skewX(-20deg);" >COUCOU</div>
+      <div class="col-lg-1" ></div>
+      <div class="col-lg-1" ></div>
       <div class="col-lg-2" ></div>
       <div class="col-lg-2" ></div>
     </div>
