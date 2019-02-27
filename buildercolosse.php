@@ -17,17 +17,8 @@ require_once __DIR__ . "./model/_model.php";
     <link href="css/perso.css" rel="stylesheet">
     <title>Anthem Builder</title>
 </head>
-  <?php if ($_GET['javelin'] == "colosse") { ?>
-    <body style="background-image:url('./image/colosse/colosse.jpg');background-size: cover;">
-  <?php } elseif ($_GET['javelin'] == "commando") { ?>
-    <body style="background-image:url('./image/commando/commando.jpg');background-size: cover;">
-  <?php } elseif ($_GET['javelin'] == "intercepteur") { ?>
-    <body style="background-image:url('./image/intercepteur/intercepteur.jpg');background-size: cover;">
-  <?php } elseif ($_GET['javelin'] == "tempete") { ?>
-    <body style="background-image:url('./image/tempete/tempete.jpg');background-size: cover;">
-  <?php } else {
-    header("Location: index.php");
-  } ?>
+  <body style="background-image:url('./image/colosse/colosse.jpg');background-size: cover;">
+
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark col-lg-6 parallelogram">
   <!-- Brand -->
   <?Php if (isset($_SESSION['id']) && $_SESSION['id'] != "") { ?>
@@ -77,13 +68,13 @@ require_once __DIR__ . "./model/_model.php";
       <div class="col-lg-5" ></div>
       <div class="col-lg-1" ></div>
       <div class="col-lg-1 " id="explosionsee" ><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
-      <div class="col-lg-1 armes parallelogrambuilder" id="explosion" >COUCOU</div>
+      <div class="col-lg-1 armes parallelogrambuilder" id="explosion" style="transform:skewX(-20deg);" >COUCOU</div>
       <div class="col-lg-2" ></div>
       <div class="col-lg-2" ></div>
     </div>
     <div class="row" >
       <div class="col-lg-3" ></div>
-      <div class="col-lg-2 armes parallelogrambuilder" id="composant" >COUCOU</div>
+      <div class="col-lg-2 armes parallelogrambuilder" id="composant" style="transform:skewX(-20deg);" >COUCOU</div>
       <div class="col-lg-1" id="composantsee" ><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
       <div class="col-lg-1" ></div>
       <div class="col-lg-3" ></div>
@@ -91,7 +82,7 @@ require_once __DIR__ . "./model/_model.php";
     </div>
     <div class="row" style="padding:3%;">
       <div class="col-lg-3" ></div>
-      <div class="col-lg-2 armes parallelogrambuilder" id="concentration" >COUCOU2</div>
+      <div class="col-lg-2 armes parallelogrambuilder" id="concentration" style="transform:skewX(-20deg);" >COUCOU2</div>
       <div class="col-lg-1" id="concentrationsee" ><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
       <div class="col-lg-1" ></div>
       <div class="col-lg-3" ></div>
@@ -102,7 +93,7 @@ require_once __DIR__ . "./model/_model.php";
       <div class="col-lg-2 armes parallelogrambuilder" id="armes"><p style="transform:skewX(-20deg);">COUCOU<p></div>
       <div class="col-lg-1" id="armesee"><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
       <div class="col-lg-1" id="soutientsee" ><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
-      <div class="col-lg-1 armes" id="soutient" >COUCOU</div>
+      <div class="col-lg-1 armes" id="soutient" style="transform:skewX(-20deg);" >COUCOU</div>
       <div class="col-lg-2" ></div>
       <div class="col-lg-2" ></div>
     </div>

@@ -1,3 +1,15 @@
+
+@font-face {
+    font-family: 'zanzingerextra-light';
+    src: url('font/zanzinger-el-webfont.woff2') format('woff2'),
+         url('font/zanzinger-el-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+* {
+  font-family: 'zanzingerextra-light';
+}
 body{
   background: linear-gradient(to right, #919295,#f0f0f0);
 }

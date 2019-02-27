@@ -23,7 +23,7 @@ require_once __DIR__ . "./model/_model.php";
   <?Php if (isset($_SESSION['id']) && $_SESSION['id'] != "") { ?>
     <a class="navbar-brand" style="transform:skewX(-20deg);"  href="index.php">Bienvenue : <?php echo ucfirst($_SESSION['pseudo']) ?></a>
   <?php } else { ?>
-    <a class="navbar-brand" style="transform:skewX(-20deg);" href="index.php">Anthem Builder</a>
+    <a class="navbar-brand" style="transform:skewX(-20deg);" href="index.php">ANTHEM Builder</a>
   <?php } ?>
 
   <!-- Links -->
@@ -66,28 +66,28 @@ require_once __DIR__ . "./model/_model.php";
     </div>
     <div class="row" style="text-align:center;">
       <div class="col-lg-3">
-        <a href="builder.php?javelin=colosse"><h3 style="color:white;">Colosse</h3></a>
+        <a href="buildercolosse.php"><h3 style="color:white;">COLOSSE</h3></a>
       </div>
       <div class="col-lg-3">
-        <a href="builder.php?javelin=commando"><h3 style="color:white;">Commando</h3></a>
+        <a href="buildercommando.php"><h3 style="color:white;">COMMANDO</h3></a>
       </div>
       <div class="col-lg-3">
-        <a href="builder.php?javelin=intercepteur"><h3 style="color:white;">Intercepteur</h3></a>
+        <a href="builderintercepteur.php"><h3 style="color:white;">INTERCEPTEUR</h3></a>
       </div>
       <div class="col-lg-3">
-        <a href="builder.php?javelin=tempete"><h3 style="color:white;">Tempete</h3></a>
+        <a href="buildertempete.php"><h3 style="color:white;">TEMPETE</h3></a>
       </div>
       <div class="col-lg-3">
-            <a href="builder.php?javelin=colosse"><img src="./image/colosse/colosse.png" class="col-lg-12" alt=""></a>
+            <a href="buildercolosse.php"><img src="./image/colosse/colosse.png" class="col-lg-12" alt=""></a>
       </div>
       <div class="col-lg-3">
-          <a href="builder.php?javelin=commando"><img src="./image/commando/commando.png" class="col-lg-12" alt=""></a>
+          <a href="buildercommando.php"><img src="./image/commando/commando.png" class="col-lg-12" alt=""></a>
       </div>
       <div class="col-lg-3">
-          <a href="builder.php?javelin=intercepteur"><img src="./image/intercepteur/intercepteur.png" class="col-lg-12" alt=""></a>
+          <a href="builderintercepteur.php"><img src="./image/intercepteur/intercepteur.png" class="col-lg-12" alt=""></a>
       </div>
       <div class="col-lg-3">
-          <a href="builder.php?javelin=tempete"><img src="./image/tempete/tempete.png" class="col-lg-12" alt=""></a>
+          <a href="buildertempete.php"><img src="./image/tempete/tempete.png" class="col-lg-12" alt=""></a>
       </div>
     </div>
   </div>
