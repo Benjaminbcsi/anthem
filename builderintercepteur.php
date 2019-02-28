@@ -68,24 +68,19 @@ require_once __DIR__ . "./model/_model.php";
       <div class="col-lg-5" ></div>
       <div class="col-lg-1" ></div>
       <div class="col-lg-1 " id="explosionsee" ><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
-      <div class="col-lg-1 armes parallelogrambuilder" id="explosion" >COUCOU</div>
+      <div class="col-lg-2 armes parallelogrambuilder" id="explosion" ><p style="transform:skewX(-20deg);">COUCOU<p></div>
       <div class="col-lg-2" ></div>
-      <div class="col-lg-2" ></div>
+      <div class="col-lg-1" ></div>
     </div>
     <div class="row" >
-      <div class="col-lg-3" ></div>
-      <div class="col-lg-2 armes parallelogrambuilder" id="composant" >COUCOU</div>
-      <div class="col-lg-1" id="composantsee" ><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
-      <div class="col-lg-1" ></div>
-      <div class="col-lg-3" ></div>
-      <div class="col-lg-2" ></div>
+      <div class="col-lg-12" ></div>
     </div>
     <div class="row" style="padding:3%;">
       <div class="col-lg-3" ></div>
-      <div class="col-lg-2 armes parallelogrambuilder" id="concentration" >COUCOU2</div>
+      <div class="col-lg-2 armes parallelogrambuilder" id="concentration" ><p style="transform:skewX(-20deg);">COUCOU<p></div>
       <div class="col-lg-1" id="concentrationsee" ><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
-      <div class="col-lg-1" ></div>
-      <div class="col-lg-3" ></div>
+      <div class="col-lg-1" id="composantsee" ><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
+      <div class="col-lg-3 armes parallelogrambuilder" id="composant" ><p style="transform:skewX(-20deg);">COUCOU<p></div>
       <div class="col-lg-2" ></div>
     </div>
     <div class="row" style="padding:1%;">
@@ -93,8 +88,8 @@ require_once __DIR__ . "./model/_model.php";
       <div class="col-lg-2 armes parallelogrambuilder" id="armes"><p style="transform:skewX(-20deg);">COUCOU<p></div>
       <div class="col-lg-1" id="armesee"><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
       <div class="col-lg-1" id="soutientsee" ><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
-      <div class="col-lg-1 armes" id="soutient" >COUCOU</div>
-      <div class="col-lg-2" ></div>
+      <div class="col-lg-2 armes parallelogrambuilder" id="soutient" ><p style="transform:skewX(-20deg);">COUCOU<p></div>
+      <div class="col-lg-1" ></div>
       <div class="col-lg-2" ></div>
     </div>
   </div>
