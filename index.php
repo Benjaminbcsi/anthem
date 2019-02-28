@@ -64,6 +64,7 @@ require_once __DIR__ . "./model/_model.php";
       <div class="col-lg-12">
       </div>
     </div>
+    <img src="./image/arme/2.png" alt="">
     <div class="row" style="text-align:center;">
       <div class="col-lg-3">
         <a href="buildercolosse.php"><h3 style="color:white;">COLOSSE</h3></a>
