@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  jeu. 28 fév. 2019 à 15:43
+-- Généré le :  ven. 01 mars 2019 à 13:39
 -- Version du serveur :  10.1.38-MariaDB
 -- Version de PHP :  7.3.2
 
@@ -106,7 +106,37 @@ INSERT INTO `assaut` (`id`, `nom`, `effet`, `id_type`, `id_javelin`) VALUES
 (6, 'Lance-flamme', 'Faites monter la température avec un torrent de flammes.', 2, 2),
 (7, 'Canon Flak', 'Abattez vos ennemis avec cette arme à dispersion à courte portée.', 2, 2),
 (8, 'Canon électrique', 'Lance un puissant projectile d\'énergie cinétique sur un ennemi.', 2, 2),
-(9, 'Crache-venin', 'Envoyez plusieurs salves de projectiles d\'acide en cloche sur vos adversaires.', 2, 2);
+(9, 'Crache-venin', 'Envoyez plusieurs salves de projectiles d\'acide en cloche sur vos adversaires.', 2, 2),
+(10, 'Grenade frag', 'Infligez de lourds dégâts à vos adversaires sur une large zone.', 3, 1),
+(11, 'Grenade des enfers', 'Enflammez vos ennemis pour leur infliger des dégâts immédiats et continus.', 3, 1),
+(12, 'Grenade de givre', 'Gelez vos adversaires jusqu\'à la moelle.', 3, 1),
+(13, 'Grenades chercheuses', 'Lancez une grenade qui se divise ensuite en plusieurs missiles à tête chercheuse.', 3, 1),
+(14, 'Grenade collante', 'Attaquez votre adversaire avec une grenade qui se fixe sur lui et lui inflige de lourds dégâts.', 3, 1),
+(15, 'Missile à tête chercheuse', 'Tirez un projectile qui traque une cible unique et touche également les adversaires à proximité.', 4, 1),
+(16, 'Souffle d\'impulsion', 'Frappez une cible unique d\'une puissante explosion énergétique.', 4, 1),
+(17, 'Rayon spark', 'Lancez un rayon d\'énergie qui inflige des dégâts continus à tout ce qu\'il touche.', 4, 1),
+(18, 'Fléchettes de venin', 'Infligez des dégâts acides à vos cibles avec une salve de fléchettes.', 4, 1),
+(19, 'Missile explosif', 'Déblayez le champ de bataille avec un missile qui inflige des dégâts sur une large zone autour du point d\'impact.', 4, 1),
+(20, 'Glaive traqueur', 'Lancez un glaive à tête chercheuse.', 5, 4),
+(21, 'Bombe de venin', 'Lancez une grenade qui inflige des dégâts acides à tous les ennemis à proximité.', 4, 4),
+(22, 'Glaive cryo', 'Cible jusqu\'à deux ennemis à proximité qui gèleront à l\'impact.', 5, 4),
+(23, 'Mine à fragmentation', 'Lancez une salve de mines sur la zone ciblée.', 5, 4),
+(24, 'Ruée éclair', 'Ruez-vous en avant en laissant un dangereux flux d\'électricité derrière vous.', 5, 4),
+(25, 'Frappe détonante', 'Une attaque au corps à corps qui charge l\'ennemi d\'énergie électrique. S\'il meurt en étant chargé d\'énergie, l\'ennemi explose et inflige des dégâts autour de lui.', 6, 4),
+(26, 'Étoile à plasma', 'Jetez une étoile de ninja chargée de plasma en direction d’une cible unique ; efficace à grande distance.', 6, 4),
+(27, 'Frappe spectrale', 'Générez une projection de l\'Intercepteur pour attaquer vos ennemis.', 6, 4),
+(28, 'Frappe tempestaire', 'Une puissante attaque au corps à corps qui inflige d\'importants dégâts physiques.', 6, 4),
+(29, 'Jet de venin', 'Projetez un acide corrosif qui inflige des dégâts à tous les ennemis touchés.', 6, 4),
+(30, 'Frappe foudroyante', 'Une frappe ciblée qui inflige des dégâts dans une zone.', 7, 3),
+(31, 'Tempête de glace', 'Génère des champs de glace à l\'endroit visé. En explosant, ils infligent des dégâts de glace et gèlent les ennemis.', 7, 3),
+(32, 'Souffle enflammé', 'Une explosion rapide qui inflige des dégâts de feu à l’emplacement d’une cible.', 7, 3),
+(33, 'Explosion de glace', 'Projette de gros morceaux de glace qui infligent de lourds dégâts et gèlent les ennemis situés à courte distance.', 7, 3),
+(34, 'Flamme vivante', 'Une explosion d’énergie brûlante qui traque les cibles pour y mettre le feu.', 7, 3),
+(35, 'Éclats de givre', 'Tirs rapides d’éclats de glace qui figent lentement une cible sur place.', 8, 3),
+(36, 'Orbe brûlant', 'Polyvalente, cette capacité de feu peut être utilisée pour effectuer des petits tirs rapides, ou chargée afin de tirer un gros projectile explosif.', 8, 3),
+(37, 'Choc explosif', 'Une décharge d’énergie électrique capable de rebondir sur les murs pour atteindre des cibles à couvert.', 8, 3),
+(38, 'Lance glaciale', 'Envoie un puissant rayon d\'énergie de glace dans une direction choisie.', 8, 3),
+(39, 'Arc voltaïque', 'Libère une explosion de foudre qui s’abat sur les cibles à proximité, leur infligeant de lourds dégâts.', 8, 3);
 
 -- --------------------------------------------------------
 
@@ -236,58 +266,50 @@ CREATE TABLE `composant` (
   `nom` varchar(255) COLLATE utf8_bin NOT NULL,
   `armure` int(11) DEFAULT NULL,
   `bouclier` int(11) DEFAULT NULL,
-  `description` varchar(255) COLLATE utf8_bin DEFAULT NULL,
-  `effet` varchar(255) COLLATE utf8_bin DEFAULT NULL
+  `description` varchar(400) COLLATE utf8_bin DEFAULT NULL,
+  `effet` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `id_javelin` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Déchargement des données de la table `composant`
 --
 
-INSERT INTO `composant` (`id`, `nom`, `armure`, `bouclier`, `description`, `effet`) VALUES
-(1, 'Munitions fusil à lunette', NULL, NULL, NULL, NULL),
-(2, 'Munitions fusil à pompe', NULL, NULL, NULL, NULL),
-(3, 'Munitions fusil d\'assaut', NULL, NULL, NULL, NULL),
-(4, 'Munitions fusil de précision', NULL, NULL, NULL, NULL),
-(5, 'Munitions fusil mitrailleur', NULL, NULL, NULL, NULL),
-(6, 'Munitions pistolet lourd', NULL, NULL, NULL, NULL),
-(7, 'Munitions pistolet mitrailleur', NULL, NULL, NULL, NULL),
-(8, 'Munitions spéciales', NULL, NULL, NULL, NULL),
-(9, 'Compartiment à munitions', NULL, NULL, NULL, NULL),
-(10, 'Baisse thermique', NULL, NULL, NULL, NULL),
-(11, 'Gravure de corps-à-corps', NULL, NULL, NULL, NULL),
-(12, 'Gravure ultime', NULL, NULL, NULL, NULL),
-(13, 'Renforcement d\'armure', NULL, NULL, NULL, NULL),
-(14, 'Renforcement de bouclier', NULL, NULL, NULL, NULL),
-(15, 'Avantage tactique', 2486, 2486, NULL, NULL),
-(16, 'Bras combinés', 2486, 2486, NULL, NULL),
-(17, 'Détermination du vainqueur\r\n', 2486, 2486, NULL, NULL),
-(18, 'Distinction de l\'avant-garde', 2486, 2486, 'Augmente les dégâts au corps-à-corps de 30% et l\'effet électrique de 30%.', NULL),
-(19, 'Distinction de la dévastation', 2486, 2486, NULL, NULL),
-(20, 'Faveur des aéroportés', 2486, 2486, NULL, NULL),
-(21, 'Faveur du général', 2486, 2486, NULL, NULL),
-(22, 'Fer de la lance', 2486, 2486, NULL, NULL),
-(23, 'Rempart défensif', 2486, 2486, NULL, NULL),
-(24, 'Résolution du vainqueur', 2486, 2486, 'Augmente les dégâts d\'explosion de 50% et réduit les dégâts d\'impact de -20%.', 'Effectuer une petite élimination multiple (3) restaure instantanément 25% de l\'armure maximale.\r\n'),
-(25, 'Argument percutant', NULL, NULL, NULL, NULL),
-(26, 'Cadre synchronisé', NULL, NULL, NULL, NULL),
-(27, 'Coque renforcée', NULL, NULL, NULL, NULL),
-(28, 'Distinction du fidèle', NULL, NULL, NULL, NULL),
-(29, 'Emblème de destruction', NULL, NULL, NULL, NULL),
-(30, 'Emblème de l\'avant-garde', NULL, NULL, NULL, NULL),
-(31, 'Entrée fracassante', NULL, NULL, NULL, NULL),
-(32, 'Protection de bouclier ablative', NULL, NULL, NULL, NULL),
-(33, 'Surcharge catalytique', NULL, NULL, NULL, NULL),
-(34, 'Traitement de choc', NULL, NULL, NULL, NULL),
-(35, 'Gravure de feu', NULL, NULL, NULL, NULL),
-(36, 'Gravure de foudre', NULL, NULL, NULL, NULL),
-(37, 'Gravure de glace', NULL, NULL, NULL, NULL),
-(38, 'Gravure de lame', NULL, NULL, NULL, NULL),
-(39, 'Système d\'assaut amélioré', NULL, NULL, NULL, NULL),
-(40, 'Système de frappe amélioré', NULL, NULL, NULL, NULL),
-(41, 'Circuit d\'énergie détourné', NULL, NULL, NULL, NULL),
-(42, 'Combo d\'Intercepteur amélioré', NULL, NULL, NULL, NULL),
-(43, 'Talisman insaisissable', NULL, NULL, NULL, NULL);
+INSERT INTO `composant` (`id`, `nom`, `armure`, `bouclier`, `description`, `effet`, `id_javelin`) VALUES
+(1, 'Agent élémentaire', 2486, 2486, 'Augmente les dégâts de feu et la capacité thermique maximum de 20% et la résistance au feu de 20%.', 'Augmente les effets élémentaires appliqués aux ennemis de 20%', 1),
+(2, 'Avantage tactique', 2486, 2486, 'Augmente le seuil de surchauffe de 35%', NULL, 1),
+(3, 'Bras combinés', 2486, 2486, 'Augmente les dégâts de grenade de 5%.', '', 1),
+(4, 'Distinction de l\'avant-garde', 2486, 2486, 'Augmente les dégâts au corps-à-corps de 30% et l\'effet électrique de 30%.', NULL, 1),
+(5, 'Distinction de la dévastation', 2486, 2486, 'Augmente les dégâts du lanceur d\'assaut de 5%.', '', 1),
+(6, 'Faveur des aéroportés', 2486, 2486, 'Augmente les dégâts d\'impacts de 50%, mais réduit les dégâts d\'explosion de -20%.', 'Le survol augmente toutes les résistances de 10%.', 1),
+(7, 'Faveur du général', 2486, 2486, 'Augmente la vitesse de rechargement du lanceur d\'assaut de 35%', 'Vaincre un ennemi au corps-à-corps augmente les dégâts de (A) de 50% pendant 10 secondes.', 1),
+(8, 'Fer de la lance', 2486, 2486, 'Augmente les dégâts de combo de 50%', 'Réussir un combo restaure 40% de l\'armure des alliés proches.', 1),
+(9, 'Rempart défensif', 2486, 2486, 'Augmente les dégâts de toutes les armes de 25%.', '', 1),
+(10, 'Résolution du vainqueur', 2486, 2486, 'Augmente les dégâts d\'explosion de 50% et réduit les dégâts d\'impact de -20%.', 'Effectuer une petite élimination multiple (3) restaure instantanément 25% de l\'armure maximale.', 1),
+(11, 'Argument percutant', 2486, 2486, 'Augmente les dégâts du bouclier du Colosse lors d\'un sprint de 300%.', 'Éliminer un ennemie avec une arme corps-à-corps augmente instantanément l\'armure de 20%.', 2),
+(12, 'Cadre synchronisé', 2486, 2486, 'Augmente les dégâts du lanceur d\'assaut lourd de 5%.', 'Éliminer un ennemi augmente les dégâts du lanceur d\'assaut lourd de 60% pendant 5 secondes.', 2),
+(13, 'Coque renforcée', 2486, 2486, 'Augmente la capacité du chargeur de toutes les armes de 5%.', 'Quand l\'effet prend fin, les dégâts augmentent de 20%. Peut se produire toutes les 10 secondes.', 2),
+(14, 'Distinction du fidèle', 2486, 2486, 'Augmente la capacité maximale de munitions de 35%.', 'Une rupture de bouclier augmente les dégâts de toutes les capacités de 40% pendant 5 secondes.', 2),
+(15, 'Emblème de destruction', 2486, 2486, 'Augmente tous les dégâts d\'explosion de 15%.', 'Effectuer une élimination multiple (5) avec votre capacité ultime augmente la charge de 3300%.', 2),
+(16, 'Emblème de l\'avant-garde', 2486, 2486, 'Augmente les dégâts d\'électricité et de feu de 35%.', 'Une rupture de bouclier crée une explosion autour de vous.', 2),
+(17, 'Entrée fracassante', 2486, 2486, 'Augmente la durée des capacités de soutien de 50%.', 'En atterrissant brutalement, crée une explosion au point d\'impact.', 2),
+(18, 'Protection de bouclier ablative', 2486, 2486, 'Renforce énormément l\'armure et le bouclier du Colosse.', 'Une rupture de bouclier augmente la résistance aux dégâts de 25% pendant 5 secondes.\r\n', 2),
+(19, 'Surcharge catalytique\r\n', 2486, 2486, 'Augmente les dégâts des combos de 50%.', 'Déclencher un combo augmente les dégâts de la capacité de 40% pendant 20 secondes.', 2),
+(20, 'Traitement de choc', 2486, 2486, 'Augmente les dégâts du lanceur d\'artillerie de 5%.', 'Toute utilisation réussie du lanceur d\'artillerie augmente la dissipation thermique de 30% pendant 5 secondes.', 2),
+(21, 'Gravure de feu', 2486, 2486, NULL, NULL, 3),
+(22, 'Gravure de foudre', 2486, 2486, NULL, NULL, 3),
+(23, 'Gravure de glace', 2486, 2486, NULL, NULL, 3),
+(24, 'Gravure de lame', 2486, 2486, NULL, NULL, 4),
+(25, 'Système d\'assaut amélioré', 2486, 2486, NULL, NULL, 4),
+(26, 'Système de frappe amélioré', 2486, 2486, NULL, NULL, 4),
+(27, 'Circuit d\'énergie détourné', 2486, 2486, NULL, NULL, 4),
+(28, 'Combo d\'Intercepteur amélioré', 2486, 2486, NULL, NULL, 4),
+(29, 'Talisman insaisissable', 2486, 2486, NULL, NULL, 4),
+(30, 'Baisse thermique', 2486, 2486, NULL, NULL, NULL),
+(31, 'Gravure de corps-à-corps', 2486, 2486, NULL, NULL, NULL),
+(32, 'Gravure ultime', 2486, 2486, NULL, NULL, NULL),
+(33, 'Renforcement d\'armure', 2486, 2486, NULL, NULL, NULL),
+(34, 'Renforcement de bouclier', 2486, 2486, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -405,8 +427,14 @@ CREATE TABLE `type_assaut` (
 --
 
 INSERT INTO `type_assaut` (`id`, `designation`) VALUES
-(1, 'lanceur d\'obus'),
-(2, 'lanceur d\'assaut lourd');
+(1, 'Lanceur d\'obus'),
+(2, 'Lanceur d\'assaut lourd'),
+(3, 'Grenades'),
+(4, 'Lanceur d\'assaut'),
+(5, 'Système d\'assaut'),
+(6, 'Système d\'attaque'),
+(7, 'Sceaux d\'explosion'),
+(8, 'Sceaux de concentration');
 
 -- --------------------------------------------------------
 
@@ -496,7 +524,8 @@ ALTER TABLE `build_composant`
 -- Index pour la table `composant`
 --
 ALTER TABLE `composant`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_javelin` (`id_javelin`);
 
 --
 -- Index pour la table `javelin`
@@ -549,7 +578,7 @@ ALTER TABLE `armes`
 -- AUTO_INCREMENT pour la table `assaut`
 --
 ALTER TABLE `assaut`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT pour la table `bonus`
@@ -585,7 +614,7 @@ ALTER TABLE `build_composant`
 -- AUTO_INCREMENT pour la table `composant`
 --
 ALTER TABLE `composant`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT pour la table `javelin`
@@ -615,7 +644,7 @@ ALTER TABLE `type`
 -- AUTO_INCREMENT pour la table `type_assaut`
 --
 ALTER TABLE `type_assaut`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `users`
@@ -653,6 +682,12 @@ ALTER TABLE `builds`
 ALTER TABLE `build_composant`
   ADD CONSTRAINT `build_composant_ibfk_1` FOREIGN KEY (`id_build`) REFERENCES `builds` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `build_composant_ibfk_2` FOREIGN KEY (`id_composant`) REFERENCES `composant` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Contraintes pour la table `composant`
+--
+ALTER TABLE `composant`
+  ADD CONSTRAINT `composant_ibfk_1` FOREIGN KEY (`id_javelin`) REFERENCES `javelin` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `soutient`
