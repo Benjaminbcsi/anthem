@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once __DIR__ . "./model/_model.php";
+$result=new ArmesManager($connexion);
+$resultats=$result->db_getWeapon(0);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -14,10 +16,12 @@ require_once __DIR__ . "./model/_model.php";
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/builder_hero.js"></script>
     <link href="css/perso.css" rel="stylesheet">
+    <link href="css/builder_hero.css" rel="stylesheet">
     <title>Anthem Builder</title>
 </head>
-  <body style="background-image:url('./image/intercepteur/intercepteur.jpg');background-size: cover;">
+  <body style="background-image:url('./image/4/intercepteur.jpg');background-size: cover;">
 
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark col-lg-6 parallelogram">
   <!-- Brand -->
@@ -86,7 +90,7 @@ require_once __DIR__ . "./model/_model.php";
     <div class="row" style="padding:1%;">
       <div class="col-lg-3" ></div>
       <div class="col-lg-2 armes parallelogrambuilder" id="armes"><p style="transform:skewX(-20deg);">COUCOU<p></div>
-      <div class="col-lg-1" id="armesee"><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
+      <div class="col-lg-1" id="armesee"><button id="modalActivate" type="button btn-outline-light" class="btn" data-toggle="modal" data-target="#exampleModal"><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></button></div>
       <div class="col-lg-1" id="soutientsee" ><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
       <div class="col-lg-2 armes parallelogrambuilder" id="soutient" ><p style="transform:skewX(-20deg);">COUCOU<p></div>
       <div class="col-lg-1" ></div>
@@ -95,6 +99,46 @@ require_once __DIR__ . "./model/_model.php";
   </div>
 </body>
 </html>
+<!-- Modal -->
+<div class="modal fade left parallelogrammodal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalPreviewLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-full-height modal-left" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" style="margin-left:150px!important;opacity: 1;transform:skewX(-20deg);" id="exampleModalPreviewLabel">Choix des armes</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="margin-left:100px;transform:skewX(-20deg);">
+        <div class="row" style="transform:skewX(20deg);margin-left:25px;">
+          <?php while ($row_armes=$resultats->fetch_array(MYSQLI_ASSOC)) {
+              $armes = new Armes($row_armes); ?>
+          <div class="col-lg-4 boxcontainer"><div class="box" id='test_see' onmouseover="this.style.border = '1px solid orange'" onmouseout="this.style.border = '1px solid black'"><div style="transform:skewX(-20deg);width:100%;height:100%;background-image:url('./image/arme/<?php echo $armes->getId() ?>.png');background-size: contain;background-repeat: no-repeat;"></div></div></div>
+        <?php } ?>
+        </div>
+      </div>
+      <div class="modal-body" style="margin-left:100px;transform:skewX(-20deg);">
+        <div class="row">
+          <div class="col-lg-4" >a</div>
+          <div class="col-lg-4" >b</div>
+          <div class="col-lg-4" >c</div>
+          <div class="col-lg-4" >a</div>
+          <div class="col-lg-4" >b</div>
+          <div class="col-lg-4" >c</div>
+          <div class="col-lg-4" >a</div>
+          <div class="col-lg-4" >b</div>
+          <div class="col-lg-4" >c</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" style="transform:skewX(-20deg);" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        <button type="button" style="transform:skewX(-20deg);" class="btn btn-primary">Sauvegarder</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+
 <style>
 .armes{
  visibility: hidden;

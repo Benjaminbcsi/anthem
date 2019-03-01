@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once __DIR__ . "./model/_model.php";
+$result=new ArmesManager($connexion);
+$resultats=$result->db_getWeapon(0);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -85,7 +87,7 @@ require_once __DIR__ . "./model/_model.php";
     <div class="row" style="padding:2%;">
       <div style="margin-left:4%" class="col-lg-2"></div>
       <div class="col-lg-2 armes parallelogrambuilder" id="concentration" ><p style="transform:skewX(-20deg);">COUCOU<p></div>
-      <div class="col-lg-2" id="concentrationsee" ><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
+      <div class="col-lg-2" id="concentrationsee" ><button id="modalActivate" type="button btn-outline-light" class="btn" data-toggle="modal" data-target="#exampleModal"><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></button></div>
       <div class="col-lg-1" ></div>
       <div class="col-lg-1" ></div>
       <div class="col-lg-2" ></div>

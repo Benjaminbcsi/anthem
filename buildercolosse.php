@@ -17,6 +17,7 @@ $resultats=$result->db_getWeapon(2);
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/builder_hero.js"></script>
+    <script src="js/toaster.js"></script>
     <link href="css/perso.css" rel="stylesheet">
     <link href="css/builder_hero.css" rel="stylesheet">
     <title>Anthem Builder</title>
@@ -52,6 +53,9 @@ $resultats=$result->db_getWeapon(2);
         </li>
         <li class="nav-item">
           <a class="nav-link" href="logout.php">Déconnexion</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" onclick="savebuild()">Sauvegarder build</a>
         </li>
       <?Php } else { ?>
         <li class="nav-item">
@@ -119,7 +123,7 @@ $resultats=$result->db_getWeapon(2);
         <div class="row" style="transform:skewX(20deg);margin-left:25px;">
           <?php while ($row_armes=$resultats->fetch_array(MYSQLI_ASSOC)) {
               $armes = new Armes($row_armes); ?>
-          <div class="col-lg-4 boxcontainer"><div class="box" id='test_see' onmouseover="this.style.border = '1px solid orange'" onmouseout="this.style.border = '1px solid black'"><div style="transform:skewX(-20deg);width:100%;height:100%;background-image:url('./image/arme/<?php echo $armes->getId() ?>.png');background-size: contain;background-repeat: no-repeat;"></div></div></div>
+          <div class="col-lg-4 boxcontainer" onclick="saveweapon('armes<?php echo $armes->getId() ?>',<?php echo $armes->getId() ?>,'<?php echo $armes->getNom() ?>')"><div id='armes<?php echo $armes->getId() ?>'  class="box" onmouseover="this.style.border = '1px solid orange'" onmouseout="this.style.border = '1px solid black'"><div style="transform:skewX(-20deg);width:100%;height:100%;background-image:url('./image/arme/<?php echo $armes->getId() ?>.png');background-size: contain;background-repeat: no-repeat;"></div></div></div>
         <?php } ?>
         </div>
       </div>
@@ -143,4 +147,112 @@ $resultats=$result->db_getWeapon(2);
     </div>
   </div>
 </div>
+<!-- Modal choix armes -->
+<div class="modal fade" id="armeschoixmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Emplacement</th>
+              <th scope="col">Arme : </th>
+              <th scope="col">Supprimer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td id="armename1"></td>
+              <td><button type="button" onclick="deleteweapon(1)" class="close">
+                <span aria-hidden="true">&times;</span>
+              </button></td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td id="armename2"></td>
+              <td><button type="button" onclick="deleteweapon(2)" class="close">
+                <span aria-hidden="true">&times;</span>
+              </button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" onclick="deletetableweapon()" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+        <button type="button" onclick="closeallweapon()" class="btn btn-primary">Sauvegarder armes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+var array_weapon= ['vide','vide'];
+function saveweapon(id_element,id,name){
+  console.log(array_weapon)
+  $('#'+id_element).attr('style','border:3px solid orange')
+  $('#'+id_element).attr('onmouseout','')
+  if (array_weapon[0] == "vide") {
+    array_weapon[0] = id;
+    $('#armename1').html(name)
+    $.toaster({ priority : 'success', title : 'Armes 1', message : name+" ajouter a l'emplacement 1"});
+  } else if(array_weapon[1] == "vide") {
+    array_weapon[1] = id;
+    $('#armename2').html(name)
+    $.toaster({ priority : 'success', title : 'Armes 2', message : name+" ajouter a l'emplacement 2"});
+  }
+  if (array_weapon[0] != "vide" && array_weapon[1] != "vide") {
+    $('#armeschoixmodal').modal('show')
+  }
+  console.log(array_weapon)
+}
+
+function deleteweapon(emplacement){
+  if (emplacement == 1) {
+    array_weapon[0] ="vide"
+    $('#armename1').html("")
+  } else {
+    array_weapon[1] ="vide"
+    $('#armename2').html("")
+  }
+  if (array_weapon[0] == "vide" && array_weapon[1] == "vide") {
+      $('#armeschoixmodal').modal('hide')
+  }
+  console.log(array_weapon)
+}
+
+function deletetableweapon(){
+  var array_weapon= ['vide','vide'];
+  console.log(array_weapon)
+}
+function closeallweapon(){
+  $('#armeschoixmodal').modal('hide')
+  $('#exampleModal').modal('hide')
+  $.toaster({ priority : 'info', title : 'Armes 2', message : "Les armes on était sauvegarder"});
+}
+
+function savebuild(){
+  $.ajax({
+    type: "POST",
+    url: './ajax.php',
+    dataType: 'json',
+    data:{
+      source: "colosse_build",
+      id_javelin:2,
+      weapons: array_weapon,
+      },
+      success: function (response) {
+          document.location.href="game.php?id="+response
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+         alert("Nommer votre partit");
+      }
+  });
+}
+</script>
 <!-- Modal -->

@@ -1,5 +1,5 @@
 <?php
-class GameManager{
+class BuildsManager{
 		private $mysqli;
 
 		public function __construct($mysqli){
@@ -9,13 +9,16 @@ class GameManager{
 			$this->mysqli=$mysqli;
 		}
 
-	function db_addGame(Game $game) {
-	$nom=$game->getNom();
-	$etat=0;
-	$nb_joueur=1;
-	$query=$this->mysqli->prepare("INSERT INTO `game`(`nom`, `nb_joueur`,`etat`) VALUES (?,?,?)") or trace("Erreur sur la requête :".$query.":".$query->error);
+	function db_addBuilds(Builds $builds) {
+	$nom=$builds->getNom();
+	$id_user=$builds->getId_user();
+	$id_javelin=$builds->getId_javelin();
+	$id_soutient=$builds->getId_soutient();
+	$id_explosion=$builds->getId_explosion();
+	$id_concentration=$builds->getId_concentration();
+	$query=$this->mysqli->prepare("INSERT INTO `builds`(`nom`, `id_user`, `id_javelin`, `id_soutient`, `id_explosion`, `id_concentration`) VALUES (?,?,?,?,?,?)") or trace("Erreur sur la requête :".$query.":".$query->error);
 		if ($query) {
-			$query->bind_param("sis",$nom,$nb_joueur,$etat);
+			$query->bind_param("siiiii",$nom,$id_user,$id_javelin,$id_soutient,$id_explosion,$id_concentration);
 			$query->execute();
 			return $this->mysqli->insert_id;
 		} else {

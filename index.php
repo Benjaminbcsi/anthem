@@ -78,16 +78,16 @@ require_once __DIR__ . "./model/_model.php";
         <a href="buildertempete.php"><h3 style="color:white;">TEMPETE</h3></a>
       </div>
       <div class="col-lg-3">
-            <a href="buildercolosse.php"><img src="./image/colosse/colosse.png" class="col-lg-12" alt=""></a>
+            <a href="buildercolosse.php"><img src="./image/2/colosse.png" class="col-lg-12" alt=""></a>
       </div>
       <div class="col-lg-3">
-          <a href="buildercommando.php"><img src="./image/commando/commando.png" class="col-lg-12" alt=""></a>
+          <a href="buildercommando.php"><img src="./image/1/commando.png" class="col-lg-12" alt=""></a>
       </div>
       <div class="col-lg-3">
-          <a href="builderintercepteur.php"><img src="./image/intercepteur/intercepteur.png" class="col-lg-12" alt=""></a>
+          <a href="builderintercepteur.php"><img src="./image/4/intercepteur.png" class="col-lg-12" alt=""></a>
       </div>
       <div class="col-lg-3">
-          <a href="buildertempete.php"><img src="./image/tempete/tempete.png" class="col-lg-12" alt=""></a>
+          <a href="buildertempete.php"><img src="./image/3/tempete.png" class="col-lg-12" alt=""></a>
       </div>
     </div>
   </div>

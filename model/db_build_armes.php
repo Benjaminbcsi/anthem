@@ -1,5 +1,5 @@
 <?php
-class GameuserManager{
+class BuildarmesManager{
 		private $mysqli;
 
 		public function __construct($mysqli){
@@ -9,14 +9,12 @@ class GameuserManager{
 			$this->mysqli=$mysqli;
 		}
 
-	function db_addGameUser(Gameuser $gameuser) {
-	$id_game=$gameuser->getId_game();
-	$id_joueur=$gameuser->getId_joueur();
-	$is_tour=$gameuser->getIs_tour();
-	$ordre=$gameuser->getOrdre();
-	$query=$this->mysqli->prepare("INSERT INTO `game_users`(`id_game`, `id_joueur`,`is_tour`,`ordre`) VALUES (?,?,?,?)") or trace("Erreur sur la requête :".$query.":".$query->error);
+	function db_addBuildsArmes(Buildarmes $buildarmes) {
+	$id_build=$buildarmes->getId_build();
+	$id_arme=$buildarmes->getId_arme();
+	$query=$this->mysqli->prepare("INSERT INTO `build_armes`(`id_build`, `id_arme`) VALUES (?,?)") or trace("Erreur sur la requête :".$query.":".$query->error);
 		if ($query) {
-			$query->bind_param("iiii",$id_game,$id_joueur,$is_tour,$ordre);
+			$query->bind_param("ii",$id_build,$id_arme);
 			$query->execute();
 			return 1;
 		} else {
