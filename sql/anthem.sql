@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  ven. 01 mars 2019 à 13:39
+-- Généré le :  ven. 01 mars 2019 à 15:45
 -- Version du serveur :  10.1.38-MariaDB
 -- Version de PHP :  7.3.2
 
@@ -224,8 +224,7 @@ DROP TABLE IF EXISTS `build_armes`;
 CREATE TABLE `build_armes` (
   `id` int(11) NOT NULL,
   `id_build` int(11) NOT NULL,
-  `id_arme` int(11) NOT NULL,
-  `id_rarete` int(11) NOT NULL
+  `id_arme` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
@@ -501,7 +500,6 @@ ALTER TABLE `builds`
 ALTER TABLE `build_armes`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_arme` (`id_arme`),
-  ADD KEY `id_rarete` (`id_rarete`),
   ADD KEY `id_build` (`id_build`);
 
 --
@@ -675,6 +673,13 @@ ALTER TABLE `assaut`
 ALTER TABLE `builds`
   ADD CONSTRAINT `builds_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `builds_ibfk_2` FOREIGN KEY (`id_javelin`) REFERENCES `javelin` (`id`);
+
+--
+-- Contraintes pour la table `build_armes`
+--
+ALTER TABLE `build_armes`
+  ADD CONSTRAINT `build_armes_ibfk_1` FOREIGN KEY (`id_build`) REFERENCES `builds` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `build_armes_ibfk_2` FOREIGN KEY (`id_arme`) REFERENCES `armes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `build_composant`
