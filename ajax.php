@@ -9,7 +9,7 @@ if (isset($_POST['source']) && $_POST['source'] == "colosse_build") {
 	$builds->setId_user($_SESSION["id"]);
 	$builds->setId_javelin($_POST["id_javelin"]);
 	$builds->setId_soutient(1);
-	$builds->setId_explosion(1);
+	$builds->setId_assaut(1);
 	$builds->setId_concentration(1);
 	if($build_id= $result->db_addBuilds($builds)) {
 		foreach ($_POST['weapons'] as $weapon) {
@@ -24,6 +24,19 @@ if (isset($_POST['source']) && $_POST['source'] == "colosse_build") {
 	} else {
 			$_SESSION["messageKO"] = "Erreur pendant l'enregistrement du builds, veuillez réessayer !";
 	}
+
+}
+
+if (isset($_POST['source']) && $_POST['source'] == "see_arme") {
+	$result=new BuildsManager($connexion);
+	$builds = new Builds(array());
+	$builds->setNom("test");
+	$builds->setId_user($_SESSION["id"]);
+	$builds->setId_javelin($_POST["id_javelin"]);
+	$builds->setId_soutient(1);
+	$builds->setId_assaut(1);
+	$builds->setId_concentration(1);
+	
 
 }
 

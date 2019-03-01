@@ -14,11 +14,11 @@ class BuildsManager{
 	$id_user=$builds->getId_user();
 	$id_javelin=$builds->getId_javelin();
 	$id_soutient=$builds->getId_soutient();
-	$id_explosion=$builds->getId_explosion();
+	$id_assaut=$builds->getId_assaut();
 	$id_concentration=$builds->getId_concentration();
-	$query=$this->mysqli->prepare("INSERT INTO `builds`(`nom`, `id_user`, `id_javelin`, `id_soutient`, `id_explosion`, `id_concentration`) VALUES (?,?,?,?,?,?)") or trace("Erreur sur la requête :".$query.":".$query->error);
+	$query=$this->mysqli->prepare("INSERT INTO `builds`(`nom`, `id_user`, `id_javelin`, `id_soutient`, `id_assaut`, `id_concentration`) VALUES (?,?,?,?,?,?)") or trace("Erreur sur la requête :".$query.":".$query->error);
 		if ($query) {
-			$query->bind_param("siiiii",$nom,$id_user,$id_javelin,$id_soutient,$id_explosion,$id_concentration);
+			$query->bind_param("siiiii",$nom,$id_user,$id_javelin,$id_soutient,$id_assaut,$id_concentration);
 			$query->execute();
 			return $this->mysqli->insert_id;
 		} else {

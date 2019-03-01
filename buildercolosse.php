@@ -100,7 +100,7 @@ $resultats=$result->db_getWeapon(2);
     <div class="row" style="padding:1%;">
       <div class="col-lg-2" ></div>
       <div class="col-lg-2 armes parallelogrambuilder" id="armes"><p style="transform:skewX(-20deg);">COUCOU<p></div>
-      <div class="col-lg-1" id="armesee"><button id="modalActivate" type="button btn-outline-light" class="btn" data-toggle="modal" data-target="#exampleModal"><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></button></div>
+      <div class="col-lg-1" id="armesee"><button id="modalActivate" type="button btn-outline-light" class="btn" data-toggle="modal" data-target="#modalarme"><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></button></div>
       <div class="col-lg-1" ></div>
       <div class="col-lg-1" ></div>
       <div class="col-lg-2" ></div>
@@ -110,7 +110,7 @@ $resultats=$result->db_getWeapon(2);
 </body>
 </html>
 <!-- Modal -->
-<div class="modal fade left parallelogrammodal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalPreviewLabel" aria-hidden="true">
+<div class="modal fade left parallelogrammodal" id="modalarme" tabindex="-1" role="dialog" aria-labelledby="exampleModalPreviewLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-full-height modal-left" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -123,26 +123,18 @@ $resultats=$result->db_getWeapon(2);
         <div class="row" style="transform:skewX(20deg);margin-left:25px;">
           <?php while ($row_armes=$resultats->fetch_array(MYSQLI_ASSOC)) {
               $armes = new Armes($row_armes); ?>
-          <div class="col-lg-4 boxcontainer" onclick="saveweapon('armes<?php echo $armes->getId() ?>',<?php echo $armes->getId() ?>,'<?php echo $armes->getNom() ?>')"><div id='armes<?php echo $armes->getId() ?>'  class="box" onmouseover="this.style.border = '1px solid orange'" onmouseout="this.style.border = '1px solid black'"><div style="transform:skewX(-20deg);width:100%;height:100%;background-image:url('./image/arme/<?php echo $armes->getId() ?>.png');background-size: contain;background-repeat: no-repeat;"></div></div></div>
+          <div class="col-lg-4 boxcontainer" onmouseover="seestatsarme(<?php echo $armes->getId() ?>)" onclick="saveweapon('armes<?php echo $armes->getId() ?>',<?php echo $armes->getId() ?>,'<?php echo $armes->getNom() ?>')">
+            <div id='armes<?php echo $armes->getId() ?>'  class="box" onmouseover="this.style.border = '1px solid orange'" onmouseout="this.style.border = '1px solid black'">
+              <div style="transform:skewX(-20deg);width:100%;height:100%;background-image:url('./image/arme/<?php echo $armes->getId() ?>.png');background-size: contain;background-repeat: no-repeat;"></div>
+            </div>
+          </div>
         <?php } ?>
         </div>
       </div>
       <div class="modal-body" style="margin-left:100px;transform:skewX(-20deg);">
         <div class="row">
-          <div class="col-lg-4" >a</div>
-          <div class="col-lg-4" >b</div>
-          <div class="col-lg-4" >c</div>
-          <div class="col-lg-4" >a</div>
-          <div class="col-lg-4" >b</div>
-          <div class="col-lg-4" >c</div>
-          <div class="col-lg-4" >a</div>
-          <div class="col-lg-4" >b</div>
-          <div class="col-lg-4" >c</div>
+          <div class="col-lg-12" id="nameweapon" ></div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" style="transform:skewX(-20deg);" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-        <button type="button" style="transform:skewX(-20deg);" class="btn btn-primary">Sauvegarder</button>
       </div>
     </div>
   </div>
@@ -191,10 +183,10 @@ $resultats=$result->db_getWeapon(2);
     </div>
   </div>
 </div>
+
 <script>
 var array_weapon= ['vide','vide'];
 function saveweapon(id_element,id,name){
-  console.log(array_weapon)
   $('#'+id_element).attr('style','border:3px solid orange')
   $('#'+id_element).attr('onmouseout','')
   if (array_weapon[0] == "vide") {
@@ -209,7 +201,6 @@ function saveweapon(id_element,id,name){
   if (array_weapon[0] != "vide" && array_weapon[1] != "vide") {
     $('#armeschoixmodal').modal('show')
   }
-  console.log(array_weapon)
 }
 
 function deleteweapon(emplacement){
@@ -223,13 +214,12 @@ function deleteweapon(emplacement){
   if (array_weapon[0] == "vide" && array_weapon[1] == "vide") {
       $('#armeschoixmodal').modal('hide')
   }
-  console.log(array_weapon)
 }
 
 function deletetableweapon(){
   var array_weapon= ['vide','vide'];
-  console.log(array_weapon)
 }
+
 function closeallweapon(){
   $('#armeschoixmodal').modal('hide')
   $('#exampleModal').modal('hide')
@@ -237,6 +227,10 @@ function closeallweapon(){
 }
 
 function savebuild(){
+  if (array_weapon[0] == "vide" || array_weapon[1] == "vide") {
+      $.toaster({ priority : 'error', title : 'Armes 2', message : "Une arme est manquante."});
+      return false;
+  }
   $.ajax({
     type: "POST",
     url: './ajax.php',
@@ -247,10 +241,27 @@ function savebuild(){
       weapons: array_weapon,
       },
       success: function (response) {
-          document.location.href="game.php?id="+response
+        $.toaster({ priority : 'info', title : 'Builder', message : "build Enregistrer"});
       },
       error: function(jqXHR, textStatus, errorThrown) {
-         alert("Nommer votre partit");
+        $.toaster({ priority : 'error', title : 'Erreur', message : "Impossible d'enregistrer les build."});
+      }
+  });
+}
+function seestatsarme(){
+  $.ajax({
+    type: "POST",
+    url: './ajax.php',
+    dataType: 'json',
+    data:{
+      source: "see_arme",
+      id_arme:1,
+      },
+      success: function (response) {
+        $.toaster({ priority : 'info', title : 'Builder', message : "build Enregistrer"});
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        $.toaster({ priority : 'error', title : 'Erreur', message : "Impossible d'enregistrer les build."});
       }
   });
 }

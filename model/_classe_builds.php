@@ -7,7 +7,7 @@ class Builds{
 	private $id_user;
 	private $id_javelin;
 	private $id_soutient;
-	private $id_explosion;
+	private $id_assaut;
 	private $id_concentration;
 
 	//METHODES
@@ -58,11 +58,11 @@ class Builds{
 		return $this->id_soutient;
 	}
 
-	public function setId_explosion($var){
-		$this->id_explosion=$var;
+	public function setId_assaut($var){
+		$this->id_assaut=$var;
 	}
-	public function getId_explosion(){
-		return $this->id_explosion;
+	public function getId_assaut(){
+		return $this->id_assaut;
 	}
 
 	public function setId_concentration($var){
