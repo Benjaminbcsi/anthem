@@ -28,16 +28,10 @@ if (isset($_POST['source']) && $_POST['source'] == "colosse_build") {
 }
 
 if (isset($_POST['source']) && $_POST['source'] == "see_arme") {
-	$result=new BuildsManager($connexion);
-	$builds = new Builds(array());
-	$builds->setNom("test");
-	$builds->setId_user($_SESSION["id"]);
-	$builds->setId_javelin($_POST["id_javelin"]);
-	$builds->setId_soutient(1);
-	$builds->setId_assaut(1);
-	$builds->setId_concentration(1);
-	
-
+	$result=new ArmesManager($connexion);
+	$resultats=$result->db_getWeaponbyid($_POST['id_arme']);
+	$row_armes=$resultats->fetch_array(MYSQLI_ASSOC);
+	echo json_encode($row_armes);
 }
 
 ?>

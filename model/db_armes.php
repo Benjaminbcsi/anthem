@@ -44,26 +44,13 @@ class ArmesManager{
 		}
 	}
 
-	function db_delCardGame(Cardgamejoueur $cardgamejoueur) {
-
-		$id_joueur=$cardgamejoueur->getId_joueur();
-		$id_game=$cardgamejoueur->getId_game();
-		$carte=$cardgamejoueur->getNum_card();
-		$color=$cardgamejoueur->getColor_card();
-		if (!isset($color) || $color == "") {
-			$stmt="DELETE FROM `card_game_joueur` WHERE id_joueur = ? and id_game = ? and num_card = ? limit 1";
-		} else {
-			$stmt="DELETE FROM `card_game_joueur` WHERE id_joueur = ? and id_game = ? and num_card = ? and color_card = ? limit 1";
-		}
+	function db_getWeaponbyid($id_arme,$limit=0,$offset=0,$order="id asc") {
+		$stmt="SELECT * FROM `armes` WHERE id=?";
 		$query=$this->mysqli->prepare($stmt) or trace("Probleme avec ".$query->error);
 		if ($query) {
-			if (!isset($color) || $color == "") {
-				$query->bind_param("iii",$id_joueur,$id_game,$carte);
-			} else {
-				$query->bind_param("iiis",$id_joueur,$id_game,$carte,$color);
-			}
+			$query->bind_param("i",$id_arme);
 			$query->execute();
-			return 1;
+			return $query->get_result();
 		} else {
 			return 0;
 		}

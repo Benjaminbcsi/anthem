@@ -248,20 +248,19 @@ function savebuild(){
       }
   });
 }
-function seestatsarme(){
+function seestatsarme(id_arme){
   $.ajax({
     type: "POST",
     url: './ajax.php',
     dataType: 'json',
     data:{
       source: "see_arme",
-      id_arme:1,
+      id_arme:id_arme,
       },
       success: function (response) {
-        $.toaster({ priority : 'info', title : 'Builder', message : "build Enregistrer"});
+        console.log(response)
       },
       error: function(jqXHR, textStatus, errorThrown) {
-        $.toaster({ priority : 'error', title : 'Erreur', message : "Impossible d'enregistrer les build."});
       }
   });
 }
