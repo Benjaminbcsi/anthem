@@ -69,7 +69,13 @@ transform:    skewX(20deg);
 }
 
 .modal.left .modal-content {
-	height: 100%;
+	height: 65%;
+	overflow-y: auto;
+}
+
+.modal.left .modal-contentweapont {
+	height: 35%;
+  width: 100%;
 	overflow-y: auto;
 }
 
@@ -145,6 +151,26 @@ text-overflow: clip;
 background: grey;
 opacity: 0.8;
 color:orange;
+-webkit-transform:    skewX(20deg);
+transform:    skewX(20deg);
+}
+
+.boxAssaut{
+-webkit-border-radius: 30px 0 30px 0;
+border-radius: 30px 0 30px 0;
+width:100px;
+height:70px;
+-webkit-box-sizing: content-box;
+-moz-box-sizing: content-box;
+box-sizing: content-box;
+margin-left: -30px;
+font: normal 100%/normal Arial, Helvetica, sans-serif;
+color: rgba(0,0,0,1);
+-o-text-overflow: clip;
+text-overflow: clip;
+background: none;
+opacity: 0.8;
+color:black;
 -webkit-transform:    skewX(20deg);
 transform:    skewX(20deg);
 }

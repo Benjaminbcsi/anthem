@@ -31,7 +31,24 @@ if (isset($_POST['source']) && $_POST['source'] == "see_arme") {
 	$result=new ArmesManager($connexion);
 	$resultats=$result->db_getWeaponbyid($_POST['id_arme']);
 	$row_armes=$resultats->fetch_array(MYSQLI_ASSOC);
+	$resultType=new TypeManager($connexion);
+	$resultatsType=$resultType->db_getType($row_armes['id_type']);
+	$row_type=$resultatsType->fetch_array(MYSQLI_ASSOC);
+	$type= new Type($row_type);
+	$row_armes['id_type'] = $type->getData();
 	echo json_encode($row_armes);
 }
 
+
+if (isset($_POST['source']) && $_POST['source'] == "see_assaut") {
+	$result=new AssautManager($connexion);
+	$resultats=$result->db_getAssautbyid($_POST['id_arme']);
+	$row_assaut=$resultats->fetch_array(MYSQLI_ASSOC);
+	$resultType=new TypeassautManager($connexion);
+	$resultatsType=$resultType->db_getType($row_assaut['id_type']);
+	$row_type_assaut=$resultatsType->fetch_array(MYSQLI_ASSOC);
+	$typeassaut= new Typeassaut($row_type_assaut);
+	$row_assaut['id_type'] = $typeassaut->getDesignation();
+	echo json_encode($row_assaut);
+}
 ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  ven. 01 mars 2019 à 15:45
+-- Généré le :  mar. 05 mars 2019 à 15:33
 -- Version du serveur :  10.1.38-MariaDB
 -- Version de PHP :  7.3.2
 
@@ -51,19 +51,19 @@ CREATE TABLE `armes` (
 INSERT INTO `armes` (`id`, `id_type`, `nom`, `description`, `effet`, `degat`, `degat_explosion`, `cpm`, `munitions`, `porte`) VALUES
 (1, 1, 'Point de Stral', 'Averse de balle améliorée : excellente cadence de tir.', 'Fureur de l\'attaquant : Toucher un ennemi augmente les dégâts de l\'arme de 10% pendant 5 secondes. Se cumule jusqu\'à 10 fois.', 212, NULL, 1000, 150, 35),
 (2, 1, 'Le dernier rempart', 'Lacérateur amélioré : frappe plus fort que tout les autres canons automatiques', 'Colère du flambeur : Lorsque la santé du Javelin diminue, tous les dégâts causés par l\'arme augmentent de 75% pendant 10 secondes.', 268, NULL, 800, 100, 35),
-(3, 1, 'Siège éternel', '', 'Torrent : La taille du chargeur de base et les dégâts de base sont augmentés de 100%.', 0, NULL, 0, 0, 0),
+(3, 1, 'Siège éternel', '', 'Torrent : La taille du chargeur de base et les dégâts de base sont augmentés de 100%.', 331, NULL, 900, 400, 35),
 (4, 2, 'Vengeance de la sentinelle', 'Contrecoup amélioré : la grenade se colle à l\'ennemi.', 'Contrecoup : La grenade colle a un ennemi. Déclenche un effet acide de zone après une petite série de tirs réussis.', 407, 1221, 300, 9, NULL),
 (5, 2, 'Injure et blessure', 'Artificier amélioré : Les grenades rebondissent avant d\'exploser.', 'Le rempart de Victor : Vaincre un ennemi retire tous les effets de statut néfastes et augmente les résistances aux effets de 75% pendant 10 secondes.', 1791, NULL, 120, 8, 25),
 (6, 2, 'Baume de Gavinicius', 'Rôdeur amélioré : fait exploser des mines manuellement au lieu de viser un point d\'impact précis.', 'Rôdeur : Déclenche les mines manuellement. Toucher 2 ennemis restaure 25% d\'armure.', 14, 1992, 120, 6, NULL),
 (7, 3, 'Héraut vengeur', 'Souffleur amélioré : une arme de poing à la grande puissance de frappe.', 'Précision du raptor : Le survol augmente les dégâts de l\'arme de 200%.', 1044, NULL, 240, 9, 35),
 (8, 3, 'Glorieux dénouement', 'Résolution : tire deux coups successifs puissants.', 'Furie du pistolero : toucher 2 points faibles ennemis augmente les dégâts de toutes les armes de 150% pendant 5 secondes.', 821, NULL, 450, 16, 25),
 (9, 3, 'Combat rapproché', 'Barrage amélioré : propose une excellente cadence de tir', 'Force de l\'éclaireur : Les esquives augmentent les dégâts d\'arme de 75% pendant 10 secondes.', 270, NULL, 500, 20, 25),
-(10, 5, 'Foudre d\'Yvenia', 'Éclaireur amélioré : fusil semi-automatique basique.', 'Probabilité de 33% d\'infliger de lourds dégâts électriques.', NULL, NULL, 240, 16, 45),
-(11, 5, 'Lumière de la Légion', 'Éclaireur amélioré : fusil semi-automatique basique.', 'Vider le chargeur permet de recharger le bouclier.', NULL, NULL, 240, 16, 45),
+(10, 5, 'Foudre d\'Yvenia', 'Éclaireur amélioré : fusil semi-automatique basique.', 'Probabilité de 33% d\'infliger de lourds dégâts électriques.', 625, NULL, 240, 16, 45),
+(11, 5, 'Lumière de la Légion', 'Éclaireur amélioré : fusil semi-automatique basique.', 'Vider le chargeur permet de recharger le bouclier.', 50, NULL, 240, 16, 45),
 (13, 5, 'Mort venue du ciel', 'Gardien amélioré : délivre une rafale puissante de trois balles', 'Sens du rapace : augmente les dégâts sur point faibles de 65% en survol.', 571, NULL, 700, 24, 35),
 (14, 5, 'Toucher apaisant', 'Enclume améliorée : frappe fort avec un léger recul.', 'Équilibre de l\'attaquant : toucher une cible réduit le recul de -50% pendant 5 secondes. Cet effet est cumulable jusqu\'à 3 fois.', 907, NULL, 180, 12, 45),
 (15, 6, 'Forteresse radieuse', 'Constricteur : maintenir la gâchette améliore la visée.', 'Réussir 8 tirs lors d\'une rafale recharge les boucliers de 35%.', 303, NULL, 75, 8, 25),
-(17, 6, 'Papa Pompe', 'Dispersion améliorée : modèle standard de fusil à pompe.', 'Recharger augmente la puissance et inflige un bonus de dégâts de 150% pendant 5 secondes. Cet effet est cumulable jusqu\'à 2 fois.', NULL, NULL, 75, 5, 15),
+(17, 6, 'Papa Pompe', 'Dispersion améliorée : modèle standard de fusil à pompe.', 'Recharger augmente la puissance et inflige un bonus de dégâts de 150% pendant 5 secondes. Cet effet est cumulable jusqu\'à 2 fois.', 284, NULL, 75, 5, 15),
 (18, 6, 'Carnage déferlant', 'Vengeance améliorée : des tirs à deux obus très puissants.', 'Avantage de l\'éclaireur : les esquives augmentent les dégâts de vos armes de 50% pendant 20 secondes. Cet effet est cumulable jusqu\'à 3 fois.', 192, NULL, 500, 6, 15),
 (19, 7, 'Blitz de la wyverne', 'Œil de lynx amélioré : un fusil équilibré et efficace à longue portée.', 'Sens du raptor : survoler tout en tirant augmente les dégâts aux points faibles de cette arme de 40%.', 3582, NULL, 45, 5, 80),
 (20, 7, 'Brise-siège', 'Tourbillon amélioré : combinaison de fusil d\'assaut et de fusil à lunette.', ' Gèle la cible après une série de (3) coups réussis.', 1089, NULL, 300, 12, 45),
@@ -88,55 +88,60 @@ DROP TABLE IF EXISTS `assaut`;
 CREATE TABLE `assaut` (
   `id` int(11) NOT NULL,
   `nom` varchar(255) COLLATE utf8_bin NOT NULL,
+  `description` varchar(255) COLLATE utf8_bin NOT NULL,
   `effet` varchar(255) COLLATE utf8_bin NOT NULL,
+  `degat` int(11) NOT NULL,
+  `degat explosion` int(11) NOT NULL,
   `id_type` int(11) NOT NULL,
-  `id_javelin` int(11) NOT NULL
+  `id_javelin` int(11) NOT NULL,
+  `recharge` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Déchargement des données de la table `assaut`
 --
 
-INSERT INTO `assaut` (`id`, `nom`, `effet`, `id_type`, `id_javelin`) VALUES
-(1, 'Mortier à fragmentation', 'Lance une série de petits éclats de mortier pour tout détruire sur une large zone ciblée.', 1, 2),
-(2, 'Mortier pare-feu', 'Embrasez le champ de bataille avec un gigantesque mur de flammes.', 1, 2),
-(3, 'Bobine foudroyante', 'Électrocutez vos adversaires avec un arc électrique qui cible un ennemi aléatoire.', 1, 2),
-(4, 'Bobine de choc', 'Inflige une vague d\'électricité à tous les ennemis autour de vous.', 1, 2),
-(5, 'Artillerie de siège', 'Équipez-vous de cette fameuse arme pour lancer des roquettes dévastatrices sur vos ennemis.', 2, 2),
-(6, 'Lance-flamme', 'Faites monter la température avec un torrent de flammes.', 2, 2),
-(7, 'Canon Flak', 'Abattez vos ennemis avec cette arme à dispersion à courte portée.', 2, 2),
-(8, 'Canon électrique', 'Lance un puissant projectile d\'énergie cinétique sur un ennemi.', 2, 2),
-(9, 'Crache-venin', 'Envoyez plusieurs salves de projectiles d\'acide en cloche sur vos adversaires.', 2, 2),
-(10, 'Grenade frag', 'Infligez de lourds dégâts à vos adversaires sur une large zone.', 3, 1),
-(11, 'Grenade des enfers', 'Enflammez vos ennemis pour leur infliger des dégâts immédiats et continus.', 3, 1),
-(12, 'Grenade de givre', 'Gelez vos adversaires jusqu\'à la moelle.', 3, 1),
-(13, 'Grenades chercheuses', 'Lancez une grenade qui se divise ensuite en plusieurs missiles à tête chercheuse.', 3, 1),
-(14, 'Grenade collante', 'Attaquez votre adversaire avec une grenade qui se fixe sur lui et lui inflige de lourds dégâts.', 3, 1),
-(15, 'Missile à tête chercheuse', 'Tirez un projectile qui traque une cible unique et touche également les adversaires à proximité.', 4, 1),
-(16, 'Souffle d\'impulsion', 'Frappez une cible unique d\'une puissante explosion énergétique.', 4, 1),
-(17, 'Rayon spark', 'Lancez un rayon d\'énergie qui inflige des dégâts continus à tout ce qu\'il touche.', 4, 1),
-(18, 'Fléchettes de venin', 'Infligez des dégâts acides à vos cibles avec une salve de fléchettes.', 4, 1),
-(19, 'Missile explosif', 'Déblayez le champ de bataille avec un missile qui inflige des dégâts sur une large zone autour du point d\'impact.', 4, 1),
-(20, 'Glaive traqueur', 'Lancez un glaive à tête chercheuse.', 5, 4),
-(21, 'Bombe de venin', 'Lancez une grenade qui inflige des dégâts acides à tous les ennemis à proximité.', 4, 4),
-(22, 'Glaive cryo', 'Cible jusqu\'à deux ennemis à proximité qui gèleront à l\'impact.', 5, 4),
-(23, 'Mine à fragmentation', 'Lancez une salve de mines sur la zone ciblée.', 5, 4),
-(24, 'Ruée éclair', 'Ruez-vous en avant en laissant un dangereux flux d\'électricité derrière vous.', 5, 4),
-(25, 'Frappe détonante', 'Une attaque au corps à corps qui charge l\'ennemi d\'énergie électrique. S\'il meurt en étant chargé d\'énergie, l\'ennemi explose et inflige des dégâts autour de lui.', 6, 4),
-(26, 'Étoile à plasma', 'Jetez une étoile de ninja chargée de plasma en direction d’une cible unique ; efficace à grande distance.', 6, 4),
-(27, 'Frappe spectrale', 'Générez une projection de l\'Intercepteur pour attaquer vos ennemis.', 6, 4),
-(28, 'Frappe tempestaire', 'Une puissante attaque au corps à corps qui inflige d\'importants dégâts physiques.', 6, 4),
-(29, 'Jet de venin', 'Projetez un acide corrosif qui inflige des dégâts à tous les ennemis touchés.', 6, 4),
-(30, 'Frappe foudroyante', 'Une frappe ciblée qui inflige des dégâts dans une zone.', 7, 3),
-(31, 'Tempête de glace', 'Génère des champs de glace à l\'endroit visé. En explosant, ils infligent des dégâts de glace et gèlent les ennemis.', 7, 3),
-(32, 'Souffle enflammé', 'Une explosion rapide qui inflige des dégâts de feu à l’emplacement d’une cible.', 7, 3),
-(33, 'Explosion de glace', 'Projette de gros morceaux de glace qui infligent de lourds dégâts et gèlent les ennemis situés à courte distance.', 7, 3),
-(34, 'Flamme vivante', 'Une explosion d’énergie brûlante qui traque les cibles pour y mettre le feu.', 7, 3),
-(35, 'Éclats de givre', 'Tirs rapides d’éclats de glace qui figent lentement une cible sur place.', 8, 3),
-(36, 'Orbe brûlant', 'Polyvalente, cette capacité de feu peut être utilisée pour effectuer des petits tirs rapides, ou chargée afin de tirer un gros projectile explosif.', 8, 3),
-(37, 'Choc explosif', 'Une décharge d’énergie électrique capable de rebondir sur les murs pour atteindre des cibles à couvert.', 8, 3),
-(38, 'Lance glaciale', 'Envoie un puissant rayon d\'énergie de glace dans une direction choisie.', 8, 3),
-(39, 'Arc voltaïque', 'Libère une explosion de foudre qui s’abat sur les cibles à proximité, leur infligeant de lourds dégâts.', 8, 3);
+INSERT INTO `assaut` (`id`, `nom`, `description`, `effet`, `degat`, `degat explosion`, `id_type`, `id_javelin`, `recharge`) VALUES
+(1, 'Averse du titan', 'Lance une série de petits éclats de mortier pour tout détruire sur une large zone ciblée.', 'Le mortier à fragmentation peut désormais déclencher des combos explosifs.', 0, 0, 1, 2, 0),
+(2, 'Fourneau en rubidium', 'Embrasez le champ de bataille avec un gigantesque mur de flammes.', 'Appliquer un effet de feu à deux ennemis remplit une charge. Peut se produire une fois toutes les 20 secondes.', 0, 0, 1, 2, 0),
+(3, 'Arc de Vassa', 'Électrocutez vos adversaires avec un arc électrique qui cible un ennemi aléatoire.', 'Une série d\'impacts (3) provoque une large explosion électrique.', 0, 0, 1, 2, 0),
+(4, 'Dôme voltaïque', 'Inflige une vague d\'électricité à tous les ennemis autour de vous.', 'Les ennemis touchés sont ensuite gelés.', 0, 0, 1, 2, 0),
+(5, 'Meilleure défense', 'Équipez-vous de cette fameuse arme pour lancer des roquettes dévastatrices sur vos ennemis.', 'Frapper un ennemi avec une roquette restaure 35% de l\'armure.', 0, 0, 2, 2, 0),
+(6, 'Poing du creuset', 'Faites monter la température avec un torrent de flammes.', 'Avantage du vainqueur : vaincre un ennemi augmente les dégâts du lance-flamme de % pendant X secondes. Cet effet est cumulable jusqu\'à X fois', 0, 0, 2, 2, 0),
+(7, 'Poudre noire', 'Abattez vos ennemis avec cette arme à dispersion à courte portée.', 'Redonne une charge après avoir éliminé un ennemi. Peut se produire une fois toutes les 4 secondes.', 0, 0, 2, 2, 0),
+(8, 'Marteau de Garred', 'Lance un puissant projectile d\'énergie cinétique sur un ennemi.', 'Le canon électromagnétique gagne en permanence une charge supplémentaire.', 0, 0, 2, 2, 0),
+(9, 'Solvant vert', 'Envoyez plusieurs salves de projectiles d\'acide en cloche sur vos adversaires.', 'Une fois équipé, les combos infligent 200% de dégâts.', 0, 0, 2, 2, 0),
+(10, 'Dernier argument', 'Infligez de lourds dégâts à vos adversaires sur une large zone.', 'Atteindre des ennemis ajoute 700% de charge de capacité ultime.', 0, 0, 3, 1, 0),
+(11, 'Brasier explosif', 'Enflammez vos ennemis pour leur infliger des dégâts immédiats et continus.', 'Provoque une explosion de feu après avoir appliqué l\'effet de feu à (2) ennemis.', 0, 0, 3, 1, 0),
+(12, 'Sang-froid', 'Gelez vos adversaires jusqu\'à la moelle.', 'Rigueur hivernale : le fait d\'appliquer l\'effet de glace à un ennemi augmente les dégâts au corps-à-corps de 135% pendant 10 secondes.', 0, 0, 3, 1, 0),
+(13, 'Grande première', 'Lancez une grenade qui se divise ensuite en plusieurs missiles à tête chercheuse.', 'Furie de l\'embusqué : vaincre des ennemis du dessus octroie 75% de dégâts d\'arme supplémentaires pendant 20 secondes.', 0, 0, 3, 1, 0),
+(14, 'Le Gambit', 'Attaquez votre adversaire avec une grenade qui se fixe sur lui et lui inflige de lourds dégâts.', 'Toucher un ennemi avec cette grenade déclenche une explosion de glace.', 0, 0, 3, 1, 0),
+(15, 'Vengeance récurrente', 'Tirez un projectile qui traque une cible unique et touche également les adversaires à proximité.', 'A l\'élimination d\'un ennemi, récupère instantanément 100% de charge. Peut se produire une fois toute les 7,5 secondes.', 0, 0, 4, 1, 0),
+(16, 'Récompense du vengeur', 'Frappez une cible unique d\'une puissante explosion énergétique.', 'Force de l\'attaquant : atteindre un ennemi augmente les dégâts au corps-à-corps de 110% pendant 20 secondes', 0, 0, 4, 1, 0),
+(17, 'Lance de braise', 'Lancez un rayon d\'énergie qui inflige des dégâts continus à tout ce qu\'il touche.', 'Après une petite série d\'impacts (3), déclenche une explosion de feu.', 0, 0, 4, 1, 0),
+(18, 'Assaut tactique', 'Infligez des dégâts acides à vos cibles avec une salve de fléchettes.', 'Les fléchettes empoisonnées gagnent une charge supplémentaire permanente.', 0, 0, 4, 1, 0),
+(19, 'Masse d\'Argo', 'Déblayez le champ de bataille avec un missile qui inflige des dégâts sur une large zone autour du point d\'impact.', 'Après l\'élimination d\'un ennemi, déclenche une explosion électrique.', 0, 0, 4, 1, 0),
+(20, 'Glaive traqueur', 'Lancez un glaive à tête chercheuse.', '', 0, 0, 5, 4, 0),
+(21, 'Bombe de venin', 'Lancez une grenade qui inflige des dégâts acides à tous les ennemis à proximité.', '', 0, 0, 4, 4, 0),
+(22, 'Glaive cryo', 'Cible jusqu\'à deux ennemis à proximité qui gèleront à l\'impact.', '', 0, 0, 5, 4, 0),
+(23, 'Mine à fragmentation', 'Lancez une salve de mines sur la zone ciblée.', '', 0, 0, 5, 4, 0),
+(24, 'Ruée éclair', 'Ruez-vous en avant en laissant un dangereux flux d\'électricité derrière vous.', '', 0, 0, 5, 4, 0),
+(25, 'Frappe détonante', 'Une attaque au corps à corps qui charge l\'ennemi d\'énergie électrique. S\'il meurt en étant chargé d\'énergie, l\'ennemi explose et inflige des dégâts autour de lui.', '', 0, 0, 6, 4, 0),
+(26, 'Étoile à plasma', 'Jetez une étoile de ninja chargée de plasma en direction d’une cible unique ; efficace à grande distance.', '', 0, 0, 6, 4, 0),
+(27, 'Frappe spectrale', 'Générez une projection de l\'Intercepteur pour attaquer vos ennemis.', '', 0, 0, 6, 4, 0),
+(28, 'Frappe tempestaire', 'Une puissante attaque au corps à corps qui inflige d\'importants dégâts physiques.', '', 0, 0, 6, 4, 0),
+(29, 'Jet de venin', 'Projetez un acide corrosif qui inflige des dégâts à tous les ennemis touchés.', '', 0, 0, 6, 4, 0),
+(30, 'Frappe foudroyante', 'Une frappe ciblée qui inflige des dégâts dans une zone.', '', 0, 0, 7, 3, 0),
+(31, 'Colére hivernale', 'Génère des champs de glace à l\'endroit visé. En explosant, ils infligent des dégâts de glace et gèlent les ennemis.', 'Vaincre un ennemi du dessus remplit les charges. Peut se produire une fois toutes les 10 secondes', 0, 0, 7, 3, 0),
+(32, 'Souffle enflammé', 'Une explosion rapide qui inflige des dégâts de feu à l’emplacement d’une cible.', '', 0, 0, 7, 3, 0),
+(33, 'Explosion de glace', 'Projette de gros morceaux de glace qui infligent de lourds dégâts et gèlent les ennemis situés à courte distance.', '', 0, 0, 7, 3, 0),
+(34, 'Flamme vivante', 'Une explosion d’énergie brûlante qui traque les cibles pour y mettre le feu.', '', 0, 0, 7, 3, 0),
+(35, 'Éclats de givre', 'Tirs rapides d’éclats de glace qui figent lentement une cible sur place.', '', 0, 0, 8, 3, 0),
+(36, 'Dix-mille soleils', 'Polyvalente, cette capacité de feu peut être utilisée pour effectuer des petits tirs rapides, ou chargée afin de tirer un gros projectile explosif.', 'Colère de l\'attaquant : aprés avoir touché un ennemi, gagne 5% de bonus de dégâts pendant 5 secondes. Se cumule jusqu\'à 20.', 0, 0, 8, 3, 0),
+(37, 'Choc explosif', 'Une décharge d’énergie électrique capable de rebondir sur les murs pour atteindre des cibles à couvert.', '', 0, 0, 8, 3, 0),
+(38, 'Lance glaciale', 'Envoie un puissant rayon d\'énergie de glace dans une direction choisie.', '', 0, 0, 8, 3, 0),
+(39, 'Arc voltaïque', 'Libère une explosion de foudre qui s’abat sur les cibles à proximité, leur infligeant de lourds dégâts.', '', 0, 0, 8, 3, 0),
+(40, 'Jugement dernier', 'Explosez tout sur votre passage avec un projectile explosif qui inflige de lourds dégâts sur une petite zone ciblée.', 'Colère du démolisseur : frapper un ennemi deux fois augmente tous les dégâts de 35% pendant 20 secondes.', 0, 0, 1, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -210,9 +215,16 @@ CREATE TABLE `builds` (
   `id_user` int(11) NOT NULL,
   `id_javelin` int(11) NOT NULL,
   `id_soutient` int(11) NOT NULL,
-  `id_explosion` int(11) NOT NULL,
+  `id_assaut` int(11) NOT NULL,
   `id_concentration` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Déchargement des données de la table `builds`
+--
+
+INSERT INTO `builds` (`id`, `nom`, `id_user`, `id_javelin`, `id_soutient`, `id_assaut`, `id_concentration`) VALUES
+(1, 'test', 1, 2, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -226,6 +238,14 @@ CREATE TABLE `build_armes` (
   `id_build` int(11) NOT NULL,
   `id_arme` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Déchargement des données de la table `build_armes`
+--
+
+INSERT INTO `build_armes` (`id`, `id_build`, `id_arme`) VALUES
+(1, 1, 11),
+(2, 1, 13);
 
 -- --------------------------------------------------------
 
@@ -490,7 +510,7 @@ ALTER TABLE `bonus`
 ALTER TABLE `builds`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_user` (`id_user`,`id_soutient`),
-  ADD KEY `id_explosion` (`id_explosion`),
+  ADD KEY `id_explosion` (`id_assaut`),
   ADD KEY `id_concentration` (`id_concentration`),
   ADD KEY `id_javelin` (`id_javelin`);
 
@@ -576,7 +596,7 @@ ALTER TABLE `armes`
 -- AUTO_INCREMENT pour la table `assaut`
 --
 ALTER TABLE `assaut`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT pour la table `bonus`
@@ -588,13 +608,13 @@ ALTER TABLE `bonus`
 -- AUTO_INCREMENT pour la table `builds`
 --
 ALTER TABLE `builds`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `build_armes`
 --
 ALTER TABLE `build_armes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `build_bonus`
