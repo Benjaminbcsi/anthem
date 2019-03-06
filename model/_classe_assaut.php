@@ -3,10 +3,18 @@
 class Assaut {
 	//PROPRIETES
 	private $id;
-	private $id_type;
-  private $description;
 	private $nom;
+  private $description;
 	private $effet;
+	private $degat;
+	private $statut;
+	private $rayon;
+	private $degat_statut;
+	private $recharge;
+	private $charges;
+	private $id_combo;
+	private $id_type;
+	private $id_javelin;
 
 
 	//METHODES
@@ -50,7 +58,6 @@ class Assaut {
     return $this->description;
   }
 
-
 	public function setEffet($var){
 		$this->effet=$var;
 	}
@@ -58,11 +65,63 @@ class Assaut {
 		return $this->effet;
 	}
 
+	public function setDegat($var){
+		$this->degat=$var;
+	}
+	public function getDegat(){
+		return $this->degat;
+	}
 
+	public function setId_type_degat($var){
+		$this->id_type_degat=$var;
+	}
 
+	public function getId_type_degat(){
+		return $this->id_type_degat;
+	}
 
+	public function setRayon($var){
+		$this->rayon=$var;
+	}
+	public function getRayon(){
+		return $this->rayon;
+	}
 
+	public function setDegat_statut($var){
+		$this->degat_statut=$var;
+	}
+	public function getDegat_statut(){
+		return $this->degat_statut;
+	}
 
+	public function setRecharge($var){
+		$this->recharge=$var;
+	}
+	public function getRecharge(){
+		return $this->recharge;
+	}
+
+	public function setCharges($var){
+		$this->charges=$var;
+	}
+	public function getCharges(){
+		return $this->charges;
+	}
+
+	public function setId_combo($var){
+		$this->id_combo=$var;
+	}
+
+	public function getId_combo(){
+		return $this->id_combo;
+	}
+
+	public function setId_javelin($var){
+		$this->id_javelin=$var;
+	}
+	public function getId_javelin(){
+		return $this->id_javelin;
+	}
 
 
 }

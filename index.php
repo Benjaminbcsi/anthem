@@ -17,11 +17,11 @@ require_once __DIR__ . "./model/_model.php";
     <link href="css/perso.css" rel="stylesheet">
     <title>Anthem Builder</title>
 </head>
-<body style="background-image:url('./image/background.png')">
+<body style="background-image:url('./image/background.png');background-size:cover;">
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark col-lg-6 parallelogram">
   <!-- Brand -->
   <?Php if (isset($_SESSION['id']) && $_SESSION['id'] != "") { ?>
-    <a class="navbar-brand" style="transform:skewX(-20deg);"  href="index.php">Bienvenue : <?php echo ucfirst($_SESSION['pseudo']) ?></a>
+    <a class="navbar-brand" style="transform:skewX(-20deg);"  href="index.php">Bienvenue <?php echo ucfirst($_SESSION['pseudo']) ?></a>
   <?php } else { ?>
     <a class="navbar-brand" style="transform:skewX(-20deg);" href="index.php">ANTHEM Builder</a>
   <?php } ?>

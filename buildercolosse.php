@@ -21,6 +21,7 @@ $resultatsAssaut=$resultAssaut->db_getAssaut(2,2);
     <script src="js/toaster.js"></script>
     <link href="css/perso.css" rel="stylesheet">
     <link href="css/builder_hero.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <title>Anthem Builder</title>
 </head>
   <body style="background-image:url('./image/2/colossetest.jpg');background-size: cover;">
@@ -92,7 +93,7 @@ $resultatsAssaut=$resultAssaut->db_getAssaut(2,2);
     <div class="row" >
       <div class="col-lg-2"></div>
       <div class="col-lg-2 armes parallelogrambuilder" id="concentration" ><p style="transform:skewX(-20deg);">COUCOU<p></div>
-      <div class="col-lg-1" id="assautsee" ><button id="modalActivateAssaut" type="button btn-outline-light" class="btn" data-toggle="modal" data-target="#modalassaut"><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></button></div>
+      <div class="col-lg-1" id="assautsee" ><button id="modalActivateAssaut1" type="button btn-outline-light" class="btn" data-toggle="modal" data-target="#modalassaut1"><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></button></div>
       <div class="col-lg-1" ></div>
       <div class="col-lg-1" id="soutientsee" ><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
       <div class="col-lg-1 armes parallelogrambuilder" id="soutient" ><p style="transform:skewX(-20deg);">COUCOU<p></div>
@@ -229,7 +230,7 @@ $resultatsAssaut=$resultAssaut->db_getAssaut(2,2);
 </div>
 
 <!-- Modal Assaut -->
-<div class="modal fade left parallelogrammodal" id="modalassaut" tabindex="-1" role="dialog" aria-labelledby="AssautModalSee" aria-hidden="true">
+<div class="modal fade left parallelogrammodal" id="modalassaut1" tabindex="-1" role="dialog" aria-labelledby="AssautModalSee" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-full-height modal-left" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -242,7 +243,7 @@ $resultatsAssaut=$resultAssaut->db_getAssaut(2,2);
         <div class="row" style="transform:skewX(20deg);margin-left:25px;">
           <?php while ($row_assaut=$resultatsAssaut->fetch_array(MYSQLI_ASSOC)) {
               $assaut = new Armes($row_assaut); ?>
-          <div class="col-lg-4 boxcontainer"  onmouseover="seestatsassaut(<?php echo $assaut->getId() ?>)" onclick="saveassaut('assaut<?php echo $assaut->getId() ?>',<?php echo $assaut->getId() ?>,'<?php echo $assaut->getNom() ?>')">
+          <div class="col-lg-4 boxcontainer"  onmouseover="seestatsassaut1(<?php echo $assaut->getId() ?>)" onclick="saveassaut1('assaut<?php echo $assaut->getId() ?>',<?php echo $assaut->getId() ?>,'<?php echo $assaut->getNom() ?>')">
             <div id='assaut<?php echo $assaut->getId() ?>'  class="boxAssaut" >
               <div style="transform:skewX(-20deg);width:100%;height:100%;">
                 <img onmouseover="this.style.border = '2px solid orange'" onmouseout="this.style.border = '1px solid black'" style="border:1px solid black;" src="./image/2/assaut/<?php echo $assaut->getId_type() ?>/<?php echo $assaut->getId() ?>.jpg" alt="" width="130px" height="70px">
@@ -258,42 +259,42 @@ $resultatsAssaut=$resultAssaut->db_getAssaut(2,2);
         <div class="container-fluid" >
         <div class="row" >
           <div class="col-lg-12" style="background-color:#DE4E30;width:100%;color:white;height:50px;">
-            <p id="nameWeapon" class="col-lg-6" style="font-size:25px;display:inline-block;transform:skewX(-20deg)!important;"></p>
-            <p class="col-lg-4 float-right" id="pouvoirWeapon" style="display:inline-block;text-align: right;transform:skewX(-20deg)!important;"></p>
-            <p id="styleWeapon" class="col-lg-12" style="transform:skewX(-20deg);margin-left: 2%;font-size:15px;margin-top:-20px;"></p>
+            <p id="nameAssaut1" class="col-lg-6" style="font-size:25px;display:inline-block;transform:skewX(-20deg)!important;"></p>
+            <p class="col-lg-4 float-right" id="pouvoirAssaut1" style="display:inline-block;text-align: right;transform:skewX(-20deg)!important;"></p>
+            <p id="styleAssaut1" class="col-lg-12" style="transform:skewX(-20deg);margin-left: 2%;font-size:15px;margin-top:-20px;"></p>
           </div>
           <div class="row col-lg-12" style="background-color:black;opacity:0.7;color:white;padding-top:1%;">
             <!-- Degat -->
             <div class="col-lg-2" ></div>
             <div class="col-lg-4" style="display:inline-block;transform:skewX(-20deg)!important;">Dégats:</div>
-            <div class="col-lg-2" style="display:inline-block;transform:skewX(-20deg)!important;text-align:right;" id="degatWeapon"></div>
+            <div class="col-lg-2" style="display:inline-block;transform:skewX(-20deg)!important;text-align:right;" id="degatAssaut1"></div>
             <div class="progress col-lg-4" style="transform:skewX(-20deg)!important;">
-              <div class="progress-bar bg-success" role="progressbar" id="progressWeaponDamage" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+              <div class="progress-bar bg-success" role="progressbar" id="progressAssaut1Damage" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <!-- CPM -->
             <div class="col-lg-2" ></div>
             <div class="col-lg-4" style="display:inline-block;transform:skewX(-20deg)!important;margin-left:-1%;">CPM:</div>
-            <div class="col-lg-2" style="display:inline-block;transform:skewX(-20deg)!important;text-align:right;" id="cpmWeapon"></div>
+            <div class="col-lg-2" style="display:inline-block;transform:skewX(-20deg)!important;text-align:right;" id="rechargeAssaut1"></div>
             <div class="progress col-lg-4" style="transform:skewX(-20deg)!important;">
-              <div class="progress-bar bg-danger"  role="progressbar" id="progressCpmDamage" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+              <div class="progress-bar bg-danger"  role="progressbar" id="progressAssaut1Recharge" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <!-- Munitions -->
             <div class="col-lg-2" ></div>
             <div class="col-lg-4" style="display:inline-block;transform:skewX(-20deg)!important;margin-left:-2%;">Munitions:</div>
-            <div class="col-lg-2" style="display:inline-block;transform:skewX(-20deg)!important;text-align:right;" id="munitionsWeapon"></div>
+            <div class="col-lg-2" style="display:inline-block;transform:skewX(-20deg)!important;text-align:right;" id="rayonAssaut1"></div>
             <div class="progress col-lg-4" style="transform:skewX(-20deg)!important;">
-              <div class="progress-bar bg-info"  role="progressbar" id="progressMunitionsDamage" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+              <div class="progress-bar bg-info"  role="progressbar" id="progressAssaut1Rayon" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <!-- Porte ou explo -->
             <div class="col-lg-2" ></div>
             <div class="col-lg-4" id="exploPorte" style="display:inline-block;transform:skewX(-20deg)!important;margin-left:-3%;">Porté / Explosion</div>
-            <div class="col-lg-2" style="display:inline-block;transform:skewX(-20deg)!important;text-align:right;" id="exploPorteWeapon"></div>
+            <div class="col-lg-2" style="display:inline-block;transform:skewX(-20deg)!important;text-align:right;" id="statuAssaut1"></div>
             <div class="progress col-lg-4" style="transform:skewX(-20deg)!important;">
-              <div class="progress-bar bg-warning"  role="progressbar" id="progressExploPorteDamage" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+              <div class="progress-bar bg-warning"  role="progressbar" id="progressAssaut1Statut" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
           </div>
           <div class="row col-lg-12" style="background-color:black;opacity:0.7;color:white;padding-top:1%;">
-            <div class="col-lg-12" id="descriptionWeapon" style="transform:skewX(-20deg)!important;text-align:center;" ></div>
+            <div class="col-lg-12" id="descriptionAssaut1" style="transform:skewX(-20deg)!important;text-align:center;" ></div>
           </div>
         </div>
       </div>
@@ -384,7 +385,7 @@ function seestatsarme(id_arme){
         $.each(response, function(index, value) {
           $('#nameWeapon').html(response['nom'])
           $('#styleWeapon').html(response['id_type'])
-          $('#pouvoirWeapon').html('Pouvoir : <h4>45</h4>')
+          $('#pouvoirWeapon').html('Pouvoir : <h4>47</h4>')
           $('#degatWeapon').html(response['degat'])
           $('#cpmWeapon').html(response['cpm'])
           $('#munitionsWeapon').html(response['munitions'])
@@ -411,7 +412,7 @@ function seestatsarme(id_arme){
 }
 
 
-function seestatsassaut(id_arme){
+function seestatsassaut1(id_arme){
   $.ajax({
     type: "POST",
     url: './ajax.php',
@@ -423,12 +424,18 @@ function seestatsassaut(id_arme){
       success: function (response) {
         $.each(response, function(index, value) {
           console.log(index+" "+value)
-          $('#nameWeapon').html(response['nom'])
-          $('#styleWeapon').html(response['id_type'])
-          $('#pouvoirWeapon').html('Pouvoir : <h4>45</h4>')
-          $('#degatWeapon').html(response['degat'])
-          $('#cpmWeapon').html(response['cpm'])
-          $('#munitionsWeapon').html(response['munitions'])
+          $('#nameAssaut1').html(response['nom'])
+          $('#styleAssaut').html(response['id_type'])
+          $('#pouvoirAssaut1').html('Pouvoir : <h4>47</h4>')
+          if (response['id_statut '] == "Feu") {
+            $('#degatAssaut1').html('<i style="color:orange;" class="fas fa-fire"></i>&nbsp;'+response['degat'])
+          } else {
+            $('#degatAssaut1').html('<img width="32px" src="./image/Foudre.png" alt="">&nbsp;'+response['degat'])
+          }
+
+          $('#rechargeAssaut1').html(response['recharge'])
+          $('#rayonAssaut1').html(response['rayon'])
+          $('#statutAssaut1').html(response['munitions'])
           updateProgressDamage((response['degat']/400)*100);
           updateProgressCpm((response['cpm']/400)*100);
           updateProgressMunitions((response['munitions']/400)*100);
