@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  mar. 05 mars 2019 à 15:33
+-- Généré le :  mer. 06 mars 2019 à 14:06
 -- Version du serveur :  10.1.38-MariaDB
 -- Version de PHP :  7.3.2
 
@@ -38,7 +38,7 @@ CREATE TABLE `armes` (
   `description` varchar(255) COLLATE utf8_bin NOT NULL,
   `effet` varchar(255) COLLATE utf8_bin NOT NULL,
   `degat` int(11) DEFAULT NULL,
-  `degat_explosion` int(255) DEFAULT NULL,
+  `degat_explosion` int(11) DEFAULT NULL,
   `cpm` int(11) DEFAULT NULL,
   `munitions` int(11) DEFAULT NULL,
   `porte` int(11) DEFAULT NULL
@@ -91,57 +91,61 @@ CREATE TABLE `assaut` (
   `description` varchar(255) COLLATE utf8_bin NOT NULL,
   `effet` varchar(255) COLLATE utf8_bin NOT NULL,
   `degat` int(11) NOT NULL,
-  `degat explosion` int(11) NOT NULL,
+  `id_statut` int(11) DEFAULT NULL,
+  `rayon` int(11) NOT NULL,
+  `degat_statut` int(11) NOT NULL,
+  `recharge` float NOT NULL,
+  `charges` int(11) NOT NULL,
+  `id_combo` int(11) DEFAULT NULL,
   `id_type` int(11) NOT NULL,
-  `id_javelin` int(11) NOT NULL,
-  `recharge` int(11) NOT NULL
+  `id_javelin` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Déchargement des données de la table `assaut`
 --
 
-INSERT INTO `assaut` (`id`, `nom`, `description`, `effet`, `degat`, `degat explosion`, `id_type`, `id_javelin`, `recharge`) VALUES
-(1, 'Averse du titan', 'Lance une série de petits éclats de mortier pour tout détruire sur une large zone ciblée.', 'Le mortier à fragmentation peut désormais déclencher des combos explosifs.', 0, 0, 1, 2, 0),
-(2, 'Fourneau en rubidium', 'Embrasez le champ de bataille avec un gigantesque mur de flammes.', 'Appliquer un effet de feu à deux ennemis remplit une charge. Peut se produire une fois toutes les 20 secondes.', 0, 0, 1, 2, 0),
-(3, 'Arc de Vassa', 'Électrocutez vos adversaires avec un arc électrique qui cible un ennemi aléatoire.', 'Une série d\'impacts (3) provoque une large explosion électrique.', 0, 0, 1, 2, 0),
-(4, 'Dôme voltaïque', 'Inflige une vague d\'électricité à tous les ennemis autour de vous.', 'Les ennemis touchés sont ensuite gelés.', 0, 0, 1, 2, 0),
-(5, 'Meilleure défense', 'Équipez-vous de cette fameuse arme pour lancer des roquettes dévastatrices sur vos ennemis.', 'Frapper un ennemi avec une roquette restaure 35% de l\'armure.', 0, 0, 2, 2, 0),
-(6, 'Poing du creuset', 'Faites monter la température avec un torrent de flammes.', 'Avantage du vainqueur : vaincre un ennemi augmente les dégâts du lance-flamme de % pendant X secondes. Cet effet est cumulable jusqu\'à X fois', 0, 0, 2, 2, 0),
-(7, 'Poudre noire', 'Abattez vos ennemis avec cette arme à dispersion à courte portée.', 'Redonne une charge après avoir éliminé un ennemi. Peut se produire une fois toutes les 4 secondes.', 0, 0, 2, 2, 0),
-(8, 'Marteau de Garred', 'Lance un puissant projectile d\'énergie cinétique sur un ennemi.', 'Le canon électromagnétique gagne en permanence une charge supplémentaire.', 0, 0, 2, 2, 0),
-(9, 'Solvant vert', 'Envoyez plusieurs salves de projectiles d\'acide en cloche sur vos adversaires.', 'Une fois équipé, les combos infligent 200% de dégâts.', 0, 0, 2, 2, 0),
-(10, 'Dernier argument', 'Infligez de lourds dégâts à vos adversaires sur une large zone.', 'Atteindre des ennemis ajoute 700% de charge de capacité ultime.', 0, 0, 3, 1, 0),
-(11, 'Brasier explosif', 'Enflammez vos ennemis pour leur infliger des dégâts immédiats et continus.', 'Provoque une explosion de feu après avoir appliqué l\'effet de feu à (2) ennemis.', 0, 0, 3, 1, 0),
-(12, 'Sang-froid', 'Gelez vos adversaires jusqu\'à la moelle.', 'Rigueur hivernale : le fait d\'appliquer l\'effet de glace à un ennemi augmente les dégâts au corps-à-corps de 135% pendant 10 secondes.', 0, 0, 3, 1, 0),
-(13, 'Grande première', 'Lancez une grenade qui se divise ensuite en plusieurs missiles à tête chercheuse.', 'Furie de l\'embusqué : vaincre des ennemis du dessus octroie 75% de dégâts d\'arme supplémentaires pendant 20 secondes.', 0, 0, 3, 1, 0),
-(14, 'Le Gambit', 'Attaquez votre adversaire avec une grenade qui se fixe sur lui et lui inflige de lourds dégâts.', 'Toucher un ennemi avec cette grenade déclenche une explosion de glace.', 0, 0, 3, 1, 0),
-(15, 'Vengeance récurrente', 'Tirez un projectile qui traque une cible unique et touche également les adversaires à proximité.', 'A l\'élimination d\'un ennemi, récupère instantanément 100% de charge. Peut se produire une fois toute les 7,5 secondes.', 0, 0, 4, 1, 0),
-(16, 'Récompense du vengeur', 'Frappez une cible unique d\'une puissante explosion énergétique.', 'Force de l\'attaquant : atteindre un ennemi augmente les dégâts au corps-à-corps de 110% pendant 20 secondes', 0, 0, 4, 1, 0),
-(17, 'Lance de braise', 'Lancez un rayon d\'énergie qui inflige des dégâts continus à tout ce qu\'il touche.', 'Après une petite série d\'impacts (3), déclenche une explosion de feu.', 0, 0, 4, 1, 0),
-(18, 'Assaut tactique', 'Infligez des dégâts acides à vos cibles avec une salve de fléchettes.', 'Les fléchettes empoisonnées gagnent une charge supplémentaire permanente.', 0, 0, 4, 1, 0),
-(19, 'Masse d\'Argo', 'Déblayez le champ de bataille avec un missile qui inflige des dégâts sur une large zone autour du point d\'impact.', 'Après l\'élimination d\'un ennemi, déclenche une explosion électrique.', 0, 0, 4, 1, 0),
-(20, 'Glaive traqueur', 'Lancez un glaive à tête chercheuse.', '', 0, 0, 5, 4, 0),
-(21, 'Bombe de venin', 'Lancez une grenade qui inflige des dégâts acides à tous les ennemis à proximité.', '', 0, 0, 4, 4, 0),
-(22, 'Glaive cryo', 'Cible jusqu\'à deux ennemis à proximité qui gèleront à l\'impact.', '', 0, 0, 5, 4, 0),
-(23, 'Mine à fragmentation', 'Lancez une salve de mines sur la zone ciblée.', '', 0, 0, 5, 4, 0),
-(24, 'Ruée éclair', 'Ruez-vous en avant en laissant un dangereux flux d\'électricité derrière vous.', '', 0, 0, 5, 4, 0),
-(25, 'Frappe détonante', 'Une attaque au corps à corps qui charge l\'ennemi d\'énergie électrique. S\'il meurt en étant chargé d\'énergie, l\'ennemi explose et inflige des dégâts autour de lui.', '', 0, 0, 6, 4, 0),
-(26, 'Étoile à plasma', 'Jetez une étoile de ninja chargée de plasma en direction d’une cible unique ; efficace à grande distance.', '', 0, 0, 6, 4, 0),
-(27, 'Frappe spectrale', 'Générez une projection de l\'Intercepteur pour attaquer vos ennemis.', '', 0, 0, 6, 4, 0),
-(28, 'Frappe tempestaire', 'Une puissante attaque au corps à corps qui inflige d\'importants dégâts physiques.', '', 0, 0, 6, 4, 0),
-(29, 'Jet de venin', 'Projetez un acide corrosif qui inflige des dégâts à tous les ennemis touchés.', '', 0, 0, 6, 4, 0),
-(30, 'Frappe foudroyante', 'Une frappe ciblée qui inflige des dégâts dans une zone.', '', 0, 0, 7, 3, 0),
-(31, 'Colére hivernale', 'Génère des champs de glace à l\'endroit visé. En explosant, ils infligent des dégâts de glace et gèlent les ennemis.', 'Vaincre un ennemi du dessus remplit les charges. Peut se produire une fois toutes les 10 secondes', 0, 0, 7, 3, 0),
-(32, 'Souffle enflammé', 'Une explosion rapide qui inflige des dégâts de feu à l’emplacement d’une cible.', '', 0, 0, 7, 3, 0),
-(33, 'Explosion de glace', 'Projette de gros morceaux de glace qui infligent de lourds dégâts et gèlent les ennemis situés à courte distance.', '', 0, 0, 7, 3, 0),
-(34, 'Flamme vivante', 'Une explosion d’énergie brûlante qui traque les cibles pour y mettre le feu.', '', 0, 0, 7, 3, 0),
-(35, 'Éclats de givre', 'Tirs rapides d’éclats de glace qui figent lentement une cible sur place.', '', 0, 0, 8, 3, 0),
-(36, 'Dix-mille soleils', 'Polyvalente, cette capacité de feu peut être utilisée pour effectuer des petits tirs rapides, ou chargée afin de tirer un gros projectile explosif.', 'Colère de l\'attaquant : aprés avoir touché un ennemi, gagne 5% de bonus de dégâts pendant 5 secondes. Se cumule jusqu\'à 20.', 0, 0, 8, 3, 0),
-(37, 'Choc explosif', 'Une décharge d’énergie électrique capable de rebondir sur les murs pour atteindre des cibles à couvert.', '', 0, 0, 8, 3, 0),
-(38, 'Lance glaciale', 'Envoie un puissant rayon d\'énergie de glace dans une direction choisie.', '', 0, 0, 8, 3, 0),
-(39, 'Arc voltaïque', 'Libère une explosion de foudre qui s’abat sur les cibles à proximité, leur infligeant de lourds dégâts.', '', 0, 0, 8, 3, 0),
-(40, 'Jugement dernier', 'Explosez tout sur votre passage avec un projectile explosif qui inflige de lourds dégâts sur une petite zone ciblée.', 'Colère du démolisseur : frapper un ennemi deux fois augmente tous les dégâts de 35% pendant 20 secondes.', 0, 0, 1, 2, 0);
+INSERT INTO `assaut` (`id`, `nom`, `description`, `effet`, `degat`, `id_statut`, `rayon`, `degat_statut`, `recharge`, `charges`, `id_combo`, `id_type`, `id_javelin`) VALUES
+(1, 'Averse du titan', 'Lance une série de petits éclats de mortier pour tout détruire sur une large zone ciblée.', 'Le mortier à fragmentation peut désormais déclencher des combos explosifs.', 2486, NULL, 3, 0, 10, 1, NULL, 1, 2),
+(2, 'Fourneau en rubidium', 'Embrasez le champ de bataille avec un gigantesque mur de flammes.', 'Appliquer un effet de feu à deux ennemis remplit une charge. Peut se produire une fois toutes les 20 secondes.', 171, 2, 0, 60, 14, 0, 1, 1, 2),
+(3, 'Arc de Vassa', 'Électrocutez vos adversaires avec un arc électrique qui cible un ennemi aléatoire.', 'Une série d\'impacts (3) provoque une large explosion électrique.', 0, 4, 30, 60, 2, 0, 2, 1, 2),
+(4, 'Dôme voltaïque', 'Inflige une vague d\'électricité à tous les ennemis autour de vous.', 'Les ennemis touchés sont ensuite gelés.', 1286, 4, 5, 13, 1.5, 10, 1, 1, 2),
+(5, 'Meilleure défense', 'Équipez-vous de cette fameuse arme pour lancer des roquettes dévastatrices sur vos ennemis.', 'Frapper un ennemi avec une roquette restaure 35% de l\'armure.', 6001, NULL, 5, 0, 15, 1, 2, 2, 2),
+(6, 'Poing du creuset', 'Faites monter la température avec un torrent de flammes.', 'Avantage du vainqueur : vaincre un ennemi augmente les dégâts du lance-flamme de % pendant X secondes. Cet effet est cumulable jusqu\'à X fois', 342, 2, 0, 0, 0, 0, 1, 2, 2),
+(7, 'Poudre noire', 'Abattez vos ennemis avec cette arme à dispersion à courte portée.', 'Redonne une charge après avoir éliminé un ennemi. Peut se produire une fois toutes les 4 secondes.', 514, NULL, 0, 0, 4, 2, NULL, 2, 2),
+(8, 'Marteau de Garred', 'Lance un puissant projectile d\'énergie cinétique sur un ennemi.', 'Le canon électromagnétique gagne en permanence une charge supplémentaire.', 9431, NULL, 0, 0, 10, 1, 2, 2, 2),
+(9, 'Solvant vert', 'Envoyez plusieurs salves de projectiles d\'acide en cloche sur vos adversaires.', 'Une fois équipé, les combos infligent 200% de dégâts.', 1114, 3, 0, 8, 1, 10, 1, 2, 2),
+(10, 'Dernier argument', 'Infligez de lourds dégâts à vos adversaires sur une large zone.', 'Atteindre des ennemis ajoute 700% de charge de capacité ultime.', 4286, NULL, 5, 0, 12, 1, 2, 3, 1),
+(11, 'Brasier explosif', 'Enflammez vos ennemis pour leur infliger des dégâts immédiats et continus.', 'Provoque une explosion de feu après avoir appliqué l\'effet de feu à (2) ennemis.', 3000, 2, 4, 60, 12, 1, 1, 3, 1),
+(12, 'Sang-froid', 'Gelez vos adversaires jusqu\'à la moelle.', 'Rigueur hivernale : le fait d\'appliquer l\'effet de glace à un ennemi augmente les dégâts au corps-à-corps de 135% pendant 10 secondes.', 0, 1, 4, 60, 12, 1, 1, 3, 1),
+(13, 'Grande première', 'Lancez une grenade qui se divise ensuite en plusieurs missiles à tête chercheuse.', 'Furie de l\'embusqué : vaincre des ennemis du dessus octroie 75% de dégâts d\'arme supplémentaires pendant 20 secondes.', 1886, NULL, 2, 0, 12, 1, NULL, 3, 1),
+(14, 'Le Gambit', 'Attaquez votre adversaire avec une grenade qui se fixe sur lui et lui inflige de lourds dégâts.', 'Toucher un ennemi avec cette grenade déclenche une explosion de glace.', 5229, NULL, 2, 0, 7.5, 1, 2, 3, 1),
+(15, 'Vengeance récurrente', 'Tirez un projectile qui traque une cible unique et touche également les adversaires à proximité.', 'A l\'élimination d\'un ennemi, récupère instantanément 100% de charge. Peut se produire une fois toute les 7,5 secondes.', 4715, NULL, 0, 0, 7.5, 1, 2, 4, 1),
+(16, 'Récompense du vengeur', 'Frappez une cible unique d\'une puissante explosion énergétique.', 'Force de l\'attaquant : atteindre un ennemi augmente les dégâts au corps-à-corps de 110% pendant 20 secondes', 5144, NULL, 0, 0, 6, 1, 2, 4, 1),
+(17, 'Lance de braise', 'Lancez un rayon d\'énergie qui inflige des dégâts continus à tout ce qu\'il touche.', 'Après une petite série d\'impacts (3), déclenche une explosion de feu.', 1457, 2, 0, 0, 1, 10, NULL, 4, 1),
+(18, 'Assaut tactique', 'Infligez des dégâts acides à vos cibles avec une salve de fléchettes.', 'Les fléchettes empoisonnées gagnent une charge supplémentaire permanente.', 600, 3, 0, 15, 6, 2, NULL, 4, 1),
+(19, 'Masse d\'Argo', 'Déblayez le champ de bataille avec un missile qui inflige des dégâts sur une large zone autour du point d\'impact.', 'Après l\'élimination d\'un ennemi, déclenche une explosion électrique.', 3772, NULL, 0, 0, 7, 3, NULL, 4, 1),
+(20, 'Stalker impitoyable', 'Lancez un glaive à tête chercheuse.', 'Frapper un ennemi augmente les dégâts de l\'arme de _% pendant _ secondes.', 9431, NULL, 0, 0, 15, 1, NULL, 5, 4),
+(21, '\r\nVoile de serpent', 'Lancez une grenade qui inflige des dégâts acides à tous les ennemis à proximité.', ' Les défaites d’armes de mêlée augmentent tous les dégâts acides de _% pendant _ secondes.', 171, 3, 6, 60, 7.5, 1, 1, 4, 4),
+(22, 'Zéro absolu', 'Cible jusqu\'à deux ennemis à proximité qui gèleront à l\'impact.', ' Frapper un ennemi d\'en haut provoque une explosion de glace.', 857, 1, 0, 60, 20, 1, 1, 5, 4),
+(23, '\r\nMoisson amère', 'Lancez une salve de mines sur la zone ciblée.', 'Gagne une charge constamment', 3429, NULL, 2, 0, 12, 2, NULL, 5, 4),
+(24, '\r\nCharge de Raneri', 'Ruez-vous en avant en laissant un dangereux flux d\'électricité derrière vous.', ' Vaincre un ennemi recharge Ruée éclair. Peut se produire une fois toutes les _ secondes.', 4972, 4, 0, 0, 7.5, 1, 2, 5, 4),
+(25, 'Talon de Cariff', 'Une attaque au corps à corps qui charge l\'ennemi d\'énergie électrique. S\'il meurt en étant chargé d\'énergie, l\'ennemi explose et inflige des dégâts autour de lui.', ' Restaure instantanément _% de santé après avoir vaincu un ennemi.', 1714, 4, 5, 60, 12, 1, 1, 6, 4),
+(26, 'Répit de sanadeen', 'Jetez une étoile de ninja chargée de plasma en direction d’une cible unique ; efficace à grande distance.', 'Frapper les points faibles de l\'ennemi rétablit instantanément _% de boucliers.', 1886, NULL, 0, 0, 2, 4, NULL, 6, 4),
+(27, '\r\nGriffe de l\'ombre', 'Générez une projection de l\'Intercepteur pour attaquer vos ennemis.', 'Reprendre instantanément les charges sur une petite série de meurtres (_).', 3429, NULL, 10, 0, 7.5, 1, NULL, 6, 4),
+(28, '\r\nMort subite', 'Une puissante attaque au corps à corps qui inflige d\'importants dégâts physiques.', 'Frapper un ennemi provoque une explosion de feu.', 6258, NULL, 0, 0, 7.5, 1, 2, 6, 4),
+(29, 'Morsure de vipère', 'Projetez un acide corrosif qui inflige des dégâts à tous les ennemis touchés.', ' Frapper un ennemi ajoute _% de charge ultime.', 5744, 3, 0, 15, 12, 1, 1, 6, 4),
+(30, 'Méditation infini', 'Une frappe ciblée qui inflige des dégâts dans une zone.', ' En vol stationnaire, les dégâts électriques sont augmentés de _%', 4887, 4, 6, 0, 10, 1, 2, 7, 3),
+(31, 'Colére hivernale', 'Génère des champs de glace à l\'endroit visé. En explosant, ils infligent des dégâts de glace et gèlent les ennemis.', 'Vaincre un ennemi du dessus remplit les charges. Peut se produire une fois toutes les 5 secondes', 2229, 1, 6, 60, 4.5, 3, 1, 7, 3),
+(32, '\r\nFlamme venimeuse', 'Une explosion rapide qui inflige des dégâts de feu à l’emplacement d’une cible.', 'Les dégâts acides sont appliqués aux ennemis après _ frappes consécutives.', 2572, 2, 5, 0, 4.5, 5, NULL, 7, 3),
+(33, 'Renouveau de tempête de grêle', 'Projette de gros morceaux de glace qui infligent de lourds dégâts et gèlent les ennemis situés à courte distance.', ' Vaincre un ennemi d\'en haut restitue instantanément _% en énergie de bouclier.', 1457, 1, 0, 15, 7.5, 1, NULL, 7, 3),
+(34, '\r\nÉtoile binaire', 'Une explosion d’énergie brûlante qui traque les cibles pour y mettre le feu.', ' Lance deux projectiles de flammes vivants qui brûlent les ennemis.', 1028, 2, 0, 60, 20, 1, NULL, 7, 3),
+(35, 'Rime Chaotique', 'Tirs rapides d’éclats de glace qui figent lentement une cible sur place.', ' Après avoir gelé un ennemi, augmente _ les dégâts de l\'emplacement de _% pendant _ secondes.', 257, 1, 0, 8, 0.3, 10, 1, 8, 3),
+(36, 'Dix-mille soleils', 'Polyvalente, cette capacité de feu peut être utilisée pour effectuer des petits tirs rapides, ou chargée afin de tirer un gros projectile explosif.', 'Après avoir touché un ennemi, gagne 5% de bonus de dégâts pendant 5 secondes. Se cumule jusqu\'à 20.', 1865, 2, 0, 0, 3, 5, 2, 8, 3),
+(37, '\r\nSceau de l\'esprit ouvert', 'Une décharge d’énergie électrique capable de rebondir sur les murs pour atteindre des cibles à couvert.', ' Frapper un ennemi d\'en haut recharge une charge. Peut se produire une fois toutes les 5 secondes.', 3858, 4, 0, 60, 6, 1, 1, 8, 3),
+(38, '\r\nGlace noir', 'Envoie un puissant rayon d\'énergie de glace dans une direction choisie.', ' Vaincre un ennemi en gèle d\'autres à proximité.', 2057, 1, 0, 0, 6, 1, 2, 8, 3),
+(39, '\r\nChaîne de stase', 'Libère une explosion de foudre qui s’abat sur les cibles à proximité, leur infligeant de lourds dégâts.', ' Frapper les ennemis fait provoque des explosions électriques.', 5144, 4, 0, 0, 10, 1, NULL, 8, 3),
+(40, 'Jugement dernier', 'Explosez tout sur votre passage avec un projectile explosif qui inflige de lourds dégâts sur une petite zone ciblée.', 'Colère du démolisseur : frapper un ennemi deux fois augmente tous les dégâts de 35% pendant 20 secondes.', 5572, NULL, 4, 0, 15, 1, 2, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -405,6 +409,28 @@ INSERT INTO `soutient` (`id`, `nom`, `description`, `id_javelin`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `statut`
+--
+
+DROP TABLE IF EXISTS `statut`;
+CREATE TABLE `statut` (
+  `id` int(11) NOT NULL,
+  `element` varchar(255) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Déchargement des données de la table `statut`
+--
+
+INSERT INTO `statut` (`id`, `element`) VALUES
+(1, 'Gel'),
+(2, 'Feu'),
+(3, 'Acide'),
+(4, 'Foudre');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `type`
 --
 
@@ -423,11 +449,11 @@ INSERT INTO `type` (`id`, `data`) VALUES
 (2, 'Lance-grenade'),
 (3, 'Pistolets lourds'),
 (4, 'Pistolet mitrailleurs'),
-(5, 'Fusils de précision'),
+(5, 'Fusil de précision'),
 (6, 'Fusil à pompe'),
 (7, 'Fusils à lunette'),
 (8, 'Fusils d\'assaut'),
-(9, 'Fusils mitrailleurs');
+(9, 'Fusil mitrailleurs');
 
 -- --------------------------------------------------------
 
@@ -454,6 +480,26 @@ INSERT INTO `type_assaut` (`id`, `designation`) VALUES
 (6, 'Système d\'attaque'),
 (7, 'Sceaux d\'explosion'),
 (8, 'Sceaux de concentration');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `type_combo`
+--
+
+DROP TABLE IF EXISTS `type_combo`;
+CREATE TABLE `type_combo` (
+  `id` int(11) NOT NULL,
+  `combo_data` varchar(255) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Déchargement des données de la table `type_combo`
+--
+
+INSERT INTO `type_combo` (`id`, `combo_data`) VALUES
+(1, 'Amorceur'),
+(2, 'Detonateur');
 
 -- --------------------------------------------------------
 
@@ -496,7 +542,9 @@ ALTER TABLE `armes`
 ALTER TABLE `assaut`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_javelin` (`id_javelin`),
-  ADD KEY `id_type` (`id_type`);
+  ADD KEY `id_type` (`id_type`),
+  ADD KEY `assaut_ibfk_4` (`id_statut`),
+  ADD KEY `id_combo` (`id_combo`);
 
 --
 -- Index pour la table `bonus`
@@ -565,6 +613,12 @@ ALTER TABLE `soutient`
   ADD KEY `id_javelin` (`id_javelin`);
 
 --
+-- Index pour la table `statut`
+--
+ALTER TABLE `statut`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `type`
 --
 ALTER TABLE `type`
@@ -574,6 +628,12 @@ ALTER TABLE `type`
 -- Index pour la table `type_assaut`
 --
 ALTER TABLE `type_assaut`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `type_combo`
+--
+ALTER TABLE `type_combo`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -653,6 +713,12 @@ ALTER TABLE `soutient`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT pour la table `statut`
+--
+ALTER TABLE `statut`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT pour la table `type`
 --
 ALTER TABLE `type`
@@ -663,6 +729,12 @@ ALTER TABLE `type`
 --
 ALTER TABLE `type_assaut`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT pour la table `type_combo`
+--
+ALTER TABLE `type_combo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `users`
@@ -685,7 +757,9 @@ ALTER TABLE `armes`
 --
 ALTER TABLE `assaut`
   ADD CONSTRAINT `assaut_ibfk_1` FOREIGN KEY (`id_javelin`) REFERENCES `javelin` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `assaut_ibfk_2` FOREIGN KEY (`id_type`) REFERENCES `type_assaut` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `assaut_ibfk_2` FOREIGN KEY (`id_type`) REFERENCES `type_assaut` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `assaut_ibfk_4` FOREIGN KEY (`id_statut`) REFERENCES `statut` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `assaut_ibfk_5` FOREIGN KEY (`id_combo`) REFERENCES `type_combo` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `builds`
