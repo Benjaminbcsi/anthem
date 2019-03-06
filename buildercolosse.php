@@ -273,23 +273,23 @@ $resultatsAssaut=$resultAssaut->db_getAssaut(2,2);
             </div>
             <!-- CPM -->
             <div class="col-lg-2" ></div>
-            <div class="col-lg-4" style="display:inline-block;transform:skewX(-20deg)!important;margin-left:-1%;">CPM:</div>
+            <div class="col-lg-4" style="display:inline-block;transform:skewX(-20deg)!important;margin-left:-1%;">Recharges:</div>
             <div class="col-lg-2" style="display:inline-block;transform:skewX(-20deg)!important;text-align:right;" id="rechargeAssaut1"></div>
             <div class="progress col-lg-4" style="transform:skewX(-20deg)!important;">
               <div class="progress-bar bg-danger"  role="progressbar" id="progressAssaut1Recharge" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <!-- Munitions -->
             <div class="col-lg-2" ></div>
-            <div class="col-lg-4" style="display:inline-block;transform:skewX(-20deg)!important;margin-left:-2%;">Munitions:</div>
+            <div class="col-lg-4" style="display:inline-block;transform:skewX(-20deg)!important;margin-left:-2%;">Rayon:</div>
             <div class="col-lg-2" style="display:inline-block;transform:skewX(-20deg)!important;text-align:right;" id="rayonAssaut1"></div>
             <div class="progress col-lg-4" style="transform:skewX(-20deg)!important;">
               <div class="progress-bar bg-info"  role="progressbar" id="progressAssaut1Rayon" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <!-- Porte ou explo -->
             <div class="col-lg-2" ></div>
-            <div class="col-lg-4" id="exploPorte" style="display:inline-block;transform:skewX(-20deg)!important;margin-left:-3%;">Porté / Explosion</div>
-            <div class="col-lg-2" style="display:inline-block;transform:skewX(-20deg)!important;text-align:right;" id="statuAssaut1"></div>
-            <div class="progress col-lg-4" style="transform:skewX(-20deg)!important;">
+            <div class="col-lg-4" id="statutTypeAssaut1" style="display:inline-block;transform:skewX(-20deg)!important;margin-left:-3%;">Statut</div>
+            <div class="col-lg-2" id="statutAssaut1" style="display:inline-block;transform:skewX(-20deg)!important;text-align:right;" ></div>
+            <div id="barStatutProgressHide" class="progress col-lg-4" style="transform:skewX(-20deg)!important;">
               <div class="progress-bar bg-warning"  role="progressbar" id="progressAssaut1Statut" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
           </div>
@@ -302,6 +302,41 @@ $resultatsAssaut=$resultAssaut->db_getAssaut(2,2);
   </div>
 </div>
 
+<div class="modal fade" id="assautchoixmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Equipement</th>
+              <th scope="col">Supprimer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td id="armename1"></td>
+              <td><button type="button" onclick="deleteweapon(1)" class="close">
+                <span aria-hidden="true">&times;</span>
+              </button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" onclick="deletetableweapon()" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+        <button type="button" onclick="closeallweapon()" class="btn btn-primary">Sauvegarder armes</button>
+      </div>
+    </div>
+  </div>
+</div>
 <script>
 var array_weapon= ['vide','vide'];
 function saveweapon(id_element,id,name){
@@ -372,6 +407,8 @@ function savebuild(){
       }
   });
 }
+
+
 function seestatsarme(id_arme){
   $.ajax({
     type: "POST",
@@ -396,7 +433,6 @@ function seestatsarme(id_arme){
             $('#exploPorte').html("Dégats explosion")
             updateProgressExploOrPorte((response['degat_explosion']/400)*100);
             $('#exploPorteWeapon').html(response['degat_explosion'])
-
           } else {
             $('#exploPorte').html("Porté")
             updateProgressExploOrPorte((response['porte']/400)*100);
@@ -424,32 +460,45 @@ function seestatsassaut1(id_arme){
       success: function (response) {
         $.each(response, function(index, value) {
           console.log(index+" "+value)
-          $('#nameAssaut1').html(response['nom'])
-          $('#styleAssaut').html(response['id_type'])
+          if (response['id_combo'] == "Amorceur") {
+            $('#nameAssaut1').html('<i class="far fa-dot-circle"></i>&nbsp;'+response['nom'])
+          } else if(response['id_combo'] == "Detonateur"){
+            $('#nameAssaut1').html('<i class="far fa-star"></i>&nbsp;'+response['nom'])
+          } else {
+            $('#nameAssaut1').html(response['nom'])
+          }
+          $('#styleAssaut1').html(response['id_type'])
           $('#pouvoirAssaut1').html('Pouvoir : <h4>47</h4>')
-          if (response['id_statut '] == "Feu") {
+          if (response['id_statut'] == "" || response['id_statut'] == null) {
+            $('#degatAssaut1').html(response['degat'])
+          } else if (response['id_statut '] == "Feu") {
             $('#degatAssaut1').html('<i style="color:orange;" class="fas fa-fire"></i>&nbsp;'+response['degat'])
           } else {
-            $('#degatAssaut1').html('<img width="32px" src="./image/Foudre.png" alt="">&nbsp;'+response['degat'])
+            $('#degatAssaut1').html('<img width="25px;" src="./image/'+response['id_statut']+'.png" alt="">&nbsp;'+response['degat'])
           }
-
           $('#rechargeAssaut1').html(response['recharge'])
           $('#rayonAssaut1').html(response['rayon'])
-          $('#statutAssaut1').html(response['munitions'])
-          updateProgressDamage((response['degat']/400)*100);
-          updateProgressCpm((response['cpm']/400)*100);
-          updateProgressMunitions((response['munitions']/400)*100);
-          if (response['degat_explosion'] != null) {
-            $('#exploPorte').html("Dégats explosion")
-            updateProgressExploOrPorte((response['degat_explosion']/400)*100);
-            $('#exploPorteWeapon').html(response['degat_explosion'])
-
+          updateProgressDamageAssaut1((response['degat']/50)*100);
+          updateProgressRechargeAssaut1((response['recharge']/50)*100);
+          updateProgressRayonAssaut1((response['rayon']/50)*100);
+          if (response['degat_statut'] != null && response['degat_statut'] != 0) {
+            updateProgressStatutAssaut1((response['degat_statut']/50)*100);
+            if (response['id_statut'] == "Foudre") {
+              $('#statutTypeAssaut1').html("Statut électricité")
+            } else if (response['id_statut'] == "Gel") {
+              $('#statutTypeAssaut1').html("Statut Gelée")
+            } else if (response['id_statut'] == "Acide") {
+              $('#statutTypeAssaut1').html("Statut Acide")
+            } else if (response['id_statut'] == "Feu") {
+              $('#statutTypeAssaut1').html("Statut Emflammer")
+            }
+            $('#statutAssaut1').html(response['degat_statut'])
           } else {
-            $('#exploPorte').html("Porté")
-            updateProgressExploOrPorte((response['porte']/400)*100);
-            $('#exploPorteWeapon').html(response['porte'])
+            $('#statutTypeAssaut1').html("Statut")
+            updateProgressStatutAssaut1((0/400)*100)
+            $('#statutAssaut1').html(0)
           }
-          $('#descriptionWeapon').html(response['description']+"<br/><p style='color:orange;'>"+response['effet']+"</p>")
+          $('#descriptionAssaut1').html(response['description']+"<br/><p style='color:orange;'>"+response['effet']+"</p>")
 
         });
       },
@@ -457,6 +506,7 @@ function seestatsassaut1(id_arme){
       }
   });
 }
+// update bar armes
 function updateProgressDamage(percentage){
   if (percentage > 100) {
       percentage = 100;
@@ -485,6 +535,72 @@ function updateProgressExploOrPorte(percentage){
     $('#progressExploPorteDamage').css('width', percentage+'%');
 }
 
+// update bar assaut1
+function updateProgressDamageAssaut1(percentage){
+  if (percentage > 100) {
+      percentage = 100;
+  }
+    $('#progressAssaut1Damage').css('width', percentage+'%');
+}
+
+function updateProgressRechargeAssaut1(percentage){
+  if (percentage > 100) {
+      percentage = 100;
+  }
+    $('#progressAssaut1Recharge').css('width', percentage+'%');
+}
+
+function updateProgressRayonAssaut1(percentage){
+  if (percentage > 100) {
+      percentage = 100;
+  }
+    $('#progressAssaut1Rayon').css('width', percentage+'%');
+}
+
+function updateProgressStatutAssaut1(percentage){
+  if (percentage > 100) {
+      percentage = 100;
+  }
+    $('#progressAssaut1Statut').css('width', percentage+'%');
+}
+
+//save assaut1
+
+var assaut = "vide";
+function saveassaut1(id_element,id,name){
+  $('#'+id_element).attr('style','border:3px solid orange')
+  $('#'+id_element).attr('onmouseout','')
+  if (assaut == "vide") {
+    array_weapon[0] = id;
+    $('#armename1').html(name)
+    $('#tableWeaponOver1').html('Assaut : <p style="color:white;">'+name+'</p>' )
+    $.toaster({ priority : 'success', title : 'Assaut', message : name+" ajouter"});
+  }
+  if (assaut != "vide") {
+    $('#armeschoixmodal').modal('show')
+  }
+
+
+}
+
+function deleteweapon(emplacement){
+  assaut ="vide"
+  $('#armename2').html("")
+  $('#tableWeaponOver2').html('')
+  if (assaut == "vide") {
+      $('#armeschoixmodal').modal('hide')
+  }
+}
+
+function deletetableweapon(){
+  var assaut= "vide";
+}
+
+function closeallassaut(){
+  $('#armeschoixmodal').modal('hide')
+  $('#exampleModal').modal('hide')
+  $.toaster({ priority : 'info', title : 'Assaut', message : "L'équipement a était sauvegarder"});
+}
 
 //See onmouseover
 
