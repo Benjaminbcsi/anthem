@@ -81,4 +81,11 @@ if (isset($_POST['source']) && $_POST['source'] == "see_soutient") {
 	$row_soutient=$resultats->fetch_array(MYSQLI_ASSOC);
 	echo json_encode($row_soutient);
 }
+
+if (isset($_POST['source']) && $_POST['source'] == "see_composant") {
+	$result=new ComposantManager($connexion);
+	$resultats=$result->db_getComposantbyid($_POST['id_composant']);
+	$row_composant=$resultats->fetch_array(MYSQLI_ASSOC);
+	echo json_encode($row_composant);
+}
 ?>

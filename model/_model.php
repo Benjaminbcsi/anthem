@@ -12,6 +12,7 @@ require_once __DIR__."/_classe_type_assaut.php";
 require_once __DIR__."/_classe_statut.php";
 require_once __DIR__."/_classe_type_combo.php";
 require_once __DIR__."/_classe_soutient.php";
+require_once __DIR__."/_classe_composant.php";
 
 //DB
 require_once __DIR__."/db_users.php";
@@ -24,6 +25,7 @@ require_once __DIR__."/db_type_assaut.php";
 require_once __DIR__."/db_statut.php";
 require_once __DIR__."/db_type_combo.php";
 require_once __DIR__."/db_soutient.php";
+require_once __DIR__."/db_composant.php";
 
 
 ?>

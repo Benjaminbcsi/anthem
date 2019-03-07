@@ -4,10 +4,12 @@ require_once __DIR__ . "./model/_model.php";
 $result=new ArmesManager($connexion);
 $resultAssaut=new AssautManager($connexion);
 $resultSoutient=new SoutientManager($connexion);
+$resultComposant=new ComposantManager($connexion);
 $resultats=$result->db_getWeapon(2);
 $resultatsAssaut=$resultAssaut->db_getAssaut(2,2);
 $resultatsConcentration=$resultAssaut->db_getAssaut(2,1);
 $resultatsSoutient=$resultSoutient->db_getSoutient(2);
+$resultatsComposant=$resultComposant->db_getComposant(2);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -89,7 +91,7 @@ $resultatsSoutient=$resultSoutient->db_getSoutient(2);
     <div class="row" style="padding:2%;" >
       <div class="col-lg-5" ></div>
       <div class="col-lg-1" ></div>
-      <div class="col-lg-1" id="composantsee" ><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
+      <div class="col-lg-1" id="composantsee" ><button id="modalActivateAssaut2" type="button btn-outline-light" class="btn" data-toggle="modal" data-target="#modalcomposant"><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></button></div>
       <div class="col-lg-2 armes parallelogrambuilder" style="margin-left:-3%" id="composant" ><p style="transform:skewX(-20deg);">COUCOU<p></div>
       <div class="col-lg-1" ></div>
       <div class="col-lg-2" ></div>
@@ -562,22 +564,24 @@ $resultatsSoutient=$resultSoutient->db_getSoutient(2);
 </div>
 
 <!-- Modal composant -->
-<div class="modal fade left parallelogrammodal" id="modalarme" tabindex="-1" role="dialog" aria-labelledby="ArmesModalSee" aria-hidden="true">
+<div class="modal fade left parallelogrammodal" id="modalcomposant" tabindex="-1" role="dialog" aria-labelledby="ArmesModalSee" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-full-height modal-left" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" style="margin-left:150px!important;opacity: 1;transform:skewX(-20deg);" id="exampleModalPreviewLabel">Choix des armes</h5>
+        <h5 class="modal-title" style="margin-left:150px!important;opacity: 1;transform:skewX(-20deg);" id="exampleModalPreviewLabel">Choix des Composant</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body" style="margin-left:100px;transform:skewX(-20deg);">
         <div class="row" style="transform:skewX(20deg);margin-left:25px;">
-          <?php while ($row_armes=$resultats->fetch_array(MYSQLI_ASSOC)) {
-              $armes = new Armes($row_armes); ?>
-          <div class="col-lg-4 boxcontainer"  onmouseover="seestatsarme(<?php echo $armes->getId() ?>)" onclick="saveweapon('armes<?php echo $armes->getId() ?>',<?php echo $armes->getId() ?>,'<?php echo $armes->getNom() ?>')">
-            <div id='armes<?php echo $armes->getId() ?>'  class="box" onmouseover="this.style.border = '1px solid orange'" onmouseout="this.style.border = '1px solid black'">
-              <div style="transform:skewX(-20deg);width:100%;height:100%;background-image:url('./image/arme/<?php echo $armes->getId() ?>.png');background-size: contain;background-repeat: no-repeat;"></div>
+          <?php while ($row_composant=$resultatsComposant->fetch_array(MYSQLI_ASSOC)) {
+              $composant = new Composant($row_composant); ?>
+          <div class="col-lg-4 boxcontainer"  onmouseover="seestatscomposant(<?php echo $composant->getId() ?>)" onclick="savecomposant('composants<?php echo $composant->getId() ?>',<?php echo $composant->getId() ?>,'<?php echo $composant->getNom() ?>')">
+            <div id='composants<?php echo $composant->getId() ?>'  class="boxAssaut" >
+              <div style="transform:skewX(-20deg);width:100%;height:100%;">
+                <img onmouseover="this.style.border = '2px solid orange'" onmouseout="this.style.border = '1px solid black'" style="border:1px solid black;" src="./image/2/composant/<?php echo $composant->getId() ?>.jpg" alt="" width="150px" height="90px">
+              </div>
             </div>
           </div>
         <?php } ?>
@@ -589,42 +593,28 @@ $resultatsSoutient=$resultSoutient->db_getSoutient(2);
         <div class="container-fluid" >
         <div class="row" >
           <div class="col-lg-12" style="background-color:#DE4E30;width:100%;color:white;height:50px;">
-            <p id="nameWeapon" class="col-lg-6" style="font-size:25px;display:inline-block;transform:skewX(-20deg)!important;"></p>
-            <p class="col-lg-4 float-right" id="pouvoirWeapon" style="display:inline-block;text-align: right;transform:skewX(-20deg)!important;"></p>
-            <p id="styleWeapon" class="col-lg-12" style="transform:skewX(-20deg);margin-left: 2%;font-size:15px;margin-top:-20px;"></p>
+            <p id="nameComposant" class="col-lg-6" style="font-size:25px;display:inline-block;transform:skewX(-20deg)!important;"></p>
+            <p class="col-lg-4 float-right" id="pouvoirComposant" style="display:inline-block;text-align: right;transform:skewX(-20deg)!important;"></p>
+            <p id="styleComposant" class="col-lg-12" style="transform:skewX(-20deg);margin-left: 2%;font-size:15px;margin-top:-20px;"></p>
           </div>
           <div class="row col-lg-12" style="background-color:black;opacity:0.7;color:white;padding-top:1%;">
             <!-- Degat -->
             <div class="col-lg-2" ></div>
             <div class="col-lg-4" style="display:inline-block;transform:skewX(-20deg)!important;">Dégats:</div>
-            <div class="col-lg-2" style="display:inline-block;transform:skewX(-20deg)!important;text-align:right;" id="degatWeapon"></div>
+            <div class="col-lg-2" style="display:inline-block;transform:skewX(-20deg)!important;text-align:right;" id="armureComposant"></div>
             <div class="progress col-lg-4" style="transform:skewX(-20deg)!important;">
-              <div class="progress-bar bg-success" role="progressbar" id="progressWeaponDamage" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+              <div class="progress-bar bg-success" role="progressbar" id="progressComposantArmure" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <!-- CPM -->
             <div class="col-lg-2" ></div>
             <div class="col-lg-4" style="display:inline-block;transform:skewX(-20deg)!important;margin-left:-1%;">CPM:</div>
-            <div class="col-lg-2" style="display:inline-block;transform:skewX(-20deg)!important;text-align:right;" id="cpmWeapon"></div>
+            <div class="col-lg-2" style="display:inline-block;transform:skewX(-20deg)!important;text-align:right;" id="bouclierComposant"></div>
             <div class="progress col-lg-4" style="transform:skewX(-20deg)!important;">
-              <div class="progress-bar bg-danger"  role="progressbar" id="progressCpmDamage" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <!-- Munitions -->
-            <div class="col-lg-2" ></div>
-            <div class="col-lg-4" style="display:inline-block;transform:skewX(-20deg)!important;margin-left:-2%;">Munitions:</div>
-            <div class="col-lg-2" style="display:inline-block;transform:skewX(-20deg)!important;text-align:right;" id="munitionsWeapon"></div>
-            <div class="progress col-lg-4" style="transform:skewX(-20deg)!important;">
-              <div class="progress-bar bg-info"  role="progressbar" id="progressMunitionsDamage" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <!-- Porte ou explo -->
-            <div class="col-lg-2" ></div>
-            <div class="col-lg-4" id="exploPorte" style="display:inline-block;transform:skewX(-20deg)!important;margin-left:-3%;">Porté / Explosion</div>
-            <div class="col-lg-2" style="display:inline-block;transform:skewX(-20deg)!important;text-align:right;" id="exploPorteWeapon"></div>
-            <div class="progress col-lg-4" style="transform:skewX(-20deg)!important;">
-              <div class="progress-bar bg-warning"  role="progressbar" id="progressExploPorteDamage" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+              <div class="progress-bar bg-danger"  role="progressbar" id="progressComposantBouclier" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
           </div>
           <div class="row col-lg-12" style="background-color:black;opacity:0.7;color:white;padding-top:1%;">
-            <div class="col-lg-12" id="descriptionWeapon" style="transform:skewX(-20deg)!important;text-align:center;" ></div>
+            <div class="col-lg-12" id="descriptionComposant" style="transform:skewX(-20deg)!important;text-align:center;" ></div>
           </div>
         </div>
       </div>
@@ -632,7 +622,7 @@ $resultatsSoutient=$resultSoutient->db_getSoutient(2);
   </div>
 </div>
 <!-- Modal choix composant -->
-<div class="modal fade" id="armeschoixmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="armeschoixcomposant" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -662,6 +652,34 @@ $resultatsSoutient=$resultSoutient->db_getSoutient(2);
               <th scope="row">2</th>
               <td id="armename2"></td>
               <td><button type="button" onclick="deleteweapon(2)" class="close">
+                <span aria-hidden="true">&times;</span>
+              </button></td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td id="armename3"></td>
+              <td><button type="button" onclick="deleteweapon(3)" class="close">
+                <span aria-hidden="true">&times;</span>
+              </button></td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td id="armename4"></td>
+              <td><button type="button" onclick="deleteweapon(4)" class="close">
+                <span aria-hidden="true">&times;</span>
+              </button></td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td id="armename5"></td>
+              <td><button type="button" onclick="deleteweapon(5)" class="close">
+                <span aria-hidden="true">&times;</span>
+              </button></td>
+            </tr>
+            <tr>
+              <th scope="row">6</th>
+              <td id="armename6"></td>
+              <td><button type="button" onclick="deleteweapon(6)" class="close">
                 <span aria-hidden="true">&times;</span>
               </button></td>
             </tr>
@@ -1149,6 +1167,127 @@ function closeallsoutient(){
   $('#modalsoutient').modal('hide')
 
   $.toaster({ priority : 'info', title : 'Assaut', message : "L'équipement de soutien a était sauvegarder"});
+}
+
+//Composant
+function seestatscomposant(id_composant){
+  $.ajax({
+    type: "POST",
+    url: './ajax.php',
+    dataType: 'json',
+    data:{
+      source: "see_composant",
+      id_composant:id_composant,
+      },
+      success: function (response) {
+        $.each(response, function(index, value) {
+          $('#nameComposant').html(response['nom'])
+          $('#styleComposant').html('Composant')
+          $('#pouvoirComposant').html('Pouvoir : <h4>47</h4>')
+          $('#armureComposant').html(response['armure'])
+          $('#bouclierComposant').html(response['bouclier'])
+          $('#descriptionComposant').html(response['description']+"<br/><p style='color:orange;'>"+response['effet']+"</p>")
+          updateProgressArmureComposant(response['armure']);
+          updateProgressBouclierComposant(response['bouclier']);
+        });
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+      }
+  });
+}
+
+function updateProgressArmureComposant(percentage){
+  if (percentage > 100) {
+      percentage = 100;
+  }
+    $('#progressComposantArmure').css('width', percentage+'%');
+}
+
+function updateProgressBouclierComposant(percentage){
+  if (percentage > 100) {
+      percentage = 100;
+  }
+    $('#progressComposantBouclier').css('width', percentage+'%');
+}
+
+var composant = ["vide","vide","vide","vide","vide","vide"];
+function savecomposant(id_element,id,name){
+  if (composant[0] == "vide") {
+    composant[0] = id;
+    $('#armename1').html(name)
+    $('#tableWeaponOver1').html('Arme 1 : <p style="color:white;">'+name+'</p>' )
+    $.toaster({ priority : 'success', title : 'Composant 1', message : name+" ajouter a l'emplacement 1"});
+  } else if(composant[1] == "vide") {
+    composant[1] = id;
+    $('#armename2').html(name)
+    $('#tableWeaponOver2').html('<p style="margin-top:-5%;">Arme 2 :</p><p style="color:white;margin-top:-5%;">'+name+'</p>' )
+    $.toaster({ priority : 'success', title : 'Composant 2', message : name+" ajouter a l'emplacement 2"});
+  } else if(composant[2] == "vide") {
+    composant[2] = id;
+    $('#armename3').html(name)
+    $('#tableWeaponOver3').html('<p style="margin-top:-5%;">Arme 3 :</p><p style="color:white;margin-top:-5%;">'+name+'</p>' )
+    $.toaster({ priority : 'success', title : 'Composant 3', message : name+" ajouter a l'emplacement 3"});
+  } else if(composant[3] == "vide") {
+    composant[3] = id;
+    $('#armename4').html(name)
+    $('#tableWeaponOver4').html('<p style="margin-top:-5%;">Arme 4 :</p><p style="color:white;margin-top:-5%;">'+name+'</p>' )
+    $.toaster({ priority : 'success', title : 'Composant 4', message : name+" ajouter a l'emplacement 4"});
+  } else if(composant[4] == "vide") {
+    composant[4] = id;
+    $('#armename5').html(name)
+    $('#tableWeaponOver5').html('<p style="margin-top:-5%;">Arme 5 :</p><p style="color:white;margin-top:-5%;">'+name+'</p>' )
+    $.toaster({ priority : 'success', title : 'Composant 5', message : name+" ajouter a l'emplacement 5"});
+  } else if(composant[5] == "vide") {
+    composant[5] = id;
+    $('#armename6').html(name)
+    $('#tableWeaponOver6').html('<p style="margin-top:-5%;">Arme 6 :</p><p style="color:white;margin-top:-5%;">'+name+'</p>' )
+    $.toaster({ priority : 'success', title : 'Composant 6', message : name+" ajouter a l'emplacement 6"});
+  }
+  if (composant[0] != "vide" && composant[1] != "vide" && composant[2] != "vide" && composant[3] != "vide" && composant[4] != "vide" && composant[5] != "vide") {
+    $('#composantchoixmodal').modal('show')
+  }
+
+
+}
+
+function deletecomposant(emplacement){
+  if (emplacement == 1) {
+    composant[0] ="vide"
+    $('#composantname1').html("")
+    $('#tableComposantOver1').html('')
+  } else if (emplacement == 2) {
+    composant[1] ="vide"
+    $('#composantname2').html("")
+    $('#tableComposantOver2').html('')
+  } else if (emplacement == 3) {
+    composant[2] ="vide"
+    $('#composantname3').html("")
+    $('#tableComposantOver3').html('')
+  } else if (emplacement == 4) {
+    composant[3] ="vide"
+    $('#composantname4').html("")
+    $('#tableComposantOver4').html('')
+  } else if (emplacement == 5) {
+    composant[4] ="vide"
+    $('#composantname5').html("")
+    $('#tableComposantOver5').html('')
+  } else if (emplacement == 6) {
+    composant[5] ="vide"
+    $('#composantname6').html("")
+    $('#tableComposantOver6').html('')
+  }
+  if (array_weapon[0] == "vide" && array_weapon[1] == "vide" && array_weapon[2] == "vide" && array_weapon[3] == "vide" && array_weapon[4] == "vide" && array_weapon[5] == "vide") {
+      $('#armeschoixmodal').modal('hide')
+  }
+}
+
+function deletetablecomposant(){
+  var array_weapon= ['vide','vide'];
+}
+
+function closeallcomposant(){
+  $('#composantchoixmodal').modal('hide')
+  $.toaster({ priority : 'info', title : 'Composant', message : "Les composants on était sauvegarder"});
 }
 
 //See onmouseover
