@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  mer. 06 mars 2019 à 14:06
+-- Généré le :  jeu. 07 mars 2019 à 14:36
 -- Version du serveur :  10.1.38-MariaDB
 -- Version de PHP :  7.3.2
 
@@ -58,7 +58,7 @@ INSERT INTO `armes` (`id`, `id_type`, `nom`, `description`, `effet`, `degat`, `d
 (7, 3, 'Héraut vengeur', 'Souffleur amélioré : une arme de poing à la grande puissance de frappe.', 'Précision du raptor : Le survol augmente les dégâts de l\'arme de 200%.', 1044, NULL, 240, 9, 35),
 (8, 3, 'Glorieux dénouement', 'Résolution : tire deux coups successifs puissants.', 'Furie du pistolero : toucher 2 points faibles ennemis augmente les dégâts de toutes les armes de 150% pendant 5 secondes.', 821, NULL, 450, 16, 25),
 (9, 3, 'Combat rapproché', 'Barrage amélioré : propose une excellente cadence de tir', 'Force de l\'éclaireur : Les esquives augmentent les dégâts d\'arme de 75% pendant 10 secondes.', 270, NULL, 500, 20, 25),
-(10, 5, 'Foudre d\'Yvenia', 'Éclaireur amélioré : fusil semi-automatique basique.', 'Probabilité de 33% d\'infliger de lourds dégâts électriques.', 625, NULL, 240, 16, 45),
+(10, 5, 'Foudre d Yvenia', 'Éclaireur amélioré : fusil semi-automatique basique.', 'Probabilité de 33% d\'infliger de lourds dégâts électriques.', 625, NULL, 240, 16, 45),
 (11, 5, 'Lumière de la Légion', 'Éclaireur amélioré : fusil semi-automatique basique.', 'Vider le chargeur permet de recharger le bouclier.', 50, NULL, 240, 16, 45),
 (13, 5, 'Mort venue du ciel', 'Gardien amélioré : délivre une rafale puissante de trois balles', 'Sens du rapace : augmente les dégâts sur point faibles de 65% en survol.', 571, NULL, 700, 24, 35),
 (14, 5, 'Toucher apaisant', 'Enclume améliorée : frappe fort avec un léger recul.', 'Équilibre de l\'attaquant : toucher une cible réduit le recul de -50% pendant 5 secondes. Cet effet est cumulable jusqu\'à 3 fois.', 907, NULL, 180, 12, 45),
@@ -228,7 +228,8 @@ CREATE TABLE `builds` (
 --
 
 INSERT INTO `builds` (`id`, `nom`, `id_user`, `id_javelin`, `id_soutient`, `id_assaut`, `id_concentration`) VALUES
-(1, 'test', 1, 2, 1, 1, 1);
+(13, 'TEST soutien', 1, 2, 3, 5, 1),
+(14, 'TEST ASSAUT2', 1, 2, 3, 6, 40);
 
 -- --------------------------------------------------------
 
@@ -248,8 +249,10 @@ CREATE TABLE `build_armes` (
 --
 
 INSERT INTO `build_armes` (`id`, `id_build`, `id_arme`) VALUES
-(1, 1, 11),
-(2, 1, 13);
+(25, 13, 10),
+(26, 13, 5),
+(27, 14, 2),
+(28, 14, 5);
 
 -- --------------------------------------------------------
 
@@ -389,6 +392,12 @@ CREATE TABLE `soutient` (
   `id` int(11) NOT NULL,
   `nom` varchar(255) COLLATE utf8_bin NOT NULL,
   `description` varchar(255) COLLATE utf8_bin NOT NULL,
+  `puissance` int(11) NOT NULL,
+  `damage` int(11) NOT NULL,
+  `charges` int(11) NOT NULL,
+  `recharge` int(11) NOT NULL,
+  `rayon` int(11) NOT NULL,
+  `duree` int(11) NOT NULL,
   `id_javelin` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -396,15 +405,15 @@ CREATE TABLE `soutient` (
 -- Déchargement des données de la table `soutient`
 --
 
-INSERT INTO `soutient` (`id`, `nom`, `description`, `id_javelin`) VALUES
-(1, 'Point de rempart', 'Gardez l\'ennemi à distance et protégez votre escouade avec un bouclier sphérique.', 1),
-(2, 'Ralliement', 'Protégez vos coéquipiers avec un bouclier sphérique qui augmente les dégâts de leurs armes.', 1),
-(3, 'Cri de guerre', 'Incitez les ennemis à vous attaquer et diminuez leur résistance élémentaire.', 2),
-(4, 'Impulsion de bouclier', 'Confère un bonus de résistance aux dégâts à vos alliés.', 2),
-(5, 'Balise cible', 'Marquez un ennemi pour permettre à vos alliés de lui infliger des dégâts accrus.', 4),
-(6, 'Cri de ralliement', 'Dissipez les effets nocifs infligés à l\'ensemble de votre équipe.', 4),
-(7, 'Mur de vent', 'Crée un mur transparent capable de bloquer les projectiles ennemis.', 3),
-(8, 'Terrain glissant', 'Crée un champ qui réduit le délai des capacités des alliés qui pénètrent à l\'intérieur.', 3);
+INSERT INTO `soutient` (`id`, `nom`, `description`, `puissance`, `damage`, `charges`, `recharge`, `rayon`, `duree`, `id_javelin`) VALUES
+(1, 'Point de rempart', 'Gardez l\'ennemi à distance et protégez votre escouade avec un bouclier sphérique.', 36, 0, 1, 60, 0, 0, 1),
+(2, 'Ralliement', 'Protégez vos coéquipiers avec un bouclier sphérique qui augmente les dégâts de leurs armes.', 36, 0, 1, 60, 0, 10, 1),
+(3, 'Cri de guerre', 'Incitez les ennemis à vous attaquer et diminuez leur résistance élémentaire.', 36, 0, 1, 30, 40, 10, 2),
+(4, 'Impulsion de bouclier', 'Confère un bonus de résistance aux dégâts à vos alliés.', 36, 0, 1, 45, 0, 10, 2),
+(5, 'Balise cible', 'Marquez un ennemi pour permettre à vos alliés de lui infliger des dégâts accrus.', 36, 0, 1, 30, 20, 15, 4),
+(6, 'Cri de ralliement', 'Dissipez les effets nocifs infligés à l\'ensemble de votre équipe.', 36, 0, 1, 60, 0, 0, 4),
+(7, 'Mur de vent', 'Crée un mur transparent capable de bloquer les projectiles ennemis.', 36, 0, 1, 30, 0, 60, 3),
+(8, 'Terrain glissant', 'Crée un champ qui réduit le délai des capacités des alliés qui pénètrent à l\'intérieur.', 36, 0, 1, 72, 0, 10, 3);
 
 -- --------------------------------------------------------
 
@@ -560,7 +569,8 @@ ALTER TABLE `builds`
   ADD KEY `id_user` (`id_user`,`id_soutient`),
   ADD KEY `id_explosion` (`id_assaut`),
   ADD KEY `id_concentration` (`id_concentration`),
-  ADD KEY `id_javelin` (`id_javelin`);
+  ADD KEY `id_javelin` (`id_javelin`),
+  ADD KEY `id_soutient` (`id_soutient`);
 
 --
 -- Index pour la table `build_armes`
@@ -668,13 +678,13 @@ ALTER TABLE `bonus`
 -- AUTO_INCREMENT pour la table `builds`
 --
 ALTER TABLE `builds`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT pour la table `build_armes`
 --
 ALTER TABLE `build_armes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT pour la table `build_bonus`
@@ -766,7 +776,10 @@ ALTER TABLE `assaut`
 --
 ALTER TABLE `builds`
   ADD CONSTRAINT `builds_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `builds_ibfk_2` FOREIGN KEY (`id_javelin`) REFERENCES `javelin` (`id`);
+  ADD CONSTRAINT `builds_ibfk_2` FOREIGN KEY (`id_javelin`) REFERENCES `javelin` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `builds_ibfk_3` FOREIGN KEY (`id_assaut`) REFERENCES `assaut` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `builds_ibfk_4` FOREIGN KEY (`id_soutient`) REFERENCES `soutient` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `builds_ibfk_5` FOREIGN KEY (`id_concentration`) REFERENCES `assaut` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `build_armes`
