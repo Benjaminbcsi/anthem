@@ -73,7 +73,13 @@ transform:    skewX(20deg);
 	overflow-y: auto;
 }
 
-.modal.left .modal-contentweapont {
+.modal.left .modal-contentweapon {
+	height: 35%;
+  width: 100%;
+	overflow-y: auto;
+}
+
+.modal.left .modal-contentsoutient {
 	height: 35%;
   width: 100%;
 	overflow-y: auto;
