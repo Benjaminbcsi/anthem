@@ -11,6 +11,9 @@ if (isset($_GET['id_build'])) {
   $resultBuildArme=new BuildarmesManager($connexion);
 
   $resultats_build=$result_build->db_getBuildbyid($_GET['id_build']);
+  if (!$resultats_build->num_rows) {
+     header("Location:./index.php");
+ }
   while ($row_build=$resultats_build->fetch_array(MYSQLI_ASSOC)) {
       $build = new Builds($row_build);
   }

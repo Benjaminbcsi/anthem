@@ -90,7 +90,7 @@ $resultats_build=$result_build->db_getAllBuild();
             ?>
         <tr>
           <th scope="row"></th>
-          <td><a class="nav-link" href="see_build.php?id_build=<?php echo $build->getId() ?>"><?php echo $build->getNom() ?></a></td>
+          <td><a class="nav-link" href="see_build_<?Php echo $javelin->getNom()?>.php?id_build=<?php echo $build->getId() ?>"><?php echo $build->getNom() ?></a></td>
           <td><?php echo $javelin->getNom() ?></td>
           <td><?php echo ucfirst($user->getPseudo()) ?></td>
         </tr>
