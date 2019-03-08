@@ -108,7 +108,9 @@ header("location:./index.php");
       <div class="col-lg-2" ></div>
       <div class="col-lg-1" style="margin-left:-100px;" id="explosionsee" ><button id="modalActivateAssaut2" type="button btn-outline-light" class="btn" data-toggle="modal" data-target="#modalassaut2"><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></button></div>
       <div class="col-lg-2  parallelogrambuilder" id="explosion" >
-        <p style="transform:skewX(-20deg);" id="assaut2see">Lanceur d'artillerie:&nbsp;<br/><a href="#" style="color:white;"><?php echo $concentration->getNom()?></a></p>
+        <p style="transform:skewX(-20deg);" id="assaut2see">Lanceur d'artillerie:&nbsp;<br/>
+          <a onmouseenter="seearme('assaut2',<?php echo $concentration->getId() ?>,<?php echo $build->getId_javelin() ?>)" style="color:white;"><?php echo $concentration->getNom()?></a>
+        </p>
         </div>
       <div class="col-lg-3" ></div>
     </div>
@@ -123,7 +125,9 @@ header("location:./index.php");
             $resultatsComposant=$resultComposant->db_getComposantbyid($build_composant->getId_composant());
             $row_composant=$resultatsComposant->fetch_array(MYSQLI_ASSOC);
             $composant = new Composant($row_composant);?>
-        <p  style="transform:skewX(-20deg);">Composant<?php echo $c ?>:<br/><a href="#" id="Composant<?php echo $c ?>" style="color:white;"><?php echo $composant->getNom() ?></a><p>
+        <p style="transform:skewX(-20deg);">Composant<?php echo $c ?>:<br/>
+          <a onmouseenter="seearme('composant',<?php echo $composant->getId() ?>,<?php echo $build->getId_javelin() ?>)" style="color:white;"><?php echo $composant->getNom() ?></a>
+        <p>
         <?php $c++; } ?>
       </div>
       <div class="col-lg-1" ></div>
@@ -131,12 +135,21 @@ header("location:./index.php");
     </div>
     <div class="row" style="margin-top:-300px;" >
       <div class="col-lg-2"></div>
-      <div class="col-lg-2 parallelogrambuilder" style="height:50px;" id="assaut1" ><p style="transform:skewX(-20deg);">Lanceur d'assaut lourd:&nbsp;<br/><a href="#" style="color:white;transform:skewX(-20deg);margin-top:-15px"><?php echo $assaut->getNom() ?></a><p></div>
+      <div class="col-lg-2 parallelogrambuilder" style="height:50px;" id="assaut1" ><p style="transform:skewX(-20deg);">Lanceur d'assaut lourd:&nbsp;<br/>
+        <a onmouseenter="seearme('assaut1',<?php echo $assaut->getId() ?>,<?php echo $build->getId_javelin() ?>)" style="color:white;transform:skewX(-20deg);margin-top:-15px">
+        <?php echo $assaut->getNom() ?>
+      </a>
+        <p>
+      </div>
       <div class="col-lg-1" id="assautsee" ><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
       <div class="col-lg-1" ></div>
       <div class="col-lg-1" id="soutientsee" ><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
-      <div class="col-lg-2 parallelogrambuilder" style="height:50px;margin-left:-70px;" id="soutient" ><p style="transform:skewX(-20deg);">Équipement de soutien:&nbsp;<br/><a href="#" style="color:white;"><?php echo $soutient->getNom() ?></a><p></div>
-      <div class="col-lg-2" ></div>
+      <div class="col-lg-2 parallelogrambuilder" style="height:50px;margin-left:-70px;" id="soutient" >
+        <p style="transform:skewX(-20deg);">Équipement de soutien:&nbsp;<br/>
+        <a onmouseenter="seearme('soutient',<?php echo $soutient->getId() ?>,<?php echo $build->getId_javelin() ?>)" style="color:white;"><?php echo $soutient->getNom() ?></a>
+        <p>
+      </div>
+      <div class="col-lg-2" style="z-index:-5;" ></div>
     </div>
     <div class="row" style="padding:1%;">
       <div class="col-lg-2" ></div>
@@ -148,15 +161,12 @@ header("location:./index.php");
             $row_arme=$resultatsArme->fetch_array(MYSQLI_ASSOC);
             $arme = new Armes($row_arme);?>
         <p style="transform:skewX(-20deg);<?php if ($a==2) {?>margin-top:-4%;<?php }?>" >Arme<?php echo $a ?>:<br/>
-          <a href="#" id="Arme<?php echo $a ?>" onmouseover="seearme('armes',<?php echo $arme->getId() ?>)" style="color:white;"><?php echo $arme->getNom() ?></a>
+          <a href="#" id="Arme<?php echo $a ?>" onmouseenter="seearme('armes',<?php echo $arme->getId() ?>,<?php echo $build->getId_javelin() ?>)" style="color:white;"><?php echo $arme->getNom() ?></a>
         </p>
       <?php $a++;} ?>
       </div>
       <div class="col-lg-1" id="armesee"><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></div>
-      <div class="col-lg-1" ></div>
-      <div class="col-lg-1" ></div>
-      <div class="col-lg-2" ></div>
-      <div class="col-lg-2" ></div>
+      <div class="col-lg-6" style="z-index:-5;" ></div>
     </div>
     <div class="row" style="padding:2%;">
       <div class="col-lg-12"></input>
@@ -207,32 +217,32 @@ header("location:./index.php");
           <div class="row col-lg-12" style="background-color:black;opacity:0.7;color:white;padding-top:1%;">
             <!-- Degat -->
             <div class="col-lg-2" ></div>
-            <div class="col-lg-4" style="display:inline-block;transform:skewX(-20deg)!important;">Dégats:</div>
+            <div class="col-lg-4" style="display:inline-block;transform:skewX(-20deg)!important;" id="nameDamageInfo"></div>
             <div class="col-lg-2" style="display:inline-block;transform:skewX(-20deg)!important;text-align:right;" id="degatWeapon"></div>
             <div class="progress col-lg-4" style="transform:skewX(-20deg)!important;">
               <div class="progress-bar bg-success" role="progressbar" id="progressWeaponDamage" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <!-- CPM -->
             <div class="col-lg-2" ></div>
-            <div class="col-lg-4" style="display:inline-block;transform:skewX(-20deg)!important;margin-left:-1%;">CPM:</div>
+            <div class="col-lg-4" style="display:inline-block;transform:skewX(-20deg)!important;margin-left:-1%;" id="namecpmInfo"></div>
             <div class="col-lg-2" style="display:inline-block;transform:skewX(-20deg)!important;text-align:right;" id="cpmWeapon"></div>
             <div class="progress col-lg-4" style="transform:skewX(-20deg)!important;">
               <div class="progress-bar bg-danger"  role="progressbar" id="progressCpmDamage" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <!-- Munitions -->
-            <div class="col-lg-2" ></div>
-            <div class="col-lg-4" style="display:inline-block;transform:skewX(-20deg)!important;margin-left:-2%;">Munitions:</div>
-            <div class="col-lg-2" style="display:inline-block;transform:skewX(-20deg)!important;text-align:right;" id="munitionsWeapon"></div>
-            <div class="progress col-lg-4" style="transform:skewX(-20deg)!important;">
-              <div class="progress-bar bg-info"  role="progressbar" id="progressMunitionsDamage" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
+              <div class="col-lg-2" ></div>
+              <div class="col-lg-4" style="display:inline-block;transform:skewX(-20deg)!important;margin-left:-2%;" id="namemunitionInfo"></div>
+              <div class="col-lg-2" style="display:inline-block;transform:skewX(-20deg)!important;text-align:right;" id="munitionsWeapon"></div>
+              <div class="progress col-lg-4" id="progressMunitionsDamageAll" style="transform:skewX(-20deg)!important;">
+                <div class="progress-bar bg-info"  role="progressbar" id="progressMunitionsDamage" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
             <!-- Porte ou explo -->
-            <div class="col-lg-2" ></div>
-            <div class="col-lg-4" id="exploPorte" style="display:inline-block;transform:skewX(-20deg)!important;margin-left:-3%;">Porté / Explosion</div>
-            <div class="col-lg-2" style="display:inline-block;transform:skewX(-20deg)!important;text-align:right;" id="exploPorteWeapon"></div>
-            <div class="progress col-lg-4" style="transform:skewX(-20deg)!important;">
-              <div class="progress-bar bg-warning"  role="progressbar" id="progressExploPorteDamage" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
+              <div class="col-lg-2" ></div>
+              <div class="col-lg-4" id="exploPorte" style="display:inline-block;transform:skewX(-20deg)!important;margin-left:-3%;"></div>
+              <div class="col-lg-2" style="display:inline-block;transform:skewX(-20deg)!important;text-align:right;" id="exploPorteWeapon"></div>
+              <div class="progress col-lg-4" id="progressExploPorteDamageAll" style="transform:skewX(-20deg)!important;">
+                <div class="progress-bar bg-warning"  role="progressbar" id="progressExploPorteDamage" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
           </div>
           <div class="row col-lg-12" style="background-color:black;opacity:0.7;color:white;padding-top:1%;height:100px;">
             <div class="col-lg-12" id="descriptionWeapon" style="transform:skewX(-20deg)!important;text-align:center;" ></div>
@@ -244,10 +254,8 @@ header("location:./index.php");
 </div>
 
 <script>
-function seearme(type,id){
-  console.log(type)
+function seearme(type,id,id_javelin){
   $('#modalarme').modal('show')
-  $('#modalarme').css("background",'none')
   $.ajax({
     type: "POST",
     url: './ajax.php',
@@ -259,11 +267,120 @@ function seearme(type,id){
       },
       success: function (response) {
         $.each(response, function(index, value) {
+          console.log(index+" "+value)
           if (type == "armes") {
-            $('#image_obj').html('<img src="./image/arme/'+id+'.png" style="margin-left:-75px;" width="120%" height="120%" alt="">')
+            $('#exampleModalPreviewLabel').html('Armes')
+            $('#image_obj').html('<img src="./image/arme/'+id+'.png" style="margin-left:-75px;transform:skewX(-20deg)!important" width="120%" height="120%" alt="">')
+            $('#nameDamageInfo').html('Dégat:')
+            $('#namecpmInfo').html('CPM:')
+            $('#nameWeapon').html(response['nom'])
+            $('#styleWeapon').html(response['id_type'])
+            $('#pouvoirWeapon').html('Pouvoir : <h4>47</h4>')
+            $('#degatWeapon').html(response['degat'])
+            $('#cpmWeapon').html(response['cpm'])
+            $('#munitionsWeapon').html(response['munitions'])
+            updateProgressDamage((response['degat']/400)*100);
+            updateProgressCpm((response['cpm']/400)*100);
+            updateProgressMunitions((response['munitions']/400)*100);
+            if (response['degat_explosion'] != null) {
+              $('#exploPorte').html("Dégats explosion")
+              updateProgressExploOrPorte((response['degat_explosion']/400)*100);
+              $('#exploPorteWeapon').html(response['degat_explosion'])
+            } else {
+              $('#exploPorte').html("Porté")
+              updateProgressExploOrPorte((response['porte']/400)*100);
+              $('#exploPorteWeapon').html(response['porte'])
+            }
+            $('#descriptionWeapon').html(response['description']+"<br/><p style='color:orange;'>"+response['effet']+"</p>")
+          } else if(type=="assaut1"){
+            $('#nameDamageInfo').html('Dégat:')
+            $('#namecpmInfo').html('Recharges:')
+            $('#nameWeapon').html(response['nom'])
+            $('#styleWeapon').html(response['des_type'])
+            $('#pouvoirWeapon').html('Pouvoir : <h4>47</h4>')
+            $('#degatWeapon').html(response['degat'])
+            $('#cpmWeapon').html(response['cpm'])
+            $('#munitionsWeapon').html(response['munitions'])
+            updateProgressDamage((response['degat']/400)*100);
+            updateProgressCpm((response['cpm']/400)*100);
+            updateProgressMunitions((response['munitions']/400)*100);
+            if (response['degat_explosion'] != null) {
+              $('#exploPorte').html("Dégats explosion")
+              updateProgressExploOrPorte((response['degat_explosion']/400)*100);
+              $('#exploPorteWeapon').html(response['degat_explosion'])
+            } else {
+              $('#exploPorte').html("Porté")
+              updateProgressExploOrPorte((response['porte']/400)*100);
+              $('#exploPorteWeapon').html(response['porte'])
+            }
+            $('#descriptionWeapon').html(response['description']+"<br/><p style='color:orange;'>"+response['effet']+"</p>")
+            $('#exampleModalPreviewLabel').html("Systeme assaut 1")
+            $('#image_obj').html('<img src="./image/'+id_javelin+'/assaut/'+response['id_type']+'/'+response['id']+'.png" style="background-color:black;margin-top:75px;transform:skewX(-20deg)!important;margin-left:150px;" width="25%" height="25%" alt="">')
+          } else if(type=="composant"){
+            $('#nameDamageInfo').html('Armure:')
+            $('#namecpmInfo').html('Bouclier:')
+            $('#nameWeapon').html(response['nom'])
+            $('#styleWeapon').html(response['id_type'])
+            $('#pouvoirWeapon').html('Pouvoir : <h4>47</h4>')
+            $('#degatWeapon').html(response['armure'])
+            $('#cpmWeapon').html(response['bouclier'])
+            updateProgressDamage((response['degat']/400)*100);
+            updateProgressCpm((response['cpm']/400)*100);
+            $('#descriptionWeapon').html(response['description']+"<br/><p style='color:orange;'>"+response['effet']+"</p>")
+            $('#exampleModalPreviewLabel').html("Composant")
+            $('#image_obj').html('<img src="./image/'+id_javelin+'/composant/'+response['id']+'.jpg" style="background-color:black;margin-top:75px;transform:skewX(-20deg)!important;margin-left:150px;" width="25%" height="25%" alt="">')
+          } else if(type=="soutient"){
+            $('#nameDamageInfo').html('Recharges: ')
+            $('#namecpmInfo').html('Rayon: ')
+
+            $('#namemunitionInfo').addClass('display','none')
+            $('#munitionsWeapon').addClass('display','none')
+            $('#progressMunitionsDamageAll').addClass('displaybarnone')
+
+
+            $('#exploPorte').addClass('display','none')
+            $('#exploPorteWeapon').addClass('display','none')
+            $('#progressExploPorteDamageAll').addClass('displaybarnone')
+
+            $('#exampleModalPreviewLabel').html("Systeme soutien")
+            $('#image_obj').html('<img src="./image/'+id_javelin+'/soutient/'+response['id']+'.png" style="background-color:black;margin-top:75px;transform:skewX(-20deg)!important;margin-left:150px;" width="25%" height="25%" alt="">')
+          } else if(type=="assaut2"){
+            $('#namemunitionInfo').addClass('display','block')
+            $('#munitionsWeapon').addClass('display','block')
+            $('#progressMunitionsDamageAll').removeClass('displaybarnone')
+
+            $('#exploPorte').addClass('display','block')
+            $('#exploPorteWeapon').addClass('display','block')
+            $('#progressExploPorteDamageAll').removeClass('displaybarnone')
+
+            $('#nameDamageInfo').html('Dégat:')
+            $('#namecpmInfo').html('Recharges:')
+            $('#nameWeapon').html(response['nom'])
+            $('#styleWeapon').html(response['des_type'])
+            $('#pouvoirWeapon').html('Pouvoir : <h4>47</h4>')
+            $('#degatWeapon').html(response['degat'])
+            $('#cpmWeapon').html(response['recharge'])
+            $('#munitionsWeapon').html(response['rayon'])
+            $('#styleWeapon').html(response['des_type'])
+            if (response['id_statut'] == "Foudre") {
+              $('#exploPorte').html("Statut électricité: ")
+            } else if (response['id_statut'] == "Gel") {
+              $('#exploPorte').html("Statut Gelée: ")
+            } else if (response['id_statut'] == "Acide") {
+              $('#exploPorte').html("Statut Acide: ")
+            } else if (response['id_statut'] == "Feu") {
+              $('#exploPorte').html("Statut Emflammer: ")
+            }
+            $('#namemunitionInfo').html('Rayon: ')
+            $('#exploPorteWeapon').html(response['degat_statut'])
+            updateProgressDamage((response['degat']/400)*100);
+            updateProgressCpm((response['recharge'])*10);
+            updateProgressMunitions(response['rayon']);
+            updateProgressExploOrPorte(response['degat_statut']);
+            $('#descriptionWeapon').html(response['description']+"<br/><p style='color:orange;'>"+response['effet']+"</p>")
+            $('#exampleModalPreviewLabel').html("Systeme assaut 2")
+            $('#image_obj').html('<img src="./image/'+id_javelin+'/assaut/'+response['id_type']+'/'+response['id']+'.png" style="background-color:black;margin-top:75px;transform:skewX(-20deg)!important;margin-left:150px;" width="25%" height="25%" alt="">')
           }
-
-
         });
       },
       error: function(jqXHR, textStatus, errorThrown) {
@@ -272,5 +389,39 @@ function seearme(type,id){
   });
 }
 
+// update bar armes
+function updateProgressDamage(percentage){
+  if (percentage > 100) {
+      percentage = 100;
+  }
+    $('#progressWeaponDamage').css('width', percentage+'%');
+}
+
+function updateProgressCpm(percentage){
+  if (percentage > 100) {
+      percentage = 100;
+  }
+    $('#progressCpmDamage').css('width', percentage+'%');
+}
+
+function updateProgressMunitions(percentage){
+  if (percentage > 100) {
+      percentage = 100;
+  }
+    $('#progressMunitionsDamage').css('width', percentage+'%');
+}
+
+function updateProgressExploOrPorte(percentage){
+  if (percentage > 100) {
+      percentage = 100;
+  }
+    $('#progressExploPorteDamage').css('width', percentage+'%');
+}
 </script>
+<style>
+.displaybarnone{
+  display:none;
+}
+</style>
+
 <!-- Modal -->

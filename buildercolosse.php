@@ -162,7 +162,7 @@ $resultatsComposant=$resultComposant->db_getComposant(2);
         <div class="row" style="transform:skewX(20deg);margin-left:25px;">
           <?php while ($row_armes=$resultats->fetch_array(MYSQLI_ASSOC)) {
               $armes = new Armes($row_armes); ?>
-          <div class="col-lg-4 boxcontainer"  onmouseover="seestatsarme(<?php echo $armes->getId() ?>)" onclick="saveweapon('armes<?php echo $armes->getId() ?>',<?php echo $armes->getId() ?>,'<?php echo $armes->getNom() ?>')">
+          <div class="col-lg-4 boxcontainer"  onmouseenter="seestatsarme(<?php echo $armes->getId() ?>)" onclick="saveweapon('armes<?php echo $armes->getId() ?>',<?php echo $armes->getId() ?>,'<?php echo $armes->getNom() ?>')">
             <div id='armes<?php echo $armes->getId() ?>'  class="box" onmouseover="this.style.border = '1px solid orange'" onmouseout="this.style.border = '1px solid black'">
               <div style="transform:skewX(-20deg);width:100%;height:100%;background-image:url('./image/arme/<?php echo $armes->getId() ?>.png');background-size: contain;background-repeat: no-repeat;"></div>
             </div>
@@ -277,7 +277,7 @@ $resultatsComposant=$resultComposant->db_getComposant(2);
         <div class="row" style="transform:skewX(20deg);margin-left:25px;">
           <?php while ($row_assaut=$resultatsAssaut->fetch_array(MYSQLI_ASSOC)) {
               $assaut = new Assaut($row_assaut); ?>
-          <div class="col-lg-4 boxcontainer"  onmouseover="seestatsassaut1(<?php echo $assaut->getId() ?>)" onclick="saveassaut1('assaut<?php echo $assaut->getId() ?>',<?php echo $assaut->getId() ?>,'<?php echo $assaut->getNom() ?>')">
+          <div class="col-lg-4 boxcontainer"  onmouseenter="seestatsassaut1(<?php echo $assaut->getId() ?>)" onclick="saveassaut1('assaut<?php echo $assaut->getId() ?>',<?php echo $assaut->getId() ?>,'<?php echo $assaut->getNom() ?>')">
             <div   class="boxAssaut" >
               <div style="transform:skewX(-20deg);width:100%;height:100%;">
                 <img id='assaut<?php echo $assaut->getId() ?>' style="border:1px solid black;" src="./image/2/assaut/<?php echo $assaut->getId_type() ?>/<?php echo $assaut->getId() ?>.jpg" alt="" width="130px" height="70px">
@@ -385,7 +385,7 @@ $resultatsComposant=$resultComposant->db_getComposant(2);
         <div class="row" style="transform:skewX(20deg);margin-left:25px;">
           <?php while ($row_concentration=$resultatsConcentration->fetch_array(MYSQLI_ASSOC)) {
               $assaut2 = new Assaut($row_concentration); ?>
-          <div class="col-lg-4 boxcontainer"  onmouseover="seestatsassaut2(<?php echo $assaut2->getId() ?>)" onclick="saveassaut2('assaut2<?php echo $assaut2->getId() ?>',<?php echo $assaut2->getId() ?>,'<?php echo $assaut2->getNom() ?>')">
+          <div class="col-lg-4 boxcontainer"  onmouseenter="seestatsassaut2(<?php echo $assaut2->getId() ?>)" onclick="saveassaut2('assaut2<?php echo $assaut2->getId() ?>',<?php echo $assaut2->getId() ?>,'<?php echo $assaut2->getNom() ?>')">
             <div class="boxAssaut" >
               <div style="transform:skewX(-20deg);width:100%;height:100%;">
                 <img id='assaut2<?php echo $assaut2->getId() ?>'  style="border:1px solid black;" src="./image/2/assaut/<?php echo $assaut2->getId_type() ?>/<?php echo $assaut2->getId() ?>.jpg" alt="" width="130px" height="70px">
@@ -493,7 +493,7 @@ $resultatsComposant=$resultComposant->db_getComposant(2);
         <div class="row" style="transform:skewX(20deg);margin-left:25px;">
           <?php while ($row_soutient=$resultatsSoutient->fetch_array(MYSQLI_ASSOC)) {
               $soutient = new Soutient($row_soutient); ?>
-          <div class="col-lg-4 boxcontainer"  onmouseover="seestatssoutient(<?php echo $soutient->getId() ?>)" onclick="savesoutient('soutient<?php echo $soutient->getId() ?>',<?php echo $soutient->getId() ?>,'<?php echo $soutient->getNom() ?>')">
+          <div class="col-lg-4 boxcontainer"  onmouseenter="seestatssoutient(<?php echo $soutient->getId() ?>)" onclick="savesoutient('soutient<?php echo $soutient->getId() ?>',<?php echo $soutient->getId() ?>,'<?php echo $soutient->getNom() ?>')">
             <div   class="boxAssaut" >
               <div style="transform:skewX(-20deg)!important;width:100%;height:100%;">
                 <img id='soutient<?php echo $soutient->getId() ?>' style="border:1px solid black;" src="./image/2/soutient/<?php echo $soutient->getId() ?>.png" alt="" width="130px" height="90px">
@@ -587,7 +587,7 @@ $resultatsComposant=$resultComposant->db_getComposant(2);
         <div class="row" style="transform:skewX(20deg);margin-left:25px;">
           <?php while ($row_composant=$resultatsComposant->fetch_array(MYSQLI_ASSOC)) {
               $composant = new Composant($row_composant); ?>
-          <div class="col-lg-4 boxcontainer"  onmouseover="seestatscomposant(<?php echo $composant->getId() ?>)" onclick="savecomposant('composants<?php echo $composant->getId() ?>',<?php echo $composant->getId() ?>,'<?php echo $composant->getNom() ?>')">
+          <div class="col-lg-4 boxcontainer"  onmouseenter="seestatscomposant(<?php echo $composant->getId() ?>)" onclick="savecomposant('composants<?php echo $composant->getId() ?>',<?php echo $composant->getId() ?>,'<?php echo $composant->getNom() ?>')">
             <div   class="boxAssaut" >
               <div style="transform:skewX(-20deg);width:100%;height:100%;">
                 <img onmouseover="this.style.border = '2px solid orange'" id="composants<?php echo $composant->getId() ?>" style="border:1px solid black;" src="./image/2/composant/<?php echo $composant->getId() ?>.jpg" alt="" width="150px" height="90px">
@@ -610,14 +610,14 @@ $resultatsComposant=$resultComposant->db_getComposant(2);
           <div class="row col-lg-12" style="background-color:black;opacity:0.7;color:white;padding-top:1%;">
             <!-- Degat -->
             <div class="col-lg-2" ></div>
-            <div class="col-lg-4" style="display:inline-block;transform:skewX(-20deg)!important;">Dégats:</div>
+            <div class="col-lg-4" style="display:inline-block;transform:skewX(-20deg)!important;">Armure:</div>
             <div class="col-lg-2" style="display:inline-block;transform:skewX(-20deg)!important;text-align:right;" id="armureComposant"></div>
             <div class="progress col-lg-4" style="transform:skewX(-20deg)!important;">
               <div class="progress-bar bg-success" role="progressbar" id="progressComposantArmure" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <!-- CPM -->
             <div class="col-lg-2" ></div>
-            <div class="col-lg-4" style="display:inline-block;transform:skewX(-20deg)!important;margin-left:-1%;">CPM:</div>
+            <div class="col-lg-4" style="display:inline-block;transform:skewX(-20deg)!important;margin-left:-1%;">Bouclier:</div>
             <div class="col-lg-2" style="display:inline-block;transform:skewX(-20deg)!important;text-align:right;" id="bouclierComposant"></div>
             <div class="progress col-lg-4" style="transform:skewX(-20deg)!important;">
               <div class="progress-bar bg-danger"  role="progressbar" id="progressComposantBouclier" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
@@ -646,7 +646,7 @@ $resultatsComposant=$resultComposant->db_getComposant(2);
           <thead>
             <tr>
               <th scope="col">Emplacement</th>
-              <th scope="col">Arme : </th>
+              <th scope="col">Composant : </th>
               <th scope="col">Supprimer</th>
             </tr>
           </thead>
