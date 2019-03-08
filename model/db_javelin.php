@@ -1,5 +1,5 @@
 <?php
-class BuildsManager{
+class JavelinManager{
 		private $mysqli;
 
 		public function __construct($mysqli){
@@ -9,46 +9,30 @@ class BuildsManager{
 			$this->mysqli=$mysqli;
 		}
 
-	function db_addBuilds(Builds $builds) {
-	$nom=$builds->getNom();
-	$id_user=$builds->getId_user();
-	$id_javelin=$builds->getId_javelin();
-	$id_soutient=$builds->getId_soutient();
-	$id_assaut=$builds->getId_assaut();
-	$id_concentration=$builds->getId_concentration();
-	$query=$this->mysqli->prepare("INSERT INTO `builds`(`nom`, `id_user`, `id_javelin`, `id_soutient`, `id_assaut`, `id_concentration`) VALUES (?,?,?,?,?,?)") or trace("Erreur sur la requête :".$query.":".$query->error);
-		if ($query) {
-			$query->bind_param("siiiii",$nom,$id_user,$id_javelin,$id_soutient,$id_assaut,$id_concentration);
-			$query->execute();
-			return $this->mysqli->insert_id;
-		} else {
-			return 0;
-		}
-	}
-
-	function db_getAllBuild($limit=0,$offset=0,$order="id asc") {
-		$stmt="select * from builds";
+	function db_getJavelin($id,$limit=0,$offset=0,$order="id asc") {
+		$stmt="SELECT * FROM `javelin` WHERE id=?";
 		$query=$this->mysqli->prepare($stmt) or trace("Probleme avec ".$query->error);
-		if ($query) {
-			$query->execute();
-			return $query->get_result();
-		} else {
-			return 0;
-		}
-	}
-
-	function db_getBuildbyid($id,$limit=0,$offset=0,$order="id asc") {
-		$stmt="select * from builds where id =?";
-		$query=$this->mysqli->prepare($stmt) or trace("Probleme avec ".$query->error);
-		if ($query) {
-			$query->bind_param("i",$id);
-			$query->execute();
-			return $query->get_result();
-		} else {
-			return 0;
-		}
+    if ($query) {
+      $query->bind_param("i",$id);
+      $query->execute();
+      return $query->get_result();
+    } else {
+      return 0;
+    }
 	}
 /*
+	function db_getSoutientbyid($id_soutient,$limit=0,$offset=0,$order="id asc") {
+		$stmt="SELECT * FROM `soutient` WHERE id=?";
+		$query=$this->mysqli->prepare($stmt) or trace("Probleme avec ".$query->error);
+		if ($query) {
+			$query->bind_param("i",$id_soutient);
+			$query->execute();
+			return $query->get_result();
+		} else {
+			return 0;
+		}
+	}
+
 	function db_getUserLoginPassword($users,$mdp,$limit=0,$offset=0,$order="id asc") {
 
 		$stmt="select * from users where pseudo=? and mdp=password(?)";

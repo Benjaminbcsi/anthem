@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once __DIR__ . "./model/_model.php";
+
 $result=new ArmesManager($connexion);
 $resultAssaut=new AssautManager($connexion);
 $resultSoutient=new SoutientManager($connexion);
@@ -10,6 +11,8 @@ $resultatsAssaut=$resultAssaut->db_getAssaut(2,2);
 $resultatsConcentration=$resultAssaut->db_getAssaut(2,1);
 $resultatsSoutient=$resultSoutient->db_getSoutient(2);
 $resultatsComposant=$resultComposant->db_getComposant(2);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -83,26 +86,34 @@ $resultatsComposant=$resultComposant->db_getComposant(2);
     <div class="row" style="padding:2%;">
       <div class="col-lg-5" ></div>
       <div class="col-lg-2" ></div>
-      <div class="col-lg-1" id="explosionsee" ><button id="modalActivateAssaut2" type="button btn-outline-light" class="btn" data-toggle="modal" data-target="#modalassaut2"><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></button></div>
-      <div class="col-lg-2 armes parallelogrambuilder" id="explosion" ><p style="transform:skewX(-20deg);">COUCOU<p></div>
-      <div class="col-lg-1" ></div>
-      <div class="col-lg-1" ></div>
-    </div>
-    <div class="row" style="padding:2%;" >
-      <div class="col-lg-5" ></div>
-      <div class="col-lg-1" ></div>
-      <div class="col-lg-1" id="composantsee" ><button id="modalActivateAssaut2" type="button btn-outline-light" class="btn" data-toggle="modal" data-target="#modalcomposant"><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></button></div>
-      <div class="col-lg-2 armes parallelogrambuilder" style="margin-left:-3%" id="composant" ><p style="transform:skewX(-20deg);">COUCOU<p></div>
-      <div class="col-lg-1" ></div>
-      <div class="col-lg-2" ></div>
+      <div class="col-lg-1" style="margin-left:-100px;" id="explosionsee" ><button id="modalActivateAssaut2" type="button btn-outline-light" class="btn" data-toggle="modal" data-target="#modalassaut2"><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></button></div>
+      <div class="col-lg-2 armes parallelogrambuilder" id="explosion" >
+        <p style="transform:skewX(-20deg);" id="assaut2see">Lanceur d'artillerie: <p>
+        </div>
+      <div class="col-lg-3" ></div>
     </div>
     <div class="row" >
+      <div class="col-lg-5" ></div>
+      <div class="col-lg-1" ></div>
+      <div class="col-lg-2" style="margin-left:50px;" id="composantsee" ><button id="modalActivateComposant" type="button btn-outline-light" class="btn" data-toggle="modal" data-target="#modalcomposant"><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></button></div>
+      <div class="col-lg-2 armes parallelogrambuilder" style="margin-left:-3%;height:370px;" id="composant" >
+        <p id="composant1_data" style="transform:skewX(-20deg);">Composant1:<br/><br/><p>
+        <p id="composant2_data" style="transform:skewX(-20deg);">Composant2:<br/><br/><p>
+        <p id="composant3_data" style="transform:skewX(-20deg);">Composant3:<br/><br/><p>
+        <p id="composant4_data" style="transform:skewX(-20deg);">Composant4:<br/><br/><p>
+        <p id="composant5_data" style="transform:skewX(-20deg);">Composant5:<br/><br/><p>
+        <p id="composant6_data" style="transform:skewX(-20deg);">Composant6:<br/><br/><p>
+      </div>
+      <div class="col-lg-1" ></div>
+      <div class="col-lg-1" ></div>
+    </div>
+    <div class="row" style="margin-top:-300px;" >
       <div class="col-lg-2"></div>
-      <div class="col-lg-2 armes parallelogrambuilder" style="height:50px;" id="assaut1" ><p style="transform:skewX(-20deg);">Assaut:<p></div>
+      <div class="col-lg-2 armes parallelogrambuilder" style="height:50px;" id="assaut1" ><p style="transform:skewX(-20deg);">Lanceur d'assaut lourd:<p></div>
       <div class="col-lg-1" id="assautsee" ><button id="modalActivateAssaut1" type="button btn-outline-light" class="btn" data-toggle="modal" data-target="#modalassaut1"><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></button></div>
       <div class="col-lg-1" ></div>
       <div class="col-lg-1" id="soutientsee" ><button id="modalActivateSoutient" type="button btn-outline-light" class="btn" data-toggle="modal" data-target="#modalsoutient"><div class="circle"><div class="circleinner"><div class="circlecenter"></div></div></div></button></div>
-      <div class="col-lg-2 armes parallelogrambuilder" style="height:50px;" id="soutient" ><p style="transform:skewX(-20deg);">Soutien:<p></div>
+      <div class="col-lg-2 armes parallelogrambuilder" style="height:50px;" id="soutient" ><p style="transform:skewX(-20deg);">Équipement de soutien:<p></div>
       <div class="col-lg-2" ></div>
     </div>
     <div class="row" style="padding:1%;">
@@ -267,9 +278,9 @@ $resultatsComposant=$resultComposant->db_getComposant(2);
           <?php while ($row_assaut=$resultatsAssaut->fetch_array(MYSQLI_ASSOC)) {
               $assaut = new Assaut($row_assaut); ?>
           <div class="col-lg-4 boxcontainer"  onmouseover="seestatsassaut1(<?php echo $assaut->getId() ?>)" onclick="saveassaut1('assaut<?php echo $assaut->getId() ?>',<?php echo $assaut->getId() ?>,'<?php echo $assaut->getNom() ?>')">
-            <div id='assaut<?php echo $assaut->getId() ?>'  class="boxAssaut" >
+            <div   class="boxAssaut" >
               <div style="transform:skewX(-20deg);width:100%;height:100%;">
-                <img onmouseover="this.style.border = '2px solid orange'" onmouseout="this.style.border = '1px solid black'" style="border:1px solid black;" src="./image/2/assaut/<?php echo $assaut->getId_type() ?>/<?php echo $assaut->getId() ?>.jpg" alt="" width="130px" height="70px">
+                <img id='assaut<?php echo $assaut->getId() ?>' style="border:1px solid black;" src="./image/2/assaut/<?php echo $assaut->getId_type() ?>/<?php echo $assaut->getId() ?>.jpg" alt="" width="130px" height="70px">
               </div>
             </div>
           </div>
@@ -375,9 +386,9 @@ $resultatsComposant=$resultComposant->db_getComposant(2);
           <?php while ($row_concentration=$resultatsConcentration->fetch_array(MYSQLI_ASSOC)) {
               $assaut2 = new Assaut($row_concentration); ?>
           <div class="col-lg-4 boxcontainer"  onmouseover="seestatsassaut2(<?php echo $assaut2->getId() ?>)" onclick="saveassaut2('assaut2<?php echo $assaut2->getId() ?>',<?php echo $assaut2->getId() ?>,'<?php echo $assaut2->getNom() ?>')">
-            <div id='assaut2<?php echo $assaut2->getId() ?>'  class="boxAssaut" >
+            <div class="boxAssaut" >
               <div style="transform:skewX(-20deg);width:100%;height:100%;">
-                <img onmouseover="this.style.border = '2px solid orange'" onmouseout="this.style.border = '1px solid black'" style="border:1px solid black;" src="./image/2/assaut/<?php echo $assaut2->getId_type() ?>/<?php echo $assaut2->getId() ?>.jpg" alt="" width="130px" height="70px">
+                <img id='assaut2<?php echo $assaut2->getId() ?>'  style="border:1px solid black;" src="./image/2/assaut/<?php echo $assaut2->getId_type() ?>/<?php echo $assaut2->getId() ?>.jpg" alt="" width="130px" height="70px">
               </div>
             </div>
           </div>
@@ -483,9 +494,9 @@ $resultatsComposant=$resultComposant->db_getComposant(2);
           <?php while ($row_soutient=$resultatsSoutient->fetch_array(MYSQLI_ASSOC)) {
               $soutient = new Soutient($row_soutient); ?>
           <div class="col-lg-4 boxcontainer"  onmouseover="seestatssoutient(<?php echo $soutient->getId() ?>)" onclick="savesoutient('soutient<?php echo $soutient->getId() ?>',<?php echo $soutient->getId() ?>,'<?php echo $soutient->getNom() ?>')">
-            <div id='soutient<?php echo $soutient->getId() ?>'  class="boxAssaut" >
+            <div   class="boxAssaut" >
               <div style="transform:skewX(-20deg)!important;width:100%;height:100%;">
-                <img onmouseover="this.style.border = '2px solid orange'" onmouseout="this.style.border = '1px solid black'" style="border:1px solid black;" src="./image/2/soutient/<?php echo $soutient->getId() ?>.png" alt="" width="130px" height="90px">
+                <img id='soutient<?php echo $soutient->getId() ?>' style="border:1px solid black;" src="./image/2/soutient/<?php echo $soutient->getId() ?>.png" alt="" width="130px" height="90px">
               </div>
             </div>
           </div>
@@ -525,7 +536,6 @@ $resultatsComposant=$resultComposant->db_getComposant(2);
     </div>
   </div>
 </div>
-
 
 <div class="modal fade" id="soutientchoixmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -578,9 +588,9 @@ $resultatsComposant=$resultComposant->db_getComposant(2);
           <?php while ($row_composant=$resultatsComposant->fetch_array(MYSQLI_ASSOC)) {
               $composant = new Composant($row_composant); ?>
           <div class="col-lg-4 boxcontainer"  onmouseover="seestatscomposant(<?php echo $composant->getId() ?>)" onclick="savecomposant('composants<?php echo $composant->getId() ?>',<?php echo $composant->getId() ?>,'<?php echo $composant->getNom() ?>')">
-            <div id='composants<?php echo $composant->getId() ?>'  class="boxAssaut" >
+            <div   class="boxAssaut" >
               <div style="transform:skewX(-20deg);width:100%;height:100%;">
-                <img onmouseover="this.style.border = '2px solid orange'" onmouseout="this.style.border = '1px solid black'" style="border:1px solid black;" src="./image/2/composant/<?php echo $composant->getId() ?>.jpg" alt="" width="150px" height="90px">
+                <img onmouseover="this.style.border = '2px solid orange'" id="composants<?php echo $composant->getId() ?>" style="border:1px solid black;" src="./image/2/composant/<?php echo $composant->getId() ?>.jpg" alt="" width="150px" height="90px">
               </div>
             </div>
           </div>
@@ -622,7 +632,7 @@ $resultatsComposant=$resultComposant->db_getComposant(2);
   </div>
 </div>
 <!-- Modal choix composant -->
-<div class="modal fade" id="armeschoixcomposant" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="composantchoixmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -643,43 +653,43 @@ $resultatsComposant=$resultComposant->db_getComposant(2);
           <tbody>
             <tr>
               <th scope="row">1</th>
-              <td id="armename1"></td>
-              <td><button type="button" onclick="deleteweapon(1)" class="close">
+              <td id="composant1"></td>
+              <td><button type="button" onclick="deletecomposant(1)" class="close">
                 <span aria-hidden="true">&times;</span>
               </button></td>
             </tr>
             <tr>
               <th scope="row">2</th>
-              <td id="armename2"></td>
-              <td><button type="button" onclick="deleteweapon(2)" class="close">
+              <td id="composant2"></td>
+              <td><button type="button" onclick="deletecomposant(2)" class="close">
                 <span aria-hidden="true">&times;</span>
               </button></td>
             </tr>
             <tr>
               <th scope="row">3</th>
-              <td id="armename3"></td>
-              <td><button type="button" onclick="deleteweapon(3)" class="close">
+              <td id="composant3"></td>
+              <td><button type="button" onclick="deletecomposant(3)" class="close">
                 <span aria-hidden="true">&times;</span>
               </button></td>
             </tr>
             <tr>
               <th scope="row">4</th>
-              <td id="armename4"></td>
-              <td><button type="button" onclick="deleteweapon(4)" class="close">
+              <td id="composant4"></td>
+              <td><button type="button" onclick="deletecomposant(4)" class="close">
                 <span aria-hidden="true">&times;</span>
               </button></td>
             </tr>
             <tr>
               <th scope="row">5</th>
-              <td id="armename5"></td>
-              <td><button type="button" onclick="deleteweapon(5)" class="close">
+              <td id="composant5"></td>
+              <td><button type="button" onclick="deletecomposant(5)" class="close">
                 <span aria-hidden="true">&times;</span>
               </button></td>
             </tr>
             <tr>
               <th scope="row">6</th>
-              <td id="armename6"></td>
-              <td><button type="button" onclick="deleteweapon(6)" class="close">
+              <td id="composant6"></td>
+              <td><button type="button" onclick="deletecomposant(6)" class="close">
                 <span aria-hidden="true">&times;</span>
               </button></td>
             </tr>
@@ -687,8 +697,8 @@ $resultatsComposant=$resultComposant->db_getComposant(2);
         </table>
       </div>
       <div class="modal-footer">
-        <button type="button" onclick="deletetableweapon()" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-        <button type="button" onclick="closeallweapon()" class="btn btn-primary">Sauvegarder armes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+        <button type="button" onclick="closeallcomposant()" class="btn btn-primary">Sauvegarder Composant</button>
       </div>
     </div>
   </div>
@@ -732,12 +742,9 @@ function deleteweapon(emplacement){
   }
 }
 
-function deletetableweapon(){
-  var array_weapon= ['vide','vide'];
-}
-
 function closeallweapon(){
   $('#armeschoixmodal').modal('hide')
+  $('#modalarme').modal('hide')
   $.toaster({ priority : 'info', title : 'Armes 2', message : "Les armes on était sauvegarder"});
 }
 
@@ -750,7 +757,7 @@ function savebuild(){
       $.toaster({ priority : 'error', title : 'Assaut', message : "l'Equipement est manquant."});
       return false;
   }
-  if (assaut1 == "vide") {
+  if (assaut2 == "vide") {
       $.toaster({ priority : 'error', title : 'Assaut', message : "l'Equipement 2 est manquant."});
       return false;
   }
@@ -758,7 +765,15 @@ function savebuild(){
       $.toaster({ priority : 'error', title : 'Assaut', message : "l'Equipement de soutien est manquant."});
       return false;
   }
+  if (composant[0] == "vide" || composant[1] == "vide" || composant[2] == "vide" || composant[3] == "vide" || composant[4] == "vide" || composant[5] == "vide") {
+    $.toaster({ priority : 'error', title : 'Armes 2', message : "Un composant est manquant."});
+    return false;
+  }
   var nameBuild = $('#nameBuild').val();
+  if(nameBuild == "" || nameBuild==null){
+    $.toaster({ priority : 'error', title : 'Nom build', message : "Nom du build manquant."});
+    return false;
+  }
   $.ajax({
     type: "POST",
     url: './ajax.php',
@@ -771,6 +786,7 @@ function savebuild(){
       assaut1: assaut1,
       soutient: soutient,
       assaut2: assaut2,
+      composant: composant,
       },
       success: function (response) {
         $.toaster({ priority : 'info', title : 'Builder', message : "build Enregistrer"});
@@ -939,9 +955,10 @@ function updateProgressStatutAssaut1(percentage){
 var assaut1 = "vide";
 function saveassaut1(id_element,id,name){
   if (assaut1 == "vide") {
+    $('#'+id_element).attr('style','border:3px solid orange')
     assaut1 = id;
     $('#assaut1name1').html(name)
-    $('#assaut1').html('<p style="transform:skewX(-20deg);">Assaut : </p><p style="color:white;transform:skewX(-20deg);margin-top:-5%;">'+name+'</p>' )
+    $('#assaut1').html("<p style='transform:skewX(-20deg);'>Lanceur d'assaut lourd : </p><p style='color:white;transform:skewX(-20deg);margin-top:-5%;'>"+name+"</p>" )
     $.toaster({ priority : 'success', title : 'Assaut', message : name+" ajouter"});
   }
   if (assaut1 != "vide") {
@@ -1060,9 +1077,10 @@ function updateProgressStatutAssaut2(percentage){
 var assaut2 = "vide";
 function saveassaut2(id_element,id,name){
   if (assaut2 == "vide") {
+    $('#'+id_element).attr('style','border:3px solid orange')
     assaut2 = id;
     $('#assaut2name1').html(name)
-    $('#assaut2').html('<p style="transform:skewX(-20deg);">Assaut : </p><p style="color:white;transform:skewX(-20deg);margin-top:-5%;">'+name+'</p>' )
+    $('#assaut2see').html("<p >Lanceur d'artillerie : </p><p style='color:white;margin-top:-5%;'>"+name+"</p>" )
     $.toaster({ priority : 'success', title : 'Assaut', message : name+" ajouter"});
   }
   if (assaut2 != "vide") {
@@ -1137,9 +1155,10 @@ function closeallassaut2(){
 var soutient = "vide";
 function savesoutient(id_element,id,name){
   if (soutient == "vide") {
+    $('#'+id_element).attr('style','border:3px solid orange')
     soutient = id;
     $('#soutientname').html(name)
-    $('#soutient').html('<p style="transform:skewX(-20deg);">Soutient : </p><p style="color:white;transform:skewX(-20deg);margin-top:-5%;">'+name+'</p>' )
+    $('#soutient').html('<p style="transform:skewX(-20deg);">Équipement de soutien : </p><p style="color:white;transform:skewX(-20deg);margin-top:-5%;">'+name+'</p>' )
     $.toaster({ priority : 'success', title : 'Soutient', message : name+" ajouter"});
   }
   if (soutient != "vide") {
@@ -1153,7 +1172,7 @@ function deletesoutient(){
   soutient ="vide"
   $('#soutientname').html("")
   $('#soutient').html('')
-  if (assaut == "vide") {
+  if (soutient == "vide") {
       $('#soutientchoixmodal').modal('hide')
   }
 }
@@ -1212,35 +1231,36 @@ function updateProgressBouclierComposant(percentage){
 
 var composant = ["vide","vide","vide","vide","vide","vide"];
 function savecomposant(id_element,id,name){
+  $('#'+id_element).attr('style','border:3px solid orange')
   if (composant[0] == "vide") {
     composant[0] = id;
-    $('#armename1').html(name)
-    $('#tableWeaponOver1').html('Arme 1 : <p style="color:white;">'+name+'</p>' )
+    $('#composant1').html(name)
+    $('#composant1_data').html("Composant1:  <p style='color:white;'>"+name+"</p>")
     $.toaster({ priority : 'success', title : 'Composant 1', message : name+" ajouter a l'emplacement 1"});
   } else if(composant[1] == "vide") {
     composant[1] = id;
-    $('#armename2').html(name)
-    $('#tableWeaponOver2').html('<p style="margin-top:-5%;">Arme 2 :</p><p style="color:white;margin-top:-5%;">'+name+'</p>' )
+    $('#composant2').html(name)
+    $('#composant2_data').html("Composant2:  <p style='color:white;'>"+name+"</p>")
     $.toaster({ priority : 'success', title : 'Composant 2', message : name+" ajouter a l'emplacement 2"});
   } else if(composant[2] == "vide") {
     composant[2] = id;
-    $('#armename3').html(name)
-    $('#tableWeaponOver3').html('<p style="margin-top:-5%;">Arme 3 :</p><p style="color:white;margin-top:-5%;">'+name+'</p>' )
+    $('#composant3').html(name)
+    $('#composant3_data').html("Composant3:  <p style='color:white;'>"+name+"</p>")
     $.toaster({ priority : 'success', title : 'Composant 3', message : name+" ajouter a l'emplacement 3"});
   } else if(composant[3] == "vide") {
     composant[3] = id;
-    $('#armename4').html(name)
-    $('#tableWeaponOver4').html('<p style="margin-top:-5%;">Arme 4 :</p><p style="color:white;margin-top:-5%;">'+name+'</p>' )
+    $('#composant4').html(name)
+    $('#composant4_data').html("Composant4: <p style='color:white;'>"+name+"</p>")
     $.toaster({ priority : 'success', title : 'Composant 4', message : name+" ajouter a l'emplacement 4"});
   } else if(composant[4] == "vide") {
     composant[4] = id;
-    $('#armename5').html(name)
-    $('#tableWeaponOver5').html('<p style="margin-top:-5%;">Arme 5 :</p><p style="color:white;margin-top:-5%;">'+name+'</p>' )
+    $('#composant5').html(name)
+    $('#composant5_data').html("Composant5:  <p style='color:white;'>"+name+"</p>")
     $.toaster({ priority : 'success', title : 'Composant 5', message : name+" ajouter a l'emplacement 5"});
   } else if(composant[5] == "vide") {
     composant[5] = id;
-    $('#armename6').html(name)
-    $('#tableWeaponOver6').html('<p style="margin-top:-5%;">Arme 6 :</p><p style="color:white;margin-top:-5%;">'+name+'</p>' )
+    $('#composant6').html(name)
+    $('#composant6_data').html("Composant6:  <p style='color:white;'>"+name+"</p>")
     $.toaster({ priority : 'success', title : 'Composant 6', message : name+" ajouter a l'emplacement 6"});
   }
   if (composant[0] != "vide" && composant[1] != "vide" && composant[2] != "vide" && composant[3] != "vide" && composant[4] != "vide" && composant[5] != "vide") {
@@ -1252,32 +1272,38 @@ function savecomposant(id_element,id,name){
 
 function deletecomposant(emplacement){
   if (emplacement == 1) {
+    $('#composants'+composant[0]).attr('style','border:0px solid orange')
     composant[0] ="vide"
-    $('#composantname1').html("")
-    $('#tableComposantOver1').html('')
+    $('#composant1').html("")
+    $('#composant1_data').html("Composant1 :")
   } else if (emplacement == 2) {
+    $('#composants'+composant[1]).attr('style','border:0px solid orange')
     composant[1] ="vide"
-    $('#composantname2').html("")
-    $('#tableComposantOver2').html('')
+    $('#composant2').html("")
+    $('#composant2_data').html("Composant2 :")
   } else if (emplacement == 3) {
+    $('#composants'+composant[2]).attr('style','border:0px solid orange')
     composant[2] ="vide"
-    $('#composantname3').html("")
-    $('#tableComposantOver3').html('')
+    $('#composant3').html("")
+    $('#composant3_data').html("Composant3 :")
   } else if (emplacement == 4) {
+    $('#composants'+composant[3]).attr('style','border:0px solid orange')
     composant[3] ="vide"
-    $('#composantname4').html("")
-    $('#tableComposantOver4').html('')
+    $('#composant4').html("")
+    $('#composant4_data').html("Composant4 :")
   } else if (emplacement == 5) {
+    $('#composants'+composant[4]).attr('style','border:0px solid orange')
     composant[4] ="vide"
-    $('#composantname5').html("")
-    $('#tableComposantOver5').html('')
+    $('#composant5').html("")
+    $('#composant5_data').html("Composant5 :")
   } else if (emplacement == 6) {
+    $('#composants'+composant[5]).attr('style','border:0px solid orange')
     composant[5] ="vide"
-    $('#composantname6').html("")
-    $('#tableComposantOver6').html('')
+    $('#composant6').html("Composant6 :")
+    $('#composant6_data').html('')
   }
-  if (array_weapon[0] == "vide" && array_weapon[1] == "vide" && array_weapon[2] == "vide" && array_weapon[3] == "vide" && array_weapon[4] == "vide" && array_weapon[5] == "vide") {
-      $('#armeschoixmodal').modal('hide')
+  if (composant[0] == "vide" && composant[1] == "vide" && composant[2] == "vide" && composant[3] == "vide" && composant[4] == "vide" && composant[5] == "vide") {
+      $('#composantchoixmodal').modal('hide')
   }
 }
 
@@ -1287,6 +1313,7 @@ function deletetablecomposant(){
 
 function closeallcomposant(){
   $('#composantchoixmodal').modal('hide')
+  $('#modalcomposant').modal('hide')
   $.toaster({ priority : 'info', title : 'Composant', message : "Les composants on était sauvegarder"});
 }
 

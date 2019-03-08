@@ -1,5 +1,5 @@
 <?php
-class BuildarmesManager{
+class BuildcomposantManager{
 		private $mysqli;
 
 		public function __construct($mysqli){
@@ -9,12 +9,12 @@ class BuildarmesManager{
 			$this->mysqli=$mysqli;
 		}
 
-	function db_addBuildsArmes(Buildarmes $buildarmes) {
-	$id_build=$buildarmes->getId_build();
-	$id_arme=$buildarmes->getId_arme();
-	$query=$this->mysqli->prepare("INSERT INTO `build_armes`(`id_build`, `id_arme`) VALUES (?,?)") or trace("Erreur sur la requête :".$query.":".$query->error);
+	function db_addBuildsComposant(Buildcomposant $buildcomposant) {
+	$id_build=$buildcomposant->getId_build();
+	$id_composant=$buildcomposant->getId_composant();
+	$query=$this->mysqli->prepare("INSERT INTO `build_composant`(`id_build`, `id_composant`) VALUES (?,?)") or trace("Erreur sur la requête :".$query.":".$query->error);
 		if ($query) {
-			$query->bind_param("ii",$id_build,$id_arme);
+			$query->bind_param("ii",$id_build,$id_composant);
 			$query->execute();
 			return 1;
 		} else {
@@ -22,8 +22,8 @@ class BuildarmesManager{
 		}
 	}
 
-	function db_getArmeBuild($id_build,$limit=0,$offset=0,$order="id asc") {
-		$stmt="select id_arme from build_armes where id_build = ?";
+	function db_getComposantBuild($id_build,$limit=0,$offset=0,$order="id asc") {
+		$stmt="select id_composant from build_composant where id_build = ?";
 		$query=$this->mysqli->prepare($stmt) or trace("Probleme avec ".$query->error);
 		if ($query) {
 			$query->bind_param("i",$id_build);

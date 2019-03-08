@@ -1,6 +1,10 @@
 <?php
 session_start();
 require_once __DIR__ . "./model/_model.php";
+$result_build=new BuildsManager($connexion);
+$result_javelin=new JavelinManager($connexion);
+$result_user=new UserManager($connexion);
+$resultats_build=$result_build->db_getAllBuild();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -65,30 +69,34 @@ require_once __DIR__ . "./model/_model.php";
       </div>
     </div>
     <div class="row" style="text-align:center;">
-      <div class="col-lg-3">
-        <a href="buildercolosse.php"><h3 style="color:white;">COLOSSE</h3></a>
-      </div>
-      <div class="col-lg-3">
-        <a href="buildercommando.php"><h3 style="color:white;">COMMANDO</h3></a>
-      </div>
-      <div class="col-lg-3">
-        <a href="builderintercepteur.php"><h3 style="color:white;">INTERCEPTEUR</h3></a>
-      </div>
-      <div class="col-lg-3">
-        <a href="buildertempete.php"><h3 style="color:white;">TEMPETE</h3></a>
-      </div>
-      <div class="col-lg-3">
-            <a href="buildercolosse.php"><img src="./image/2/colosse.png" class="col-lg-12" alt=""></a>
-      </div>
-      <div class="col-lg-3">
-          <a href="buildercommando.php"><img src="./image/1/commando.png" class="col-lg-12" alt=""></a>
-      </div>
-      <div class="col-lg-3">
-          <a href="builderintercepteur.php"><img src="./image/4/intercepteur.png" class="col-lg-12" alt=""></a>
-      </div>
-      <div class="col-lg-3">
-          <a href="buildertempete.php"><img src="./image/3/tempete.png" class="col-lg-12" alt=""></a>
-      </div>
+      <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Nom</th>
+          <th scope="col">Javelin</th>
+          <th scope="col">Nom créateur</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php while ($row_build=$resultats_build->fetch_array(MYSQLI_ASSOC)) {
+            $build = new Builds($row_build);
+            $resultats_javelin=$result_javelin->db_getJavelin($build->getId_javelin());
+            $row_javelin=$resultats_javelin->fetch_array(MYSQLI_ASSOC);
+            $resultats_user=$result_user->db_getUsersId($build->getId_user());
+            $row_user=$resultats_user->fetch_array(MYSQLI_ASSOC);
+            $javelin = new Javelin($row_javelin);
+            $user = new Users($row_user);
+            ?>
+        <tr>
+          <th scope="row"></th>
+          <td><a class="nav-link" href="see_build.php?id_build=<?php echo $build->getId() ?>"><?php echo $build->getNom() ?></a></td>
+          <td><?php echo $javelin->getNom() ?></td>
+          <td><?php echo ucfirst($user->getPseudo()) ?></td>
+        </tr>
+        <?php } ?>
+      </tbody>
+    </table>
     </div>
   </div>
 </body>

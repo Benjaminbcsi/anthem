@@ -29,6 +29,17 @@ if (isset($_POST['source']) && $_POST['source'] == "colosse_build") {
 			$_SESSION["messageKO"] = "Erreur pendant l'enregistrement du builds, veuillez réessayer !";
 			echo false;
 	}
+	foreach ($_POST['composant'] as $composant) {
+		echo print_r($composant);
+		$result_composant=new BuildcomposantManager($connexion);
+		$builds_composant = new Buildcomposant(array());
+		$builds_composant->setId_build($build_id);
+		$builds_composant->setId_composant($composant);
+		if(!$result_composant->db_addBuildsComposant($builds_composant)){
+			$_SESSION["messageKO"] = "Erreur pendant l'enregistrement des armes, veuillez réessayer !";
+			echo false;
+		}
+	}
 	echo true;
 }
 
