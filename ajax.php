@@ -99,4 +99,20 @@ if (isset($_POST['source']) && $_POST['source'] == "see_composant") {
 	$row_composant=$resultats->fetch_array(MYSQLI_ASSOC);
 	echo json_encode($row_composant);
 }
+
+if (isset($_POST['source']) && $_POST['source'] == "get_info_all") {
+	if ($_POST['type'] == "armes") {
+		$result=new ArmesManager($connexion);
+		$resultats=$result->db_getWeaponbyid($_POST['id']);
+		$row_armes=$resultats->fetch_array(MYSQLI_ASSOC);
+		$resultats=$result->db_getWeaponbyid($_POST['id']);
+		$row_armes=$resultats->fetch_array(MYSQLI_ASSOC);
+		$resultType=new TypeManager($connexion);
+		$resultatsType=$resultType->db_getType($row_armes['id_type']);
+		$row_type=$resultatsType->fetch_array(MYSQLI_ASSOC);
+		$type= new Type($row_type);
+		$row_armes['id_type'] = $type->getData();
+		echo json_encode($row_armes);
+	}
+}
 ?>

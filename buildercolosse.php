@@ -45,7 +45,7 @@ $resultatsComposant=$resultComposant->db_getComposant(2);
   <!-- Links -->
     <ul style="transform:skewX(-20deg);" class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="#">Liste Build</a>
+        <a class="nav-link" href="list_build.php">Liste Build</a>
       </li>
       <?Php if (isset($_SESSION['id']) && $_SESSION['id'] != "") { ?>
       <li class="nav-item">
