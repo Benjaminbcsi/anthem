@@ -878,7 +878,7 @@ function seestatsassaut1(id_arme){
             } else if (response['id_statut'] == "Acide") {
               $('#statutTypeAssaut1').html("Statut Acide")
             } else if (response['id_statut'] == "Feu") {
-              $('#statutTypeAssaut1').html("Statut Emflammer")
+              $('#statutTypeAssaut1').html("Statut Enflammer")
             }
             $('#statutAssaut1').html(response['degat_statut'])
           } else {

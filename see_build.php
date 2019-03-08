@@ -292,30 +292,6 @@ function seearme(type,id,id_javelin){
               $('#exploPorteWeapon').html(response['porte'])
             }
             $('#descriptionWeapon').html(response['description']+"<br/><p style='color:orange;'>"+response['effet']+"</p>")
-          } else if(type=="assaut1"){
-            $('#nameDamageInfo').html('Dégat:')
-            $('#namecpmInfo').html('Recharges:')
-            $('#nameWeapon').html(response['nom'])
-            $('#styleWeapon').html(response['des_type'])
-            $('#pouvoirWeapon').html('Pouvoir : <h4>47</h4>')
-            $('#degatWeapon').html(response['degat'])
-            $('#cpmWeapon').html(response['cpm'])
-            $('#munitionsWeapon').html(response['munitions'])
-            updateProgressDamage((response['degat']/400)*100);
-            updateProgressCpm((response['cpm']/400)*100);
-            updateProgressMunitions((response['munitions']/400)*100);
-            if (response['degat_explosion'] != null) {
-              $('#exploPorte').html("Dégats explosion")
-              updateProgressExploOrPorte((response['degat_explosion']/400)*100);
-              $('#exploPorteWeapon').html(response['degat_explosion'])
-            } else {
-              $('#exploPorte').html("Porté")
-              updateProgressExploOrPorte((response['porte']/400)*100);
-              $('#exploPorteWeapon').html(response['porte'])
-            }
-            $('#descriptionWeapon').html(response['description']+"<br/><p style='color:orange;'>"+response['effet']+"</p>")
-            $('#exampleModalPreviewLabel').html("Systeme assaut 1")
-            $('#image_obj').html('<img src="./image/'+id_javelin+'/assaut/'+response['id_type']+'/'+response['id']+'.png" style="background-color:black;margin-top:75px;transform:skewX(-20deg)!important;margin-left:150px;" width="25%" height="25%" alt="">')
           } else if(type=="composant"){
             $('#nameDamageInfo').html('Armure:')
             $('#namecpmInfo').html('Bouclier:')
@@ -331,29 +307,44 @@ function seearme(type,id,id_javelin){
             $('#image_obj').html('<img src="./image/'+id_javelin+'/composant/'+response['id']+'.jpg" style="background-color:black;margin-top:75px;transform:skewX(-20deg)!important;margin-left:150px;" width="25%" height="25%" alt="">')
           } else if(type=="soutient"){
             $('#nameDamageInfo').html('Recharges: ')
-            $('#namecpmInfo').html('Rayon: ')
+            if (response['rayon'] == 0) {
+              $('#namecpmInfo').html('Durée: ')
+              $('#cpmWeapon').html(response['duree'])
+              updateProgressCpm((response['duree']/400)*100);
+            } else {
+              $('#namecpmInfo').html('Rayon: ')
+              $('#cpmWeapon').html(response['rayon'])
+              updateProgressCpm((response['rayon']/400)*100);
+            }
 
-            $('#namemunitionInfo').addClass('display','none')
-            $('#munitionsWeapon').addClass('display','none')
+
+            $('#namemunitionInfo').css('display','none')
+            $('#munitionsWeapon').css('display','none')
             $('#progressMunitionsDamageAll').addClass('displaybarnone')
 
-
-            $('#exploPorte').addClass('display','none')
-            $('#exploPorteWeapon').addClass('display','none')
+            $('#exploPorte').css('display','none')
+            $('#exploPorteWeapon').css('display','none')
             $('#progressExploPorteDamageAll').addClass('displaybarnone')
+            $('#nameWeapon').html(response['nom'])
+            $('#styleWeapon').html("Systeme soutien")
+            $('#pouvoirWeapon').html('Pouvoir : <h4>47</h4>')
+            $('#degatWeapon').html(response['recharge'])
 
+            updateProgressDamage((response['recharge']/400)*100);
+
+            $('#descriptionWeapon').html(response['description'])
             $('#exampleModalPreviewLabel').html("Systeme soutien")
             $('#image_obj').html('<img src="./image/'+id_javelin+'/soutient/'+response['id']+'.png" style="background-color:black;margin-top:75px;transform:skewX(-20deg)!important;margin-left:150px;" width="25%" height="25%" alt="">')
-          } else if(type=="assaut2"){
-            $('#namemunitionInfo').addClass('display','block')
-            $('#munitionsWeapon').addClass('display','block')
+          } else if(type=="assaut2" || type=="assaut1"){
+            $('#namemunitionInfo').css('display','block')
+            $('#munitionsWeapon').css('display','block')
             $('#progressMunitionsDamageAll').removeClass('displaybarnone')
 
-            $('#exploPorte').addClass('display','block')
-            $('#exploPorteWeapon').addClass('display','block')
+            $('#exploPorte').css('display','block')
+            $('#exploPorteWeapon').css('display','block')
             $('#progressExploPorteDamageAll').removeClass('displaybarnone')
 
-            $('#nameDamageInfo').html('Dégat:')
+            $('#nameDamageInfo').html('Dégats: ')
             $('#namecpmInfo').html('Recharges:')
             $('#nameWeapon').html(response['nom'])
             $('#styleWeapon').html(response['des_type'])
@@ -362,17 +353,24 @@ function seearme(type,id,id_javelin){
             $('#cpmWeapon').html(response['recharge'])
             $('#munitionsWeapon').html(response['rayon'])
             $('#styleWeapon').html(response['des_type'])
-            if (response['id_statut'] == "Foudre") {
-              $('#exploPorte').html("Statut électricité: ")
-            } else if (response['id_statut'] == "Gel") {
-              $('#exploPorte').html("Statut Gelée: ")
-            } else if (response['id_statut'] == "Acide") {
-              $('#exploPorte').html("Statut Acide: ")
-            } else if (response['id_statut'] == "Feu") {
-              $('#exploPorte').html("Statut Emflammer: ")
+            if (response['degat_statut'] != 0) {
+              $('#degatWeapon').html('<img width="25px;" src="./image/'+response['id_statut']+'.png" alt="">&nbsp;'+response['degat'])
+              if (response['id_statut'] == "Foudre") {
+                $('#exploPorte').html("Statut électricité: ")
+              } else if (response['id_statut'] == "Gel") {
+                $('#exploPorte').html("Statut Gelée: ")
+              } else if (response['id_statut'] == "Acide") {
+                $('#exploPorte').html("Statut Acide: ")
+              } else if (response['id_statut'] == "Feu") {
+                $('#exploPorte').html("Statut Enflammer: ")
+              }
+            } else {
+              $('#exploPorte').html("Statut: ")
+              $('#degatWeapon').html(response['degat'])
             }
+
             $('#namemunitionInfo').html('Rayon: ')
-            $('#exploPorteWeapon').html(response['degat_statut'])
+
             updateProgressDamage((response['degat']/400)*100);
             updateProgressCpm((response['recharge'])*10);
             updateProgressMunitions(response['rayon']);
